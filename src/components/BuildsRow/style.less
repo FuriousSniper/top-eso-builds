@@ -1,0 +1,37 @@
+@import "/src/styles/variables.less";
+
+.buildRowWrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    background-color: @dark-background;
+    border-top: @primary-section-border;
+    border-bottom: @primary-section-border;
+    color: @color-primary;
+
+    .buildLink{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: @color-primary;
+        text-decoration: none;
+        padding: 10px;
+        background-color: @dark-background;
+        border-radius: @primary-section-border-radius;
+
+        &:hover{
+            background-color: @dark-background-2;
+        }
+
+        .buildIcon{
+            width: 64px;
+            height: 64px;
+            display: block;
+        }
+    }
+}

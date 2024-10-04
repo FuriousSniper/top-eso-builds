@@ -1,0 +1,68 @@
+@import "/src/styles/variables.less";
+@import "/src/styles/index.less";
+
+.gearWrapper {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  .item {
+    display: flex;
+    width: 100%;
+    margin: 0 5px;
+
+    .itemLight {
+      color: @color-magicka;
+    }
+    .itemMedium {
+      color: @color-stamina;
+    }
+    .itemHeavy {
+      color: @color-health;
+    }
+
+    .gearSlot {
+      width: 105px;
+      text-align: left;
+      vertical-align: center;
+      display: flex;
+      align-items: center;
+      cursor: help;
+    }
+
+    .details {
+      color: @color-primary;
+      width: 100%;
+      padding-left: 15px;
+
+      .setName {
+        width: max-content;
+        display: block;
+
+        div{
+          cursor: pointer;
+        }
+      }
+
+      .misc {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        font-size: 12px;
+        margin-top: 5px;
+        color: @color-secondary;
+
+        div{
+          cursor: pointer;
+        }
+      }
+
+      .trait {
+        width: 32%;
+      }
+    }
+  }
+
+  .lastItem{
+    margin-bottom: 2px;
+  }
+}

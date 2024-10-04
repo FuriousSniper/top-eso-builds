@@ -1,0 +1,28 @@
+@import "/src/styles/variables.less";
+
+.banner-item{
+    position: relative;
+    display: flex !important;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: @color-primary;
+  
+  
+    .banner-item-text{
+      position: absolute;
+      right: 30px;
+      text-align: center;
+      width: 150px;
+      background-color: @dark-background;
+      border: @primary-section-border;
+      border-radius: @primary-section-border-radius;
+      padding: 10px;
+    }
+    .banner-img{
+      width: 100%;
+      height: auto;
+      max-height: 380px;
+      object-fit:cover;
+    }
+  }

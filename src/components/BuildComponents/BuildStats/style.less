@@ -1,0 +1,90 @@
+@import "/src/styles/index.less";
+@import "/src/styles/variables.less";
+
+.attribs {
+  color: @color-primary;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+  margin: 10px;
+
+  .attribBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100px;
+    height: 20px;
+    color: @color-primary;
+    clip-path: polygon(
+      0 0,
+      calc(100% - 10px) 0,
+      100% 10px,
+      100% calc(100% - 10px),
+      calc(100% - 10px) 100%,
+      0 100%
+    );
+  }
+
+  .attribNumber {
+    text-align: center;
+    margin-right: 10px;
+    font-weight: 700;
+    width: 20px;
+  }
+
+  .attribText {
+    margin-left: 2px;
+    cursor: help;
+  }
+
+  .clipLeft {
+    clip-path: polygon(
+      0 25px,
+      25px 0,
+      100% 0,
+      100% 100%,
+      25px 100%,
+      0 calc(100% - 25px)
+    );
+  }
+
+  .attribColumn {
+    height: 100%;
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+  
+  .statColumn {
+    text-align: center;
+    height: max-content;
+    column-gap: 10px;
+  }
+  
+  .statColumn span {
+    height: 19px;
+  }
+
+  .statText {
+    color: @color-secondary;
+    font-size: 12px;
+    height: auto !important;
+    text-align: center;
+  }
+
+  .attribHealth {
+    background-color: @color-health;
+  }
+
+  .attribStamina {
+    background-color: @color-stamina;
+  }
+
+  .attribMagicka {
+    background-color: @color-magicka;
+  }
+}

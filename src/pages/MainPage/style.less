@@ -1,0 +1,58 @@
+@import "/src/styles/variables.less";
+
+.main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 10px;
+  flex: 1 1 auto;
+  margin-top: 16px;
+  padding-bottom: 10px;
+
+  .textWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    background-color: @dark-background;
+    border-top: @primary-section-border;
+    border-bottom: @primary-section-border;
+    color: @color-primary;
+
+    p{
+      all: unset;
+    }
+
+    .textSection {
+      background-color: @dark-background;
+      padding: 10px 0;
+      width: calc(80% - 18px);
+    }
+  }
+}
+
+.carousel-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  border-top: @primary-section-border;
+  border-bottom: @primary-section-border;
+  margin: 10px 0;
+  background-color: @dark-background;
+}
+.carousel-banner {
+  width: 80%;
+  max-height: 380px;
+}
+
+.slick-dots {
+  li button::before {
+    color: @color-secondary !important;
+    .slick-active {
+      color: @color-primary !important;
+    }
+  }
+}

@@ -1,0 +1,107 @@
+@import "./variables.less";
+html{
+  color-scheme: dark;
+}
+body {
+  min-width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-family: Untitled Sans, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  color: @color-primary;
+  font-size: @font-primary;
+  overflow-x:hidden;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  background: rgb(16, 16, 16);
+  background: linear-gradient(315deg, rgba(16,16,16,1) 0%, rgba(13,33,125,1) 50%, rgba(16,16,16,1) 100%);
+  background-image: linear-gradient(
+    129deg in oklch,
+    rgba(16, 16, 16, 1) 0%,
+    oklch(29.39% 0.135 266.14) 50%,
+    rgba(16, 16, 16, 1) 100%
+  );
+}
+
+.separator {
+  height: 1px;
+  background-color: #ffffff3c;
+  width: 100%;
+  margin: 5px 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+
+.verticalSeparator {
+  display: flex;
+  height: 96px;
+  margin: 0 10px;
+  width: 1px;
+  background-color: #ffffff3c;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.textIcon{
+  width: @icon-text-size;
+  height: @icon-text-size;
+}
+
+.colorHealth{
+  color: @color-health;
+}
+
+.colorStamina{
+  color: @color-stamina;
+}
+
+.colorMagicka{
+  color: @color-magicka;
+}
+
+.colorUltimate{
+  color: @color-primary;
+}
+
+.colorArcanist{
+  color: @color-arcanist;
+}
+
+.specialText{
+  color: @color-primary;
+}
+
+.colorMythic{
+  color: @color-mythic !important;
+}
+
+.itemCrossed{
+  text-decoration: line-through;
+  color: @color-disabled;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 10px;
+  flex: 1 1 auto;
+  margin-top: 16px;
+  padding-bottom: 10px;
+
+  .textSection{
+    background-color: @dark-background;
+    border: @primary-section-border;
+    border-radius: @primary-section-border-radius;
+    padding: 10px;
+    width: 80%;
+  }
+}

@@ -1,0 +1,29 @@
+@import "/src/styles/variables.less";
+
+fieldset{
+  padding: 10px;
+  margin: 0;
+}
+.genericDisplayField {
+  background-color: @dark-background;
+  border: @primary-section-border;
+  border-radius: @primary-section-border-radius;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+
+  legend{
+    color: @color-primary;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.legendIcon{
+    padding: 0;
+    margin: 0;
+    vertical-align: middle;
+    width: @icon-text-size;
+    height: @icon-text-size;
+}

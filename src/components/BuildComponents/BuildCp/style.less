@@ -1,0 +1,48 @@
+@import "/src/styles/index.less";
+@import "/src/styles/variables.less";
+
+.cpSection {
+  .cpHeadingRow {
+    color: @color-primary;
+    vertical-align: baseline;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-bottom: 5px;
+  }
+
+  .cpHeadingRow img {
+    width: @icon-text-size;
+    height: @icon-text-size;
+  }
+
+  .cpRow {
+    color: #b4b4b4;
+    vertical-align: baseline;
+    display: grid;
+    columns: 2;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-bottom: 3px;
+  }
+
+  .cpItem {
+    vertical-align: baseline;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    cursor: pointer;
+  }
+
+  .cpItem img {
+    width: 22px;
+    height: 22px;
+  }
+}

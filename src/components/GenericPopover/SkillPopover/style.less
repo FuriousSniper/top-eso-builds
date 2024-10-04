@@ -1,0 +1,65 @@
+@import "/src/styles/index.less";
+@import "/src/styles/variables.less";
+
+.skillName {
+    width: 100%;
+    text-transform: uppercase;
+    text-align: center;
+    display: block;
+    padding: 5px;
+    font-size: 20px;
+  }
+
+  .skillSeparator {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 1px;
+    background-image: linear-gradient(
+      to right,
+      transparent,
+      @gray-border-color 30%,
+      @gray-border-color 70%,
+      transparent
+    );
+    width: 100%;
+    grid-column: 11 / 13;
+  }
+
+  .skillParams {
+    display: flex;
+    flex-direction: column;
+    margin: 5px 10px;
+
+    .parameter {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+      margin: 2px 0;
+
+      .parameterType {
+        color: @color-secondary;
+      }
+    }
+  }
+
+  .skillDescription {
+    text-align: center;
+    margin: 10px;
+    color: @color-secondary;
+  }
+
+  .newEffect {
+    color: #33dd33;
+    text-align: center;
+    margin: 15px;
+    .newEffectBanner {
+      text-transform: uppercase;
+      display: block;
+    }
+  }
+
+  .costDetermined {
+    color: #c77dcf;
+  }

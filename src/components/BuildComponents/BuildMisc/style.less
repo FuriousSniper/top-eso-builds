@@ -1,0 +1,41 @@
+@import "/src/styles/index.less";
+@import "/src/styles/variables.less";
+
+.miscItems {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  row-gap: 5px;
+
+  .miscRow {
+    color: #b4b4b4;
+    vertical-align: baseline;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+    width: 100%;
+  }
+
+  .miscType {
+    color: rgb(238, 238, 238);
+    min-width: 100px;
+  }
+  .miscItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  .miscItem img {
+    width: 22px;
+    height: 22px;
+  }
+
+  .clickable{
+    cursor: pointer;
+  }
+}
