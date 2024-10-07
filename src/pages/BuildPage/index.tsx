@@ -14,6 +14,7 @@ import BuildDetails from "../../components/BuildComponents/BuildDetails";
 import FooterMenu from "../../components/FooterMenu";
 import sorc from "../../builds/sorc";
 import './style.less'
+import GenericDisplayField from "../../components/GenericDisplayField";
 
 const BuildPage = () => {
     const { buildNameParam } = useParams();
@@ -68,7 +69,6 @@ const BuildPage = () => {
         }
 
         const toggleItem = document.getElementById(id)
-        console.log(crossedItemsArray)
         const copyArray = [...crossedItemsArray]
 
         if (crossedItemsArray.includes(id)) {
@@ -126,6 +126,9 @@ const BuildPage = () => {
                 </div>
                 <div className="additionalDetails">
                     <BuildDetails details={build.details}/>
+                    <GenericDisplayField legendText={"Last updated"}>
+                        <div className="detailsContent">{build.lastUpdated}</div>
+                    </GenericDisplayField>
                 </div>
             </div>
             <FooterMenu />

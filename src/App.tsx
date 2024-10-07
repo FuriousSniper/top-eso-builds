@@ -4,6 +4,7 @@ import './styles/index.less'
 import MainPage from './pages/MainPage';
 import BuildPage from './pages/BuildPage';
 import AboutPage from './pages/AboutPage';
+import PenPage from './pages/PenPage';
 
 const App = () => {
   return (
@@ -11,8 +12,9 @@ const App = () => {
       <Routes>
         <Route path="*" element={<MainPage />} />
         <Route path="/" element={<MainPage />} />
-        <Route path="/about" element={<AboutPage />} />
+        <Route path="/tools/penCalc" element={<PenPage />} />
         <Route path="/build/:buildNameParam" element={<BuildPage />} />
+        <Route path="/about" element={<AboutPage />} />
       </Routes>
     </BrowserRouter>
   );

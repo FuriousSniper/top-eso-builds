@@ -176,7 +176,8 @@ const sorc: BuildType = {
             title: "Race",
             htmlText: "<p>High elf, Breton are the best for magicka builds.</p>"
         }
-    ]
+    ],
+    lastUpdated: "U43"
 }
 
 export default sorc;

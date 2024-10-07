@@ -54,4 +54,5 @@ export const race: GenericDisplayType[] = [
     }
 ]
 
+export const classArray = ["Nightblade", "Arcanist" , "Dragonknight" , "Necromancer" , "Sorcerer" , "Templar" , "Warden"]
     
