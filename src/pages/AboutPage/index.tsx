@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const AboutPage = () => {
     useEffect(() => {
-        document.title = `Top ESO Builds`
+        document.title = `About Top ESO Builds`
     }, [])
 
     return (

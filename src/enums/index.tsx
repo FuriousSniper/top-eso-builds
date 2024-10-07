@@ -46,5 +46,5 @@ export enum GenericSetBonusEnum{
     maxStam="Adds 1096 Maximum Stamina",
     maxMag="Adds 1096 Maximum Magicka",
     maxHp="Adds 1206 Maximum Health",
-    armor="",
+    armor="Adds 1487 Armor",
 }

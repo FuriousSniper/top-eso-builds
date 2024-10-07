@@ -1,0 +1,71 @@
+@import "/src/styles/index.less";
+@import "/src/styles/variables.less";
+
+.controlItems{
+    border-top: @primary-section-border;
+    border-bottom: @primary-section-border;
+    background-color: @dark-background;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    padding: 10px 0;
+    input[type=number]{
+      width: 60px;
+      margin-left: 5px;
+    }
+}
+.moreSeparation{
+  margin: 15px 0;
+}
+.columnWrapper {
+  @media @mobile {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  width: 100%;
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: center;
+  gap: 15px;
+  flex: 1 1 auto;
+
+  .uiColumn {
+    @media @mobile {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      row-gap: 10px;
+    }
+
+    height: 100%;
+    width: 350px;
+    .secondaryText {
+      color: @color-secondary;
+    }
+
+    .penCalcItemRow {
+      display: flex;
+      width: 100%;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin: 5px 0;
+
+      label {
+        flex: 1 1 auto;
+        cursor: pointer;
+      }
+      input[type="checkbox"] {
+        cursor: pointer;
+      }
+    }
+  }
+}

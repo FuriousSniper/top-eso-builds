@@ -1,0 +1,27 @@
+@import "/src/styles/variables.less";
+
+.separatorButton {
+  margin: 15px 0;
+  display: flex;
+  align-items: center;
+  color: #ffffff3c !important;
+  user-select: none;
+  span {
+    background-color: @dark-background;
+    cursor: pointer;
+  }
+  &::before,
+  &::after {
+    flex: 1;
+    content: "";
+    background-color: #ffffff3c;
+
+    width: 100%;
+    margin: 5px 0px;
+  }
+}
+.collapseElement {
+  overflow: hidden;
+  transition: height 0.2s ease-in-out;
+  padding-bottom: 5px;
+}

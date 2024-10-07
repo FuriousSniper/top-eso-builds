@@ -99,6 +99,7 @@ export type BuildType = {
     details?: DetailsType[]
     ratings?: Array<RatingType>
     requiredDlc?: Array<GenericDisplayType>
+    lastUpdated: string
 }
 
 export type StatsType = {
@@ -119,4 +120,23 @@ export type BuildPromoItem = {
     promoImage: string,
     promoImageText: string
     link: string
+}
+
+export type CharacterPenType = {
+    class: string,
+    penSelf: number,
+    penSupport: number,
+    name: string,
+    necroPassive: boolean,
+    nbPassive: boolean,
+    arcanistPassive: number,
+    piercing: boolean,
+    weaponMace: number,
+    weaponSharpened: number,
+    lightArmor: number,
+    forceOfNature: number,
+    woodElfRace: boolean,
+    loverMundus: boolean,
+    otherSetLines: number,
+    otherSources: number,
 }

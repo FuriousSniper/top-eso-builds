@@ -50,12 +50,12 @@ const GenericPopover = ((props: Props) => {
         if (tooltipY + tooltipHeight + 20 > viewportHeight) {
             tooltipY = viewportHeight - tooltipHeight - 10;
         }
-/*
-        //top viewport
-        if (tooltipY - tooltipHeight < 0) {
-            tooltipY = viewportHeight
-        }
-*/
+        /*
+                //top viewport
+                if (tooltipY - tooltipHeight < 0) {
+                    tooltipY = viewportHeight
+                }
+        */
         setTooltipPosition({ x: tooltipX, y: tooltipY });
     };
 

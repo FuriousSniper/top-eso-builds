@@ -16,7 +16,7 @@ const BuildGear = (props: IBuildGearProps) => {
                     props.gear?.map((item: ConcreteSetItemType, key: number) => {
                         return (
                             <>
-                                <div className={`item ${key + 1 === props.gear?.length ? "lastItem" : ""}`} key={key}>
+                                <div className={`item`} key={key}>
                                     <div className={`gearSlot ${item.weight ? "item" + item.weight : ""}`} title={`${item.weight ? item.weight + " " : ""}${item.weapon ? item.weapon + " " : ""}${item.slot}`}>
                                         <span>{item.slot}</span>
                                     </div>
@@ -37,7 +37,7 @@ const BuildGear = (props: IBuildGearProps) => {
                                     </div>
                                 </div>
                                 {key + 1 < props.gear?.length &&
-                                    <div className="separator" ></div>
+                                    <div className="separator"></div>
                                 }
                             </>
                         )
