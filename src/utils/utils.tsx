@@ -79,3 +79,14 @@ export const initBuildCrossedArray = (key: string) =>{
     buildArray[key]=[]
     setToLS("crossedObjects",JSON.stringify(buildArray))
 }
+
+export const boundsMinMax = (n: number, min: number,max: number): number => {
+    if(n<=min){
+        return min
+    }
+    if(n>=max){
+        return max
+    }
+
+    return n;
+}
