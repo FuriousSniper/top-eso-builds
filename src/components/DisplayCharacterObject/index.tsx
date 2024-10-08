@@ -3,6 +3,7 @@ import { CharacterPenType } from "../../types/common"
 import GenericDisplayField from "../GenericDisplayField"
 import './style.less'
 import Collapsible from "../Collapsible"
+import { boundsMinMax } from "../../utils/utils"
 
 interface CharacterObjectProps {
     char: CharacterPenType,
@@ -103,7 +104,7 @@ const DisplayCharacterObject = (props: CharacterObjectProps) => {
                     <>
                         {props.char.class === "Arcanist" &&
                             <div className="charRow">
-                                <label className="explanationLabel" htmlFor="arcanistPassive" title="Increase your Physical and Spell Penetration by 991 per Herald of the Tome ability slotted (e.g. beam, flail, eye).">Arcanist Passive</label><input type="number" name="arcanistPassive" id="arcanistPassive" value={arcanistPassive} onChange={(event) => setArcanistPassive(Number(event.target.value))} min={0} max={6} />
+                                <label className="explanationLabel" htmlFor="arcanistPassive" title="Increase your Physical and Spell Penetration by 991 per Herald of the Tome ability slotted (e.g. beam, flail, eye).">Arcanist Passive</label><input type="number" name="arcanistPassive" id="arcanistPassive" value={arcanistPassive} onChange={(event) => setArcanistPassive(boundsMinMax(Number(event.target.value),0,6))} min={0} max={6} />
                             </div>
                         }
                         {props.char.class === "Necromancer" &&
@@ -117,16 +118,16 @@ const DisplayCharacterObject = (props: CharacterObjectProps) => {
                             </div>
                         }
                         <div className="charRow">
-                            <label className="explanationLabel" htmlFor="lightArmor" title="Increases your Physical and Spell Penetration by 939 for each piece of Light Armor worn.">Light Armor</label><input type="number" name="lightArmor" id="lightArmor" value={lightArmor} onChange={(event) => setLightArmor(Number(event.target.value))} min={0} max={7} />
+                            <label className="explanationLabel" htmlFor="lightArmor" title="Increases your Physical and Spell Penetration by 939 for each piece of Light Armor worn.">Light Armor</label><input type="number" name="lightArmor" id="lightArmor" value={lightArmor} onChange={(event) => setLightArmor(boundsMinMax(Number(event.target.value),0,7))} min={0} max={7} />
                         </div>
                         <div className="charRow">
-                            <label className="explanationLabel" htmlFor="weaponMace" title="Amount of Mace weapons. Set 0 if you have none, set 2 when using 2h weapon">Weapon Mace/Maul</label><input type="number" name="weaponMace" id="weaponMace" value={weaponMace} onChange={(event) => setWeaponMace(Number(event.target.value))} min={0} max={2} />
+                            <label className="explanationLabel" htmlFor="weaponMace" title="Amount of Mace weapons. Set 0 if you have none, set 2 when using 2h weapon">Weapon Mace/Maul</label><input type="number" name="weaponMace" id="weaponMace" value={weaponMace} onChange={(event) => setWeaponMace(boundsMinMax(Number(event.target.value),0,2))} min={0} max={2} />
                         </div>
                         <div className="charRow">
-                            <label className="explanationLabel" htmlFor="weaponSharp" title="Amount of Sharpened traits on weapons. Set 0 if you have none, set 2 when using 2h weapon">Sharpened trait(s)</label><input type="number" name="weaponSharp" id="weaponSharp" value={weaponSharp} onChange={(event) => setWeaponSharp(Number(event.target.value))} min={0} max={2} />
+                            <label className="explanationLabel" htmlFor="weaponSharp" title="Amount of Sharpened traits on weapons. Set 0 if you have none, set 2 when using 2h weapon">Sharpened trait(s)</label><input type="number" name="weaponSharp" id="weaponSharp" value={weaponSharp} onChange={(event) => setWeaponSharp(boundsMinMax(Number(event.target.value),0,2))} min={0} max={2} />
                         </div>
                         <div className="charRow">
-                            <label className="explanationLabel" htmlFor="FoN" title="Increases your Offensive Penetration by 660 for every status effect your target has.">Force of Nature CP</label><input type="number" name="FoN" id="FoN" value={FoN} onChange={(event) => setFoN(Number(event.target.value))} min={0} max={8} />
+                            <label className="explanationLabel" htmlFor="FoN" title="Increases your Offensive Penetration by 660 for every status effect your target has.">Force of Nature CP</label><input type="number" name="FoN" id="FoN" value={FoN} onChange={(event) => setFoN(boundsMinMax(Number(event.target.value),0,8))} min={0} max={8} />
                         </div>
                         <div className="charRow">
                             <label className="explanationLabel" htmlFor="piercing" title="Grants 350 Offensive Penetration per stage (2 stages).">Piercing CP</label><input type="checkbox" name="piercing" id="piercing" checked={piercing} onChange={() => setPiercing(!piercing)} />
@@ -138,10 +139,10 @@ const DisplayCharacterObject = (props: CharacterObjectProps) => {
                             <label className="explanationLabel" htmlFor="loverMundus" title="Increases Physical and Spell Penetration by 4489 (7 divines)">Lover Mundus</label><input type="checkbox" name="loverMundus" id="loverMundus" checked={loverMundus} onChange={() => setLoverMundus(!loverMundus)} />
                         </div>
                         <div className="charRow">
-                            <label className="explanationLabel" htmlFor="otherSetLines" title="Sets like Kragh, Skoria or Ansuul have bonuses to pen. Increase this number by the amount of bonuses your sets have.">Other set lines</label><input type="number" name="otherSetLines" id="otherSetLines" value={otherSetLines} onChange={(event) => setOtherSetLines(Number(event.target.value))} min={0} max={20} />
+                            <label className="explanationLabel" htmlFor="otherSetLines" title="Sets like Kragh, Skoria or Ansuul have bonuses to pen. Increase this number by the amount of bonuses your sets have.">Other set lines</label><input type="number" name="otherSetLines" id="otherSetLines" value={otherSetLines} onChange={(event) => setOtherSetLines(boundsMinMax(Number(event.target.value),0,20))} min={0} max={20} />
                         </div>
                         <div className="charRow">
-                            <label className="explanationLabel" htmlFor="otherSources" title="Other sources which were not listed here can be added in this field, like Balorgh or TFS">Other sources</label><input type="number" name="otherSources" id="otherSources" value={otherSources} onChange={(event) => setOtherSources(Number(event.target.value))} min={0} />
+                            <label className="explanationLabel" htmlFor="otherSources" title="Other sources which were not listed here can be added in this field, like Balorgh or TFS">Other sources</label><input type="number" name="otherSources" id="otherSources" value={otherSources} onChange={(event) => setOtherSources(boundsMinMax(Number(event.target.value),0,102000))} min={0} />
                         </div>
                     </>
                 </Collapsible>

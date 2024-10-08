@@ -6,6 +6,7 @@ import './style.less'
 import GenericModal from "../../components/Modals/GenericModal";
 import { CharacterPenType } from "../../types/common"
 import DisplayCharacterObject from "../../components/DisplayCharacterObject"
+import { boundsMinMax } from "../../utils/utils"
 
 const PenPage = () => {
     const [requiredPen, setRequiredPen] = useState(18200)
@@ -101,7 +102,7 @@ const PenPage = () => {
             <HeaderMenu />
             <div className="main">
                 <div className="controlItems">
-                    <div><label htmlFor="penCap">Set pen target</label><input type="number" name="penCap" id="penCap" value={requiredPen} onChange={e => setRequiredPen(Number(e.target.value))} /></div>
+                    <div><label htmlFor="penCap">Set pen target</label><input type="number" name="penCap" id="penCap" value={requiredPen} onChange={event => setRequiredPen(boundsMinMax(Number(event.target.value),0,102000))} min={0} max={102000}/></div>
                     <GenericModal buttonName="Add Character" className="addCharacterButton" createChar={createCharacter} />
                 </div>
                 <div className="columnWrapper">
