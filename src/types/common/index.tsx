@@ -130,6 +130,7 @@ export type CharacterPenType = {
     necroPassive: boolean,
     nbPassive: boolean,
     arcanistPassive: number,
+    velothi: boolean,
     piercing: boolean,
     weaponMace: number,
     weaponSharpened: number,

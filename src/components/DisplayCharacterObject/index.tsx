@@ -24,6 +24,7 @@ const DisplayCharacterObject = (props: CharacterObjectProps) => {
     const [otherSetLines, setOtherSetLines] = useState(props.char.otherSetLines)
     const [otherSources, setOtherSources] = useState(props.char.otherSources)
     const [currentPen, setCurrentPen] = useState(props.char.penSelf)
+    const [velothi, setVelothi] = useState(props.char.velothi)
 
 
     useEffect(() => {
@@ -36,6 +37,8 @@ const DisplayCharacterObject = (props: CharacterObjectProps) => {
 
         //nb
         selfPenSum += nbPassive ? 2974 : 0
+
+        selfPenSum += velothi ? 1650 : 0
 
         selfPenSum += piercing ? 700 : 0
 
@@ -56,7 +59,7 @@ const DisplayCharacterObject = (props: CharacterObjectProps) => {
         selfPenSum += otherSources
 
         setCurrentPen(selfPenSum)
-    }, [FoN, arcanistPassive, lightArmor, loverMundus, necroPassive, otherSetLines, otherSources, piercing, weaponMace, weaponSharp, woodElfRace])
+    }, [FoN, arcanistPassive, lightArmor, loverMundus, necroPassive, otherSetLines, otherSources, piercing, weaponMace, weaponSharp, woodElfRace, velothi, nbPassive])
 
     const determineIcon = ()=>{
         const prefix="/icons/classes/"
@@ -117,6 +120,9 @@ const DisplayCharacterObject = (props: CharacterObjectProps) => {
                                 <label className="explanationLabel" htmlFor="nbPassive" title="Increases your Physical and Spell Penetration against enemies you are flanking by 2974.">Nightblade Passive</label><input type="checkbox" name="nbPassive" id="nbPassive" checked={nbPassive} onChange={() => setNbPassive(!nbPassive)} />
                             </div>
                         }
+                        <div className="charRow">
+                            <label className="explanationLabel" htmlFor="velothi" title="Adds 1650 Offensive Penetration, 15% dmg done, Minor Force">Velothi Mythic</label><input type="checkbox" name="velothi" id="velothi" checked={velothi} onChange={() => setVelothi(!velothi)} />
+                        </div>
                         <div className="charRow">
                             <label className="explanationLabel" htmlFor="lightArmor" title="Increases your Physical and Spell Penetration by 939 for each piece of Light Armor worn.">Light Armor</label><input type="number" name="lightArmor" id="lightArmor" value={lightArmor} onChange={(event) => setLightArmor(boundsMinMax(Number(event.target.value),0,7))} min={0} max={7} />
                         </div>

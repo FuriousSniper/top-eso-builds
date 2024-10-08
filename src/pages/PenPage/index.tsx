@@ -62,6 +62,7 @@ const PenPage = () => {
             necroPassive: false,
             nbPassive: false,
             arcanistPassive: 0,
+            velothi: true,
             piercing: false,
             weaponMace: 0,
             weaponSharpened: 0,
@@ -103,7 +104,7 @@ const PenPage = () => {
             <div className="main">
                 <div className="controlItems">
                     <div><label htmlFor="penCap">Set pen target</label><input type="number" name="penCap" id="penCap" value={requiredPen} onChange={event => setRequiredPen(boundsMinMax(Number(event.target.value),0,102000))} min={0} max={102000}/></div>
-                    <GenericModal buttonName="Add Character" className="addCharacterButton" createChar={createCharacter} />
+                    <GenericModal buttonName="Add DD Character" className="addCharacterButton" createChar={createCharacter} />
                 </div>
                 <div className="columnWrapper">
                     <div className="uiColumn">
