@@ -141,6 +141,9 @@ const PenPage = () => {
                     <div className="uiColumn">
                         <GenericDisplayField legendText={"Characters"}>
                             <>
+                                {charactersArray.length===0&&
+                                    <p className="noCharacters">No characters added!<br/>Use the button above in order to add a character and calculate penetration.</p>
+                                }
                                 {charactersArray.map((char: CharacterPenType, key: number) => {
                                     return <DisplayCharacterObject char={char} supportPen={supportPen} requiredPen={requiredPen} key={key} />
                                 })}
