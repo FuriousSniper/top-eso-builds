@@ -27,35 +27,28 @@ const GenericPopover = ((props: Props) => {
     const tooltipRef = useRef<HTMLDivElement>(document.createElement('div'));
 
     const handleMouseMove = (event: React.MouseEvent) => {
-        const { clientX, clientY } = event;
-        const tooltipWidth = tooltipRef.current?.offsetWidth || 0;
-        const tooltipHeight = tooltipRef.current?.offsetHeight || 0;
-        const viewportWidth = window.innerWidth;
-        const viewportHeight = window.innerHeight;
-
-        let tooltipX = clientX;
-        let tooltipY = clientY;
-
-        // Check if tooltip exceeds the right side of the viewport
-        if (tooltipX + tooltipWidth + 20 > viewportWidth) {
-            tooltipX = clientX - tooltipWidth - 10;
+        const { pageX, pageY } = event;
+        if(!tooltipRef.current){
+            return
         }
 
-        //left viewport
-        if (tooltipX < 0) {
-            tooltipX = 0;
+        const boundingRect = tooltipRef.current?.getBoundingClientRect()
+        const viewportHeight = window.innerHeight
+        const viewportWidth = window.innerWidth
+
+        let tooltipX = pageX;
+        let tooltipY = pageY;
+
+        // Check if tooltip exceeds the right side of the viewport
+        if (boundingRect.right > viewportWidth) {
+            tooltipX -= Math.abs(boundingRect?.right-viewportWidth)+20
         }
 
         // Check if tooltip exceeds the bottom of the viewport
-        if (tooltipY + tooltipHeight + 20 > viewportHeight) {
-            tooltipY = viewportHeight - tooltipHeight - 10;
+        if (boundingRect.bottom > viewportHeight) {
+            tooltipY -= Math.abs(boundingRect?.bottom-viewportHeight)+20
         }
-        /*
-                //top viewport
-                if (tooltipY - tooltipHeight < 0) {
-                    tooltipY = viewportHeight
-                }
-        */
+
         setTooltipPosition({ x: tooltipX, y: tooltipY });
     };
 

@@ -10,10 +10,22 @@ const sorc: BuildType = {
     name: "Sorc BG/Cyro",
     id: "soloSorc1",
     skills: {
-        normalFront: [sorcSkills[3], magesGuildSkills[1], sorcSkills[1], scribingSkills[2], sorcSkills[9]],
-        ultFront: sorcSkills[6],
-        normalBack: [sorcSkills[4], sorcSkills[2], sorcSkills[0], sorcSkills[7], sorcSkills[8]],
-        ultBack: sorcSkills[5],
+        normalFront: [
+            { skill: sorcSkills[3], explanationHtml: "<p>Stamina spammable. Also allows user to combine it with Shocking soul for one-time burst.</p>" },
+            { skill: magesGuildSkills[1], explanationHtml: "<p>Max magicka buff</p>" },
+            { skill: sorcSkills[1], explanationHtml: "<p>Primary shield and heal</p>" },
+            { skill: scribingSkills[2], explanationHtml: "<p>Magicka spammable. <br/>Scripts - Shock damage, Class mastery, Breach</p>" },
+            { skill: sorcSkills[9], explanationHtml: "<p>Mobility, stun</p>" }
+        ],
+        ultFront: { skill: sorcSkills[6], explanationHtml: "<p>Very strong damage ult and resource return. Pairs great with both spammables and delivers devastating burst.</p>" },
+        normalBack: [
+            { skill: sorcSkills[4], explanationHtml: "<p>Resource return, heal</p>" },
+            { skill: sorcSkills[2], explanationHtml: "<p>Free buffs for slotting</p>" },
+            { skill: sorcSkills[0], explanationHtml: "<p>Strong burst damage skill</p>" },
+            { skill: sorcSkills[7], explanationHtml: "<p>Armor buff. Used also to proc Wretched</p>" },
+            { skill: sorcSkills[8], explanationHtml: "<p>Damage and healing buff</p>" }
+        ],
+        ultBack: { skill: sorcSkills[5], explanationHtml: "<p>Good ult for group play or close quaters fights. You can swap this for meteor, atronach or something else if you want</p>" },
     },
     gear: [
         {
@@ -88,7 +100,7 @@ const sorc: BuildType = {
             slot: "Main-hand weapon",
             trait: TraitEnum.sharp,
             enchant: GlyphEnum.shock,
-            weapon:"Lightning Staff"
+            weapon: "Lightning Staff"
         },
         {
             set: null,
@@ -102,7 +114,7 @@ const sorc: BuildType = {
             slot: "Off-hand weapon",
             trait: TraitEnum.defending,
             enchant: GlyphEnum.wd,
-            weapon:"Ice Staff"
+            weapon: "Ice Staff"
         },
         {
             set: null,
@@ -155,15 +167,8 @@ const sorc: BuildType = {
         race: race[1],
         mundus: munduses[3]
     },
+    generalInfo: "<p>This build can work in both cyro and BGs. It has good sustain, mobility and very good burst. It doesn't provide any cross healing, but sometimes negate can turn the tide of battle!</p>",
     details: [
-        {
-            title: "General informations",
-            htmlText: "<p>This build can work in both cyro and BGs. It has good sustain, mobility and very good burst. It doesn't provide any cross healing, but sometimes negate can turn the of battle!</p>"
-        },
-        {
-            title: "Skills description",
-            htmlText: "<p>Crystal Weapon - stamina spammable. Also allows user to combine it with Shocking soul for one-time burst.</p><p>Inner light - max magicka buff</p><p>Hardened ward - primary shield and heal</p><p>Shocking soul - magicka spammable. Scripts - Shock damage, Class mastery, Breach</p><p>Streak - mobility, stun</p><p>Overload - damage ult</p><br /><p>Dark conversion - resource return, heal</p><p>Bound Armor - free buffs for slotting</p><p>Haunting curse - strong burst damage skill</p><p>Hurricane - armor buff. Used also to proc Wretched</p><p>Crit surge - damage and h ealing buff</p><p>Negate - Good ult for group play or close quaters fights. You can swap this for meteor, atronach or something else if you want</p>"
-        },
         {
             title: "Rotation",
             htmlText: "<p>Haunting Curse -> Crystal weapon -> Shocking soul</p><br/> With overload enabled you can create a very strong burst combo. Otherwise just cast Crystal weapon or Shocking soul, whichever resource you need less."

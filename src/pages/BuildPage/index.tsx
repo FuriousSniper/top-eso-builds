@@ -15,6 +15,7 @@ import FooterMenu from "../../components/FooterMenu";
 import sorc from "../../builds/sorc";
 import './style.less'
 import GenericDisplayField from "../../components/GenericDisplayField";
+import BuildExplainSkills from "../../components/BuildComponents/BuildExplainSkills";
 
 const BuildPage = () => {
     const { buildNameParam } = useParams();
@@ -31,11 +32,11 @@ const BuildPage = () => {
             setBuild(arcanist1)
             buildLocal = arcanist1
         }
-        else if(buildNameParam==="burstSorc"){
+        else if (buildNameParam === "burstSorc") {
             setBuild(sorc)
             buildLocal = sorc
         }
-        else{
+        else {
             navigate("/")
         }
 
@@ -56,12 +57,12 @@ const BuildPage = () => {
             setCrosseditemsArray(allItems[buildLocal.id])
         }
 
-        document.title=`Build: ${buildLocal.name}`
+        document.title = `Build: ${buildLocal.name}`
     }, [buildNameParam, navigate])
 
-    useEffect(()=>{
+    useEffect(() => {
         changeCrossedItemsStatus(crossBuildItems, crossedItemsArray)
-    },[crossBuildItems,crossedItemsArray])
+    }, [crossBuildItems, crossedItemsArray])
 
     const toggleCrossedState = (id: string) => {
         if (!crossBuildItems) {
@@ -86,7 +87,7 @@ const BuildPage = () => {
     }
 
     const changeCrossedItemsStatus = (addCross: boolean, crossedArray: Array<string>) => {
-        if(_.isUndefined(crossedArray)){
+        if (_.isUndefined(crossedArray)) {
             return
         }
 
@@ -94,7 +95,7 @@ const BuildPage = () => {
             if (addCross) {
                 document.getElementById(crossedArray[i])?.classList.add("itemCrossed")
             }
-            else{
+            else {
                 document.getElementById(crossedArray[i])?.classList.remove("itemCrossed")
             }
         }
@@ -116,16 +117,20 @@ const BuildPage = () => {
                     <BuildSkills skills={build.skills} />
                     <BuildStats stats={build.stats} buffed={buffedStats} />
                     <BuildCp cp={build.cp} toggleCrossFunction={toggleCrossedState} buildId={build.id} />
-                    <BuildMisc misc={build.misc} toggleCrossFunction={toggleCrossedState} buildId={build.id}/>
+                    <BuildMisc misc={build.misc} toggleCrossFunction={toggleCrossedState} buildId={build.id} />
                 </div>
             </div>
             <div className="otherStuff">
                 <div className="controls">
-                    <div><input type="checkbox" name="buffed" id="buffed" onChange={() => setBuffedStats(!buffedStats)} checked={buffedStats}/><label htmlFor="buffed">Toggle Buffed</label></div>
+                    <div><input type="checkbox" name="buffed" id="buffed" onChange={() => setBuffedStats(!buffedStats)} checked={buffedStats} /><label htmlFor="buffed">Toggle Buffed</label></div>
                     <div><input type="checkbox" name="itemsChecked" id="itemsChecked" onChange={() => toggleAllCrossed()} checked={crossBuildItems} /><label htmlFor="itemsChecked">Toggle Crossed-out items</label></div>
                 </div>
                 <div className="additionalDetails">
-                    <BuildDetails details={build.details}/>
+                    <GenericDisplayField legendText={"General Info"}>
+                        <div className="detailsContent" dangerouslySetInnerHTML={{ __html: build.generalInfo }}></div>
+                    </GenericDisplayField>
+                    <BuildExplainSkills skills={build.skills} />
+                    <BuildDetails details={build.details} />
                     <GenericDisplayField legendText={"Last updated"}>
                         <div className="detailsContent">{build.lastUpdated}</div>
                     </GenericDisplayField>

@@ -4,7 +4,8 @@ import './style.less'
 interface IGenericDisplayProps {
     legendText: string,
     legendIcon?: string,
-    children: ReactElement
+    children: ReactElement,
+    className?: string
 }
 
 const GenericDisplayField = (props: IGenericDisplayProps)=>{
@@ -16,7 +17,7 @@ const GenericDisplayField = (props: IGenericDisplayProps)=>{
                 }
                 {props.legendText}&nbsp;
             </legend>
-            <div className="fieldsetContent">
+            <div className={`fieldsetContent ${props.className}`}>
                 {props.children}
             </div>
         </fieldset>

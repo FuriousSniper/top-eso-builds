@@ -1,14 +1,14 @@
-import { GenericSkill } from "../../../types/common"
+import { ExplainedSkill } from "../../../types/common"
 import GenericDisplayField from "../../GenericDisplayField"
 import SingleSkill from "../SingleSkill"
 import './style.less'
 
 interface IBuildSkillsProps {
     skills: {
-        normalFront: Array<GenericSkill>,
-        ultFront: GenericSkill,
-        normalBack?: Array<GenericSkill>,
-        ultBack?: GenericSkill,
+        normalFront: Array<ExplainedSkill>,
+        ultFront: ExplainedSkill,
+        normalBack?: Array<ExplainedSkill>,
+        ultBack?: ExplainedSkill,
     }
 }
 const BuildSkills = (props: IBuildSkillsProps) => {
@@ -17,21 +17,21 @@ const BuildSkills = (props: IBuildSkillsProps) => {
             <div className="skillBarsWrapper">
                 <div className="skillBar">
                     {
-                        props.skills?.normalFront.map((skill: GenericSkill, key: number) => {
-                            return <SingleSkill skill={skill} key={key} />
+                        props.skills?.normalFront.map((skillObject: ExplainedSkill, key: number) => {
+                            return <SingleSkill skill={skillObject.skill} key={key} />
                         })
                     }
-                    <SingleSkill skill={props.skills?.ultFront} />
+                    <SingleSkill skill={props.skills?.ultFront.skill} />
                 </div>
                 <div className="skillBar">
                     {
-                        props.skills?.normalBack?.map((skill: GenericSkill, key: number) => {
-                            return <SingleSkill skill={skill} key={key} />
+                        props.skills?.normalBack?.map((skillObject: ExplainedSkill, key: number) => {
+                            return <SingleSkill skill={skillObject.skill} key={key} />
                         })
                     }
                     {
                         props.skills?.ultBack!== undefined ?
-                        <SingleSkill skill={props.skills.ultBack!} /> : ''
+                        <SingleSkill skill={props.skills.ultBack!.skill} /> : ''
                     }
                     
                 </div>
