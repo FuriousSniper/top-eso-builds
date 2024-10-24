@@ -63,15 +63,20 @@ export type RatingType = {
     description: string
 }
 
+export type ExplainedSkill = {
+    skill: GenericSkill,
+    explanationHtml: string
+}
+
 export type BuildType = {
     name: string,
     id: string,
     buildIcon?: string,
     skills: {
-        normalFront: Array<GenericSkill>,
-        ultFront: GenericSkill,
-        normalBack?: Array<GenericSkill>,
-        ultBack?: GenericSkill,
+        normalFront: Array<ExplainedSkill>,
+        ultFront: ExplainedSkill,
+        normalBack?: Array<ExplainedSkill>,
+        ultBack?: ExplainedSkill,
     }
     gear: Array<ConcreteSetItemType>,
     cp: {
@@ -96,6 +101,7 @@ export type BuildType = {
         race: GenericDisplayType,
         mundus: GenericDisplayType
     },
+    generalInfo: string,
     details?: DetailsType[]
     ratings?: Array<RatingType>
     requiredDlc?: Array<GenericDisplayType>

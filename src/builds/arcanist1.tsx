@@ -14,10 +14,22 @@ const arcanist1: BuildType = {
     id: "soloArc1",
     buildIcon: "/icons/classes/arcanist.png",
     skills: {
-        normalFront: [scribingSkills[1], magesGuildSkills[0], arcanistSkills[1], vampireSkills[0], scribingSkills[0]],
-        ultFront: dualWieldSkills[0],
-        normalBack: [arcanistSkills[0], arcanistSkills[3], arcanistSkills[2], destroSkills[0], arcanistSkills[4]],
-        ultBack: arcanistSkills[5],
+        normalFront: [
+            { skill: scribingSkills[1], explanationHtml: "<p>Strong aoe debuff with oblivion damage and a source of buff. Can be a flex spot if needed, but it is not adviceable to change it.<br/>Scripts - Physical Damage, Anchorite Cruelty, Intellect and Endurance</p>" },
+            { skill: magesGuildSkills[0], explanationHtml: "<p>Source of healing and a DOT which helps keeping up with Jerall stacks. Healing helps offseting spammable cost.</p>" },
+            { skill: arcanistSkills[1], explanationHtml: "<p>AOE damage, immobilise, debuf and source of Crux. Use sparringly, because of its hefty stamina cost.</p>" },
+            { skill: vampireSkills[0], explanationHtml: "<p>Spammable</p>" },
+            { skill: scribingSkills[0], explanationHtml: "<p>Stun and source of Defile and another oblivion DOT.<br/>Scripts - Stun, Anchorite Cruelty, Defile</p>" }
+        ],
+        ultFront: { skill: dualWieldSkills[0], explanationHtml: "<p>Strong AOE ult which applies big pressure, heals and increases damage done. Can be changed for something else, but this feels best.</p>" },
+        normalBack: [
+            { skill: arcanistSkills[0], explanationHtml: "<p>Spammable heal. Generates crux. Can be used to heal a teammate.</p>" },
+            { skill: arcanistSkills[3], explanationHtml: "<p>Huge shield and heal. Use when taking damage and need healing.</p>" }, 
+            { skill: arcanistSkills[2], explanationHtml: "<p>Burst heal, buff and aoe immobilise. Sustain of this build allows to spam this and Runeward interchangibly. This skill is very annoying for enemies because often they need to stop and roll or use another skill to remove immobilise.</p>" },
+            { skill: destroSkills[0], explanationHtml: "<p>Debuff.</p>" },
+            { skill: arcanistSkills[4], explanationHtml: "<p>Armor buff</p>" }
+        ],
+        ultBack: { skill: arcanistSkills[5], explanationHtml: "<p>Defensive ult</p>" },
     },
     gear: [
         {
@@ -92,28 +104,28 @@ const arcanist1: BuildType = {
             slot: "Main-hand weapon",
             trait: TraitEnum.nirn,
             enchant: GlyphEnum.multi,
-            weapon:"Mace"
+            weapon: "Mace"
         },
         {
             set: sets[1],
             slot: "Off-hand weapon",
             trait: TraitEnum.charged,
             enchant: GlyphEnum.multi,
-            weapon:"Mace"
+            weapon: "Mace"
         },
         {
             set: sets[2],
             slot: "Off-hand weapon",
             trait: TraitEnum.defending,
             enchant: GlyphEnum.wd,
-            weapon:"Ice Staff"
+            weapon: "Ice Staff"
         },
         {
             set: null,
             slot: "Off-hand weapon",
             trait: null,
             enchant: null,
-            weapon:null
+            weapon: null
         },
 
     ],
@@ -159,15 +171,8 @@ const arcanist1: BuildType = {
         race: race[0],
         mundus: munduses[1]
     },
+    generalInfo: "<p>This build can work in any situation. Great sustain allows it to survive heavy pressure from multiple enemies in both Cyrodiil and in Battlegrounds. Its strength in smallscale battles is that it can debuff an enemy to the point where they can no longer heal making them easy to kill.</p>",
     details: [
-        {
-            title: "General informations",
-            htmlText: "<p>This build can work in any situation. Great sustain allows it to survive heavy pressure from multiple enemies in both Cyrodiil and in Battlegrounds. Its strength in smallscale battles is that it can debuff an enemy to the point where they can no longer heal making them easy to kill.</p>"
-        },
-        {
-            title: "Skills description",
-            htmlText: "<p>Sundering Burst - Strong aoe debuff with oblivion damage and a source of buff. Can be a flex spot if needed, but it is not adviceable to change it. Scripts - Physical Damage, Anchorite Cruelty, Intellect and Endurance</p><p>Structured Entropy - Source of healing and a DOT which helps keeping up with Jerall stacks. Healing helps offseting spammable cost.</p><p>Flail - AOE damage, immobilise, debuf and source of Crux. Use sparringly, because of its hefty stamina cost.</p><p>Blood For Blood - Spammable</p><p>Dazing soul - Stun and source of Defile and another oblivion DOT. Scripts - Stun, Anchorite Cruelty, Defile</p><p>Thrive in Chaos - Strong AOE ult which applies a big pressure, heals and increases damage done. Can be changed for something else, but this feels best.</p><br/><p>Evolving Runemend - Spammable heal. Generates crux. Can be used to heal a teammate.</p><p>Impervious Runeward - Huge shield and heal. Use when taking damage and need healing.</p><p>Runeguard - burst heal, buff and aoe immobilise. Sustain of this build allows to spam this and Runeward interchangibly. This skill is very annoying for enemies because often they need to stop and roll or use another skill to remove immobilise.</p><p>Ele sus - debuff.</p><p>Cruxweaver armor - armor buff</p>"
-        },
         {
             title: "Rotation",
             htmlText: "<p>Ele drain -> Structured Entropy -> Dazing Soul -> Cephaliarch's Flail -> Sundering Burst -> Blood for blood spam.</p><p>The idea here is to apply all skills that have debuf component and when you are at full health and have all buffs up, use spammable.</p>"

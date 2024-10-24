@@ -1,0 +1,30 @@
+@import "/src/styles/variables.less";
+
+.skillExplainedWrapper{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+
+    .leftWrapper{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+
+        .explSkillName{
+            width: 150px;
+        }
+    }
+
+    .skillExplanationText{
+        color: @color-secondary;
+
+        p{
+            all: unset;
+        }
+    }
+}
