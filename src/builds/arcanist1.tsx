@@ -190,7 +190,7 @@ const arcanist1: BuildType = {
             htmlText: "<p>There is no clear favorite race. Orc has useful healing, damage and extra mobility bonuses. Imperial offers better sustain and therefore ability to use more offensive sets or glyphs. Use whichever you like most.</p>"
         }
     ],
-    lastUpdated: "U43"
+    lastUpdated: "U44"
 }
 
 export default arcanist1;
