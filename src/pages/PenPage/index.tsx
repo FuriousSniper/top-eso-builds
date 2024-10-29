@@ -5,8 +5,9 @@ import HeaderMenu from "../../components/HeaderMenu"
 import './style.less'
 import GenericModal from "../../components/Modals/GenericModal";
 import { CharacterPenType } from "../../types/common"
-import DisplayCharacterObject from "../../components/DisplayCharacterObject"
+import PenCalculatorCharacterObject from "../../components/CalculatorComponents/PenCalculatorCharacterObject"
 import { boundsMinMax } from "../../utils/utils"
+import GenericInput from "../../components/CalculatorComponents/GenericInput"
 
 const PenPage = () => {
     const [requiredPen, setRequiredPen] = useState(18200)
@@ -117,24 +118,12 @@ const PenPage = () => {
                                     <span className="secondaryText">Others need to reach: </span><span>{requiredPen - supportPen}</span>
                                 </div>
                                 <div className="separator moreSeparation"></div>
-                                <div className="penCalcItemRow">
-                                    <label htmlFor="majorBreach" className="secondaryText" title="Debuff: 5948">Major Breach</label><input type="checkbox" name="majorBreach" id="majorBreach" checked={majorBreach} onChange={() => setMajorBreach(!majorBreach)} />
-                                </div>
-                                <div className="penCalcItemRow">
-                                    <label htmlFor="minorBreach" className="secondaryText" title="Debuff: 2974">Minor Breach</label><input type="checkbox" name="minorBreach" id="minorBreach" checked={minorBreach} onChange={() => setMinorBreach(!minorBreach)} />
-                                </div>
-                                <div className="penCalcItemRow">
-                                    <label htmlFor="crusher" className="secondaryText" title="Debuff: 2108 (infused)">Crusher</label><input type="checkbox" name="crusher" id="crusher" checked={crusher} onChange={() => setCrusher(!crusher)} />
-                                </div>
-                                <div className="penCalcItemRow">
-                                    <label htmlFor="alkosh" className="secondaryText" title="Set: 6000">Alkosh</label><input type="checkbox" name="alkosh" id="alkosh" checked={alkosh} onChange={() => setAlkosh(!alkosh)} />
-                                </div>
-                                <div className="penCalcItemRow">
-                                    <label htmlFor="crimson" className="secondaryText" title="Set: 3541">Crimson</label><input type="checkbox" name="crimson" id="crimson" checked={crimson} onChange={() => setCrimson(!crimson)} />
-                                </div>
-                                <div className="penCalcItemRow">
-                                    <label htmlFor="tremor" className="secondaryText" title="Set: 2400">Tremorscale</label><input type="checkbox" name="tremor" id="tremor" checked={tremor} onChange={() => setTremor(!tremor)} />
-                                </div>
+                                <GenericInput type={"checkbox"} name={"Major Breach"} checked={majorBreach} id={"majorBreach"} onChange={() => setMajorBreach(!majorBreach)} title={"Tank debuff: 5948"}/>
+                                <GenericInput type={"checkbox"} name={"Minor Breach"} checked={minorBreach} id={"minorBreach"} onChange={() => setMinorBreach(!minorBreach)} title={"Tank debuff: 2974"}/>
+                                <GenericInput type={"checkbox"} name={"Crusher"} checked={crusher} id={"crusher"} onChange={() => setCrusher(!crusher)} title={"Tank debuff: 2108 (infused)"}/>
+                                <GenericInput type={"checkbox"} name={"Alkosh"} checked={alkosh} id={"alkosh"} onChange={() => setAlkosh(!alkosh)} title={"Support set: 6000"}/>
+                                <GenericInput type={"checkbox"} name={"Crimson"} checked={crimson} id={"crimson"} onChange={() => setCrimson(!crimson)} title={"Tank set: 3541"}/>
+                                <GenericInput type={"checkbox"} name={"Tremorscale"} checked={tremor} id={"tremor"} onChange={() => setTremor(!tremor)} title={"Tank set: 2400"}/>
                             </>
                         </GenericDisplayField>
                     </div>
@@ -145,7 +134,7 @@ const PenPage = () => {
                                     <p className="noCharacters">No characters added!<br/>Use the button above in order to add a character and calculate penetration.</p>
                                 }
                                 {charactersArray.map((char: CharacterPenType, key: number) => {
-                                    return <DisplayCharacterObject char={char} supportPen={supportPen} requiredPen={requiredPen} key={key} />
+                                    return <PenCalculatorCharacterObject char={char} supportPen={supportPen} requiredPen={requiredPen} key={key} />
                                 })}
                             </>
                         </GenericDisplayField>

@@ -32,7 +32,7 @@ const Collapsible = (props: CollapsibleProps) => {
                 <span>&nbsp;{isOpen ? "Close" : "Show"}&nbsp;</span>
             </div>
             <div style={{ height: height }} className="collapseElement">
-                <div ref={ref}>{isOpen && <div className="">{props.children}</div>}</div>
+                <div ref={ref}>{isOpen && <div className="collapsibleChildren">{props.children}</div>}</div>
             </div>
         </div>
     );

@@ -12,7 +12,7 @@ const SetPopover = (props: ISetPopover) => {
             {props.set &&
                 <>
                     <div className="itemPopup">
-                        <div className={`${props.set.origin==="Mythic" ? "colorMythic" : ""} itemName`}>{props.set.name}</div>
+                        <div className={`${props.set.origin==="Mythic" ? "colorMythic " : ""}itemName`}>{props.set.name}</div>
                         <div className="skillSeparator"></div>
                         <div className="itemOrigin">Origin: {props.set.origin}</div>
                         <div className="skillSeparator"></div>

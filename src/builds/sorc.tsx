@@ -167,7 +167,7 @@ const sorc: BuildType = {
         race: race[1],
         mundus: munduses[3]
     },
-    generalInfo: "<p>This build can work in both cyro and BGs. It has good sustain, mobility and very good burst. It doesn't provide any cross healing, but sometimes negate can turn the tide of battle!</p>",
+    generalInfo: "<p>This build can work in both cyro and BGs. It has good sustain, mobility and very good burst. It doesn't provide any cross healing, but sometimes negate can turn the tide of battle! Be careful though, DDF, Seducer mythics and Roksa monster are bugged and it may be difficult to use these sets in BGs.</p>",
     details: [
         {
             title: "Rotation",
@@ -182,7 +182,7 @@ const sorc: BuildType = {
             htmlText: "<p>High elf, Breton are the best for magicka builds.</p>"
         }
     ],
-    lastUpdated: "U43"
+    lastUpdated: "U44"
 }
 
 export default sorc;
