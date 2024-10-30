@@ -3,7 +3,7 @@ import { CharacterPenType } from "../../../types/common"
 import GenericDisplayField from "../../GenericDisplayField"
 import './style.less'
 import Collapsible from "../../Collapsible"
-import { boundsMinMax } from "../../../utils/utils"
+import { boundsMinMax, determineIcon } from "../../../utils/utils"
 import GenericInput from "../GenericInput"
 
 interface PenCalculatorCharacterObjectProps {
@@ -61,39 +61,9 @@ const PenCalculatorCharacterObject = (props: PenCalculatorCharacterObjectProps) 
         setCurrentPen(selfPenSum)
     }, [FoN, arcanistPassive, lightArmor, loverMundus, necroPassive, otherSetLines, otherSources, piercing, weaponMace, weaponSharp, woodElfRace, velothi, nbPassive])
 
-    const determineIcon = ()=>{
-        const prefix="/icons/classes/"
-        const suffix=".png"
-        let classIconName=""
-        const className=props.char.class
-
-        if(className==="Arcanist"){
-            classIconName="arcanist"
-        }
-        if(className==="Dragonknight"){
-            classIconName="dk"
-        }
-        if(className==="Necromancer"){
-            classIconName="necro"
-        }
-        if(className==="Sorcerer"){
-            classIconName="sorc"
-        }
-        if(className==="Templar"){
-            classIconName="templar"
-        }
-        if(className==="Warden"){
-            classIconName="warden"
-        }
-        if(className==="Nightblade"){
-            classIconName="nb"
-        }
-
-        return prefix+classIconName+suffix
-    }
 
     return (
-        <GenericDisplayField legendText={props.char.name} legendIcon={determineIcon()}>
+        <GenericDisplayField legendText={props.char.name} legendIcon={determineIcon(props.char.name)}>
             <>
                 <div className="charRow">
                     <span className="explanationLabel" title="Value displays how much over or under pen target this character is. Pen provided by support and self is taken into account">{props.requiredPen - props.supportPen - currentPen > 0 ? "Under" : "Over"} cap</span>

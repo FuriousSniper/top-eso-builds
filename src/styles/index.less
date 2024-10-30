@@ -98,6 +98,12 @@ body {
   padding-bottom: 10px;
 
   .textSection{
+    @media @mobile {
+      width: calc(100% - 22px);
+      padding: 10px;
+      margin: 0 auto;
+    }
+
     background-color: @dark-background;
     border: @primary-section-border;
     border-radius: @primary-section-border-radius;

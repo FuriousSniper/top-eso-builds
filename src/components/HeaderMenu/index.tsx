@@ -34,6 +34,7 @@ const HeaderMenu = () => {
                         <span className="dropdownButton headerLink textLink">Tools</span>
                         <div className='dropdownContent'>
                             <Link to={`/tools/penCalc`} className="headerLink textLink"><span>Penetration calculator</span></Link>
+                            <Link to={`/tools/critCalc`} className="headerLink textLink"><span>Crit dmg calculator</span></Link>
                         </div>
                     </div>
                     <Link to={"/about"} className="headerLink textLink linkElement"><span>About</span></Link>

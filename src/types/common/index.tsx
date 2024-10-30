@@ -147,3 +147,24 @@ export type CharacterPenType = {
     otherSetLines: number,
     otherSources: number,
 }
+
+export type CharacterCritType = {
+    class: string,
+    name: string,
+    critSelf: number,
+    critBase: number,
+    critSupport: number,
+    nbPassive: boolean,
+    templarPassive: boolean,
+    wardenPassive: number,
+    mediumArmor: number,
+    weaponAxe: number,
+    harpooner: boolean,
+    backstabber: boolean,
+    fFinesse: boolean,
+    khajiitRace: boolean,
+    orderWrath: boolean,
+    minorForce: boolean,
+    shadowMundus: boolean,
+    otherSources: number,
+}

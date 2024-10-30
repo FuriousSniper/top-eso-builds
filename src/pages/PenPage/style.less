@@ -1,22 +1,22 @@
 @import "/src/styles/index.less";
 @import "/src/styles/variables.less";
 
-.controlItems{
-    border-top: @primary-section-border;
-    border-bottom: @primary-section-border;
-    background-color: @dark-background;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 20px;
-    width: 100%;
-    padding: 10px 0;
-    input[type=number]{
-      width: 60px;
-      margin-left: 5px;
-    }
+.controlItems {
+  border-top: @primary-section-border;
+  border-bottom: @primary-section-border;
+  background-color: @dark-background;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  padding: 10px 0;
+  input[type="number"] {
+    width: 60px;
+    margin-left: 5px;
+  }
 }
-.moreSeparation{
+.moreSeparation {
   margin: 15px 0;
 }
 .columnWrapper {
@@ -51,9 +51,15 @@
       color: @color-secondary;
     }
 
-    .noCharacters{
+    .noCharacters {
       color: @color-secondary;
       text-align: center;
     }
   }
+}
+
+.penCalcItemRow{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
