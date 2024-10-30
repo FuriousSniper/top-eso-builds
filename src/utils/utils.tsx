@@ -90,3 +90,33 @@ export const boundsMinMax = (n: number, min: number,max: number): number => {
 
     return n;
 }
+
+export const determineIcon = (className: string) => {
+    const prefix = "/icons/classes/"
+    const suffix = ".png"
+    let classIconName = ""
+
+    if (className === "Arcanist") {
+        classIconName = "arcanist"
+    }
+    if (className === "Dragonknight") {
+        classIconName = "dk"
+    }
+    if (className === "Necromancer") {
+        classIconName = "necro"
+    }
+    if (className === "Sorcerer") {
+        classIconName = "sorc"
+    }
+    if (className === "Templar") {
+        classIconName = "templar"
+    }
+    if (className === "Warden") {
+        classIconName = "warden"
+    }
+    if (className === "Nightblade") {
+        classIconName = "nb"
+    }
+
+    return prefix + classIconName + suffix
+}
