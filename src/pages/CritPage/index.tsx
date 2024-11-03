@@ -51,6 +51,7 @@ const CritPage = () => {
             class: className,
             name: name,
             critSelf: 0,
+            arcanistPassive: false,
             critBase: baseCritDmg,
             critSupport: 0,
             nbPassive: false,
@@ -65,7 +66,8 @@ const CritPage = () => {
             orderWrath: false,
             minorForce: true,
             shadowMundus: false,
-            otherSources: 0
+            otherSources: 0,
+            
         }
 
         if (charObject.class === "Nightblade") {
@@ -76,6 +78,9 @@ const CritPage = () => {
         }
         if (charObject.class === "Warden") {
             charObject.wardenPassive = 3
+        }
+        if (charObject.class === "Arcanist") {
+            charObject.arcanistPassive = true
         }
 
         setCharactersArray([

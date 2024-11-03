@@ -13,6 +13,7 @@ interface CritCalculatorCharacterObjectProps {
 }
 const CritCalculatorCharacterObject = (props: CritCalculatorCharacterObjectProps) => {
     const [wardenPassive, setWardenPassive] = useState(props.char.wardenPassive)
+    const [arcanistPassive, setArcanistPassive] = useState(props.char.arcanistPassive)
     const [nbPassive, setNbPassive] = useState(props.char.nbPassive)
     const [templarPassive, setTemplarPassive] = useState(props.char.templarPassive)
     const [mediumArmor, setMediumArmor] = useState(props.char.mediumArmor)
@@ -38,6 +39,9 @@ const CritCalculatorCharacterObject = (props: CritCalculatorCharacterObjectProps
         //templar
         selfCritSum += templarPassive ? 10 : 0
 
+        //arcanist
+        selfCritSum += arcanistPassive ? 12 : 0
+
         selfCritSum += mediumArmor * 2
 
         selfCritSum += weaponAxe * 6
@@ -59,7 +63,7 @@ const CritCalculatorCharacterObject = (props: CritCalculatorCharacterObjectProps
         selfCritSum += otherSources
         
         setCurrentCrit(selfCritSum)
-    }, [backstabberCp, fFinesseCp, harpooner, khajiitRace, mediumArmor, minorForce, nbPassive, orderWrath, otherSources, props.char.critBase, shadowMundus, templarPassive, wardenPassive, weaponAxe])
+    }, [arcanistPassive, backstabberCp, fFinesseCp, harpooner, khajiitRace, mediumArmor, minorForce, nbPassive, orderWrath, otherSources, props.char.critBase, shadowMundus, templarPassive, wardenPassive, weaponAxe])
 
     return (
         <GenericDisplayField legendText={props.char.name} legendIcon={determineIcon(props.char.name)}>
@@ -86,6 +90,9 @@ const CritCalculatorCharacterObject = (props: CritCalculatorCharacterObjectProps
                         }
                         {props.char.class === "Nightblade" &&
                             <GenericInput type={"checkbox"} name={"Nightblade Passive"} checked={nbPassive} id={"nbPassive"} onChange={() => setNbPassive(!nbPassive)} title={"Increases your Critical Damage by 10%."} />
+                        }
+                        {props.char.class === "Arcanist" &&
+                            <GenericInput type={"checkbox"} name={"Arcanist Passive"} checked={arcanistPassive} id={"arcanistPassive"} onChange={() => setArcanistPassive(!arcanistPassive)} title={"Warp fate when you generate or consume Crux, increasing your Critical Damage and Critical Healing by 12% for 7 seconds."} />
                         }
                         <GenericInput type={"number"} name={"Medium Armor"} value={mediumArmor} id={"mediumArmor"} onChange={(event) => setMediumArmor(boundsMinMax(Number(event.target.value), 0, 7))} min={0} max={7} title={"Increases your Critical Damage and Healing done rating by 2% for every piece of Medium Armor equipped."} />
                         <GenericInput type={"checkbox"} name={"Minor Force buff"} checked={minorForce} id={"minorForce"} onChange={() => setMinorForce(!minorForce)} title={"Increases your Crit Damage by 10%."} />    
