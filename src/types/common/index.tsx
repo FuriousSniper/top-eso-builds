@@ -154,6 +154,7 @@ export type CharacterCritType = {
     critSelf: number,
     critBase: number,
     critSupport: number,
+    arcanistPassive: boolean,
     nbPassive: boolean,
     templarPassive: boolean,
     wardenPassive: number,
