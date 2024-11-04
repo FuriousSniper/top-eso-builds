@@ -6,7 +6,7 @@ import './style.less'
 import GenericModal from "../../components/Modals/GenericModal";
 import { CharacterPenType } from "../../types/common"
 import PenCalculatorCharacterObject from "../../components/CalculatorComponents/PenCalculatorCharacterObject"
-import { boundsMinMax } from "../../utils/utils"
+import { boundsMinMax, getRandomArbitrary } from "../../utils/utils"
 import GenericInput from "../../components/CalculatorComponents/GenericInput"
 
 const PenPage = () => {
@@ -59,6 +59,7 @@ const PenPage = () => {
     const createCharacter = (className: string, name: string) => {
         const charObject: CharacterPenType = {
             class: className,
+            id: className+getRandomArbitrary(0,10000),
             name: name,
             necroPassive: false,
             nbPassive: false,

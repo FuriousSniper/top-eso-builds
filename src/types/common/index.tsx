@@ -130,6 +130,7 @@ export type BuildPromoItem = {
 
 export type CharacterPenType = {
     class: string,
+    id: string,
     penSelf: number,
     penSupport: number,
     name: string,
@@ -150,6 +151,7 @@ export type CharacterPenType = {
 
 export type CharacterCritType = {
     class: string,
+    id: string,
     name: string,
     critSelf: number,
     critBase: number,
