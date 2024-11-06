@@ -2,20 +2,21 @@ import { useEffect, useRef, useState } from "react"
 import FooterMenu from "../../components/FooterMenu"
 import GenericDisplayField from "../../components/GenericDisplayField"
 import HeaderMenu from "../../components/HeaderMenu"
-import './style.less'
 import GenericModal from "../../components/Modals/GenericModal";
 import { CharacterCritType } from "../../types/common"
 import { boundsMinMax, copyLink, getRandomArbitrary, parseBoolToString } from "../../utils/utils"
 import GenericInput from "../../components/CalculatorComponents/GenericInput"
 import CritCalculatorCharacterObject from "../../components/CalculatorComponents/CritCalculatorCharacterObject"
 import { useSearchParams } from "react-router-dom"
+import './style.less'
+import '../calculatorStyles.less'
 
 const CritPage = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const [requiredCrit, setRequiredCrit] = useState(Number(searchParams.get("target")) ? boundsMinMax(Number(searchParams.get("target")), 0, 125) : 125)
     const [supportCrit, setSupportCrit] = useState(requiredCrit)
     const [majorForce, setMajorForce] = useState(searchParams.get("majorForce") ? parseBoolToString(searchParams.get("majorForce")) : true)
-    const [majorBrittle, setMajorBrittle] = useState(searchParams.get("majorBrittle")  ? parseBoolToString(searchParams.get("majorBrittle")) : false)
+    const [majorBrittle, setMajorBrittle] = useState(searchParams.get("majorBrittle") ? parseBoolToString(searchParams.get("majorBrittle")) : false)
     const [minorBrittle, setMinorBrittle] = useState(searchParams.get("minorBrittle") ? parseBoolToString(searchParams.get("minorBrittle")) : true)
     const [lucent, setLucent] = useState(searchParams.get("lucent") ? parseBoolToString(searchParams.get("lucent")) : true)
     const [ec, setEc] = useState(Number(searchParams.get("ec")) ? boundsMinMax(Number(searchParams.get("ec")), 0, 3) : 0)
@@ -30,42 +31,42 @@ const CritPage = () => {
 
     useEffect(() => {
         let supportCritSum = 0
-        const newQueryParameters : URLSearchParams = new URLSearchParams();
-        newQueryParameters.set("target",String(requiredCrit))
+        const newQueryParameters: URLSearchParams = new URLSearchParams();
+        newQueryParameters.set("target", String(requiredCrit))
 
-        newQueryParameters.set("majorForce",String(majorForce))
+        newQueryParameters.set("majorForce", String(majorForce))
         if (majorForce) {
             supportCritSum += 20;
         }
 
-        newQueryParameters.set("majorBrittle",String(majorBrittle))
+        newQueryParameters.set("majorBrittle", String(majorBrittle))
         if (majorBrittle) {
             supportCritSum += 20;
         }
 
-        newQueryParameters.set("minorBrittle",String(minorBrittle))
+        newQueryParameters.set("minorBrittle", String(minorBrittle))
         if (minorBrittle) {
             supportCritSum += 10;
         }
 
-        newQueryParameters.set("lucent",String(lucent))
+        newQueryParameters.set("lucent", String(lucent))
         if (lucent) {
             supportCritSum += 11;
         }
 
-        newQueryParameters.set("ec",String(ec))
+        newQueryParameters.set("ec", String(ec))
         supportCritSum += ec * 5
 
         setSupportCrit(supportCritSum)
         updateSupportCritForChars(supportCritSum)
-        
+
         setSearchParams(newQueryParameters)
-    }, [ec, lucent, majorBrittle, majorForce, minorBrittle,requiredCrit])
+    }, [ec, lucent, majorBrittle, majorForce, minorBrittle, requiredCrit])
 
     const createCharacter = (className: string, name: string) => {
         const charObject: CharacterCritType = {
             class: className,
-            id: className+getRandomArbitrary(0,10000),
+            id: className + getRandomArbitrary(0, 10000),
             name: name,
             critSelf: 0,
             arcanistPassive: false,
@@ -105,6 +106,15 @@ const CritPage = () => {
         ])
     }
 
+    const deleteChar = (id: string) => {
+        const arrayCopy = [...charactersArray]
+        const index = arrayCopy.findIndex((character: CharacterCritType) => {
+            return character.id === id
+        })
+        arrayCopy.splice(index, 1)
+        setCharactersArray(arrayCopy)
+    }
+
     const updateSupportCritForChars = (newCrit: number) => {
         const copyChars = [...charactersArray]
         for (let i = 0; i < copyChars.length; i++) {
@@ -113,37 +123,41 @@ const CritPage = () => {
         setCharactersArray(copyChars)
     }
 
-    const copyLinkButtonAction = ()=>{
+    const copyLinkButtonAction = () => {
         copyLink()
 
-        if(!copyButtonRef.current){
+        if (!copyButtonRef.current) {
             return
         }
-        copyButtonRef.current!.innerText="Link copied!"
-        copyButtonRef.current!.disabled=true
-        setTimeout(()=>{
-            copyButtonRef.current!.innerText=copyButtonText
-            copyButtonRef.current!.disabled=false
-        },2000)
+        copyButtonRef.current!.innerText = "Link copied!"
+        copyButtonRef.current!.disabled = true
+        setTimeout(() => {
+            copyButtonRef.current!.innerText = copyButtonText
+            copyButtonRef.current!.disabled = false
+        }, 2000)
     }
 
     return (
         <div className="content">
             <HeaderMenu />
             <div className="main">
-                <div className="controlItems">
-                    <button onClick={copyLinkButtonAction} ref={copyButtonRef}>{copyButtonText}</button>
-                    <div><label htmlFor="critCap">Set crit target</label><input type="number" name="critCap" id="critCap" value={requiredCrit} onChange={event => setRequiredCrit(boundsMinMax(Number(event.target.value), 0, 125))} min={0} max={125} /></div>
-                    <GenericModal buttonName="Add DD Character" className="addCharacterButton" createChar={createCharacter} />
+                <div className="titleBanner">
+                    <h2>Critical damage calculator</h2>
+                    <div className="controlItems">
+                        <button onClick={copyLinkButtonAction} ref={copyButtonRef}>{copyButtonText}</button>
+                        <div><label htmlFor="critCap">Set crit target</label><input type="number" name="critCap" id="critCap" value={requiredCrit} onChange={event => setRequiredCrit(boundsMinMax(Number(event.target.value), 0, 125))} min={0} max={125} /></div>
+                        <GenericModal buttonName="Add DD Character" className="addCharacterButton" createChar={createCharacter} />
+                    </div>
                 </div>
+
                 <div className="columnWrapper">
                     <div className="uiColumn">
                         <GenericDisplayField legendText={"Support"}>
                             <>
-                                <div className="critCalcItemRow">
+                                <div className="calcItemRow">
                                     <span className="secondaryText">Support provides: </span><span>{supportCrit}%</span>
                                 </div>
-                                <div className="critCalcItemRow">
+                                <div className="calcItemRow">
                                     <span className="secondaryText">Others need to reach: </span><span>{requiredCrit - supportCrit - baseCritDmg}%</span>
                                 </div>
                                 <div className="separator moreSeparation"></div>
@@ -155,14 +169,14 @@ const CritPage = () => {
                             </>
                         </GenericDisplayField>
                     </div>
-                    <div className="uiColumn">
-                        <GenericDisplayField legendText={"Characters"}>
+                    <div className={`${charactersArray.length > 1 ? "charUiColumn" : ""} uiColumn`}>
+                        <GenericDisplayField legendText={"Characters"} childrenClassName={`${charactersArray.length > 1 ? "charactersPanel" : ""}`}>
                             <>
                                 {charactersArray.length === 0 &&
                                     <p className="noCharacters">No characters added!<br />Use the button above in order to add a character and calculate crit damage.</p>
                                 }
                                 {charactersArray.map((char: CharacterCritType, key: number) => {
-                                    return <CritCalculatorCharacterObject char={char} supportCrit={supportCrit} requiredCrit={requiredCrit} key={key} />
+                                    return <CritCalculatorCharacterObject char={char} supportCrit={supportCrit} requiredCrit={requiredCrit} key={key} deleteFunction={() => deleteChar(char.id)} />
                                 })}
                             </>
                         </GenericDisplayField>

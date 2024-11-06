@@ -5,12 +5,15 @@ import './style.less'
 import Collapsible from "../../Collapsible"
 import { boundsMinMax, determineIcon } from "../../../utils/utils"
 import GenericInput from "../GenericInput"
+import GenericModal from "../../Modals/GenericModal"
 
 interface PenCalculatorCharacterObjectProps {
     char: CharacterPenType,
-    supportPen: number
+    deleteFunction: ()=>void,
+    supportPen: number,
     requiredPen: number
 }
+
 const PenCalculatorCharacterObject = (props: PenCalculatorCharacterObjectProps) => {
     const [arcanistPassive, setArcanistPassive] = useState(props.char.arcanistPassive)
     const [necroPassive, setNecroPassive] = useState(props.char.necroPassive)
@@ -63,7 +66,7 @@ const PenCalculatorCharacterObject = (props: PenCalculatorCharacterObjectProps) 
 
 
     return (
-        <GenericDisplayField legendText={props.char.name} legendIcon={determineIcon(props.char.name)}>
+        <GenericDisplayField legendText={props.char.name} legendIcon={determineIcon(props.char.class)} parentClassName="charAutoMinHeight">
             <>
                 <div className="charRow">
                     <span className="explanationLabel" title="Value displays how much over or under pen target this character is. Pen provided by support and self is taken into account">{props.requiredPen - props.supportPen - currentPen > 0 ? "Under" : "Over"} cap</span>
@@ -94,6 +97,7 @@ const PenCalculatorCharacterObject = (props: PenCalculatorCharacterObjectProps) 
                         <GenericInput type={"checkbox"} name={"Lover Mundus"} checked={loverMundus} id={`loverMundus${props.char.id}`} onChange={() => setLoverMundus(!loverMundus)} title={"Increases Physical and Spell Penetration by 4489 (7 divines)."}/>
                         <GenericInput type={"number"} name={"Other set lines"} value={otherSetLines} id={`otherSetLines${props.char.id}`} onChange={(event) => setOtherSetLines(boundsMinMax(Number(event.target.value),0,20))}  min={0} max={20} title={"Sets like Kragh, Skoria or Ansuul have bonuses to pen. Increase this number by the amount of bonuses your sets have."}/>
                         <GenericInput type={"number"} name={"Other sources"} value={otherSources} id={`otherSources${props.char.id}`} onChange={(event) => setOtherSources(boundsMinMax(Number(event.target.value),0,102000))} min={0} max={102000} title={"Other sources which were not listed here can be added in this field, like Balorgh or TFS."}/>
+                        <GenericModal buttonName="Delete character" className="deleteCharacterButton" deleteChar={props.deleteFunction} />
                     </>
                 </Collapsible>
 

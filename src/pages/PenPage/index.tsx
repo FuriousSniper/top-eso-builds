@@ -2,13 +2,14 @@ import { useEffect, useRef, useState } from "react"
 import FooterMenu from "../../components/FooterMenu"
 import GenericDisplayField from "../../components/GenericDisplayField"
 import HeaderMenu from "../../components/HeaderMenu"
-import './style.less'
 import GenericModal from "../../components/Modals/GenericModal";
 import { CharacterPenType } from "../../types/common"
 import PenCalculatorCharacterObject from "../../components/CalculatorComponents/PenCalculatorCharacterObject"
 import { boundsMinMax, copyLink, getRandomArbitrary, parseBoolToString } from "../../utils/utils"
 import GenericInput from "../../components/CalculatorComponents/GenericInput"
 import { useSearchParams } from "react-router-dom"
+import './style.less'
+import '../calculatorStyles.less'
 
 const PenPage = () => {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -111,6 +112,15 @@ const PenPage = () => {
         ])
     }
 
+    const deleteChar = (id: string) => {
+        const arrayCopy = [...charactersArray]
+        const index = arrayCopy.findIndex((character: CharacterPenType) => {
+            return character.id === id
+        })
+        arrayCopy.splice(index, 1)
+        setCharactersArray(arrayCopy)
+    }
+
     const updateSupportPenForChars = (newPen: number) => {
         const copyChars = [...charactersArray]
         for (let i = 0; i < copyChars.length; i++) {
@@ -132,23 +142,27 @@ const PenPage = () => {
             copyButtonRef.current!.disabled = false
         }, 2000)
     }
+
     return (
         <div className="content">
             <HeaderMenu />
             <div className="main">
-                <div className="controlItems">
-                    <button onClick={copyLinkButtonAction} ref={copyButtonRef}>{copyButtonText}</button>
-                    <div><label htmlFor="penCap">Set pen target</label><input type="number" name="penCap" id="penCap" value={requiredPen} onChange={event => setRequiredPen(boundsMinMax(Number(event.target.value), 0, 102000))} min={0} max={102000} /></div>
-                    <GenericModal buttonName="Add DD Character" className="addCharacterButton" createChar={createCharacter} />
+                <div className="titleBanner">
+                    <h2>Penetration calculator</h2>
+                    <div className="controlItems">
+                        <button onClick={copyLinkButtonAction} ref={copyButtonRef}>{copyButtonText}</button>
+                        <div><label htmlFor="penCap">Set pen target</label><input type="number" name="penCap" id="penCap" value={requiredPen} onChange={event => setRequiredPen(boundsMinMax(Number(event.target.value), 0, 102000))} min={0} max={102000} /></div>
+                        <GenericModal buttonName="Add DD Character" className="addCharacterButton" createChar={createCharacter} />
+                    </div>
                 </div>
                 <div className="columnWrapper">
                     <div className="uiColumn">
                         <GenericDisplayField legendText={"Support"}>
                             <>
-                                <div className="penCalcItemRow">
+                                <div className="calcItemRow">
                                     <span className="secondaryText">Support provides: </span><span>{supportPen}</span>
                                 </div>
-                                <div className="penCalcItemRow">
+                                <div className="calcItemRow">
                                     <span className="secondaryText">Others need to reach: </span><span>{requiredPen - supportPen}</span>
                                 </div>
                                 <div className="separator moreSeparation"></div>
@@ -161,14 +175,14 @@ const PenPage = () => {
                             </>
                         </GenericDisplayField>
                     </div>
-                    <div className="uiColumn">
-                        <GenericDisplayField legendText={"Characters"}>
+                    <div className={`${charactersArray.length > 1 ? "charUiColumn" : ""} uiColumn`}>
+                        <GenericDisplayField legendText={"Characters"} childrenClassName={`${charactersArray.length > 1 ? "charactersPanel" : ""}`}>
                             <>
                                 {charactersArray.length === 0 &&
                                     <p className="noCharacters">No characters added!<br />Use the button above in order to add a character and calculate penetration.</p>
                                 }
                                 {charactersArray.map((char: CharacterPenType, key: number) => {
-                                    return <PenCalculatorCharacterObject char={char} supportPen={supportPen} requiredPen={requiredPen} key={key} />
+                                    return <PenCalculatorCharacterObject char={char} supportPen={supportPen} requiredPen={requiredPen} key={key} deleteFunction={() => deleteChar(char.id)} />
                                 })}
                             </>
                         </GenericDisplayField>

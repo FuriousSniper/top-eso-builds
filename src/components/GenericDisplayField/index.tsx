@@ -5,19 +5,20 @@ interface IGenericDisplayProps {
     legendText: string,
     legendIcon?: string,
     children: ReactElement,
-    className?: string
+    childrenClassName?: string
+    parentClassName?: string
 }
 
 const GenericDisplayField = (props: IGenericDisplayProps)=>{
     return(
-        <fieldset className="genericDisplayField">
+        <fieldset className={`genericDisplayField ${props.parentClassName? props.parentClassName : ""}`}>
             <legend>
                 {props.legendIcon ?
                     <img src={props.legendIcon} alt="" className="textIcon"/> : ""
                 }
                 {props.legendText}&nbsp;
             </legend>
-            <div className={`fieldsetContent ${props.className}`}>
+            <div className={`fieldsetContent ${props.childrenClassName? props.childrenClassName : ""}`}>
                 {props.children}
             </div>
         </fieldset>
