@@ -5,9 +5,11 @@ import './style.less'
 import Collapsible from "../../Collapsible"
 import { boundsMinMax, determineIcon } from "../../../utils/utils"
 import GenericInput from "../GenericInput"
+import GenericModal from "../../Modals/GenericModal"
 
 interface CritCalculatorCharacterObjectProps {
     char: CharacterCritType,
+    deleteFunction: ()=>void,
     supportCrit: number
     requiredCrit: number
 }
@@ -66,7 +68,7 @@ const CritCalculatorCharacterObject = (props: CritCalculatorCharacterObjectProps
     }, [arcanistPassive, backstabberCp, fFinesseCp, harpooner, khajiitRace, mediumArmor, minorForce, nbPassive, orderWrath, otherSources, props.char.critBase, shadowMundus, templarPassive, wardenPassive, weaponAxe])
 
     return (
-        <GenericDisplayField legendText={props.char.name} legendIcon={determineIcon(props.char.name)}>
+        <GenericDisplayField legendText={props.char.name} legendIcon={determineIcon(props.char.class)} parentClassName="charAutoMinHeight">
             <>
                 <div className="charRow">
                     <span className="explanationLabel" title="Value displays how much over or under crit target this character is. Crit provided by support and self is taken into account">{props.requiredCrit - props.supportCrit - currentCrit > 0 ? "Under" : "Over"} cap</span>
@@ -104,6 +106,7 @@ const CritCalculatorCharacterObject = (props: CritCalculatorCharacterObjectProps
                         <GenericInput type={"checkbox"} name={"Shadow Mundus"} checked={shadowMundus} id={`shadowMundus${props.char.id}`} onChange={() => setShadowMundus(!shadowMundus)} title={"Increases Critical Damage and Healing by 17% (7 divines)"} />
                         <GenericInput type={"checkbox"} name={"Order Wrath set"} checked={orderWrath} id={`orderWrath${props.char.id}`} onChange={() => setOrderWrath(!orderWrath)} title={"Adds 943 Critical Chance, Increases your Critical Damage and Critical Healing by 8% (set)."} />
                         <GenericInput type={"number"} name={"Other sources"} value={otherSources} id={`otherSources${props.char.id}`} onChange={(event) => setOtherSources(boundsMinMax(Number(event.target.value), 0, 125))} min={0} max={125} title={"Input other unique sources here."} />
+                        <GenericModal buttonName="Delete character" className="deleteCharacterButton" deleteChar={props.deleteFunction} />
                     </>
                 </Collapsible>
 

@@ -13,7 +13,7 @@ interface IBuildExplainSkillsProps {
 }
 const BuildExplainSkills = (props: IBuildExplainSkillsProps) => {
     return (
-        <GenericDisplayField legendText="Skills details" className={"skillExplanationWrapper"}>
+        <GenericDisplayField legendText="Skills details" childrenClassName={"skillExplanationWrapper"}>
             <>
                 {
                     props.skills?.normalFront.map((skill: ExplainedSkill, key: number) => {

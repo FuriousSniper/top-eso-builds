@@ -1,17 +1,21 @@
 import { useState } from 'react'
-import './style.less'
 import { classArray } from '../../../objects/misc'
+import './style.less'
+import '../style.less'
+
 interface AddCharacterModalProps {
     onClose: () => void,
     createChar: (className: string, name: string) => void
 }
 
-export default function AddCharacterModal(props: AddCharacterModalProps) {
+const AddCharacterModal = (props: AddCharacterModalProps) => {
     const [charName, setCharName] = useState("")
     const [selectClass, setSelectClass] = useState<string>("Arcanist")
+
     const modalClick = () => {
         props.onClose()
     }
+
     const changeSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const value = event.target.value
         if (!classArray.includes(value)) {
@@ -19,6 +23,7 @@ export default function AddCharacterModal(props: AddCharacterModalProps) {
         }
         setSelectClass(value)
     }
+
     const handleAdd = () => {
         if (!classArray.includes(selectClass)) {
             return
@@ -27,6 +32,7 @@ export default function AddCharacterModal(props: AddCharacterModalProps) {
         props.createChar(selectClass, charName==="" ? selectClass : charName)
         modalClick()
     }
+
     return (
         <div className="backdrop">
             <div className="modal">
@@ -53,3 +59,5 @@ export default function AddCharacterModal(props: AddCharacterModalProps) {
         </div>
     );
 }
+
+export default AddCharacterModal

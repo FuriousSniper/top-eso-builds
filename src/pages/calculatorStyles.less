@@ -1,0 +1,105 @@
+@import "/src/styles/index.less";
+@import "/src/styles/variables.less";
+
+.titleBanner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  border-top: @primary-section-border;
+  border-bottom: @primary-section-border;
+  background-color: @dark-background;
+
+  h2{
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .controlItems {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    padding: 10px 0;
+    input[type="number"] {
+      width: 60px;
+      margin-left: 5px;
+    }
+  }
+}
+
+.moreSeparation {
+  margin: 15px 0;
+}
+.columnWrapper {
+  @media @mobile {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  width: 100%;
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: center;
+  gap: 15px;
+  flex: 1 1 auto;
+
+  .charUiColumn {
+    @media @mobile {
+      width: 100%;
+    }
+    min-width: 600px;
+  }
+
+  .uiColumn {
+    @media @mobile {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      row-gap: 10px;
+    }
+
+    height: 100%;
+    width: 350px;
+    .secondaryText {
+      color: @color-secondary;
+    }
+
+    .noCharacters {
+      color: @color-secondary;
+      text-align: center;
+    }
+  }
+}
+
+.calcItemRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.charUiColumn {
+  @media @mobile {
+    width: 100%;
+  }
+  min-width: 600px;
+}
+.charactersPanel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  .charAutoMinHeight {
+    height: min-content;
+  }
+
+  column-gap: 10px;
+  @media @mobile {
+    grid-template-columns: 1fr;
+  }
+}
