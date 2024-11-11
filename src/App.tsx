@@ -6,19 +6,22 @@ import BuildPage from './pages/BuildPage';
 import AboutPage from './pages/AboutPage';
 import PenPage from './pages/PenPage';
 import CritPage from './pages/CritPage';
+import { HelmetProvider } from 'react-helmet-async';
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="*" element={<MainPage />} />
-        <Route path="/" element={<MainPage />} />
-        <Route path="/tools/penCalc" element={<PenPage />} />
-        <Route path="/tools/critCalc" element={<CritPage />} />
-        <Route path="/build/:buildNameParam" element={<BuildPage />} />
-        <Route path="/about" element={<AboutPage />} />
-      </Routes>
-    </BrowserRouter>
+    <HelmetProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="*" element={<MainPage />} />
+          <Route path="/" element={<MainPage />} />
+          <Route path="/tools/penCalc" element={<PenPage />} />
+          <Route path="/tools/critCalc" element={<CritPage />} />
+          <Route path="/build/:buildNameParam" element={<BuildPage />} />
+          <Route path="/about" element={<AboutPage />} />
+        </Routes>
+      </BrowserRouter>
+    </HelmetProvider>
   );
 };
 
