@@ -10,7 +10,6 @@ import GenericInput from "../../components/CalculatorComponents/GenericInput"
 import { useSearchParams } from "react-router-dom"
 import './style.less'
 import '../calculatorStyles.less'
-import MetaTags from "../../components/MetaTags";
 
 const PenPage = () => {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -25,6 +24,10 @@ const PenPage = () => {
     const [charactersArray, setCharactersArray] = useState(Array<CharacterPenType>())
     const copyButtonRef = useRef<HTMLButtonElement>(null)
     const copyButtonText = "Copy values (support only)"
+
+    useEffect(() => {
+        document.title = `Top ESO Builds: Pen calculator`
+    })
 
     useEffect(() => {
         let supportPenSum = 0
@@ -141,57 +144,54 @@ const PenPage = () => {
     }
 
     return (
-        <>
-            <MetaTags title={`Pen calculator`} description={"Calculate penetration for yourself and your team with ease!"} name={"Pen calculator"} />
-            <div className="content">
-                <HeaderMenu />
-                <div className="main">
-                    <div className="titleBanner">
-                        <h2>Penetration calculator</h2>
-                        <div className="controlItems">
-                            <button onClick={copyLinkButtonAction} ref={copyButtonRef}>{copyButtonText}</button>
-                            <div><label htmlFor="penCap">Set pen target</label><input type="number" name="penCap" id="penCap" value={requiredPen} onChange={event => setRequiredPen(boundsMinMax(Number(event.target.value), 0, 102000))} min={0} max={102000} /></div>
-                            <GenericModal buttonName="Add DD Character" className="addCharacterButton" createChar={createCharacter} />
-                        </div>
+        <div className="content">
+            <HeaderMenu />
+            <div className="main">
+                <div className="titleBanner">
+                    <h2>Penetration calculator</h2>
+                    <div className="controlItems">
+                        <button onClick={copyLinkButtonAction} ref={copyButtonRef}>{copyButtonText}</button>
+                        <div><label htmlFor="penCap">Set pen target</label><input type="number" name="penCap" id="penCap" value={requiredPen} onChange={event => setRequiredPen(boundsMinMax(Number(event.target.value), 0, 102000))} min={0} max={102000} /></div>
+                        <GenericModal buttonName="Add DD Character" className="addCharacterButton" createChar={createCharacter} />
                     </div>
-                    <div className="columnWrapper">
-                        <div className="uiColumn">
-                            <GenericDisplayField legendText={"Support"}>
-                                <>
-                                    <div className="calcItemRow">
-                                        <span className="secondaryText">Support provides: </span><span>{supportPen}</span>
-                                    </div>
-                                    <div className="calcItemRow">
-                                        <span className="secondaryText">Others need to reach: </span><span>{requiredPen - supportPen}</span>
-                                    </div>
-                                    <div className="separator moreSeparation"></div>
-                                    <GenericInput type={"checkbox"} name={"Major Breach"} checked={majorBreach} id={"majorBreach"} onChange={() => setMajorBreach(!majorBreach)} title={"Tank debuff: 5948"} />
-                                    <GenericInput type={"checkbox"} name={"Minor Breach"} checked={minorBreach} id={"minorBreach"} onChange={() => setMinorBreach(!minorBreach)} title={"Tank debuff: 2974"} />
-                                    <GenericInput type={"checkbox"} name={"Crusher"} checked={crusher} id={"crusher"} onChange={() => setCrusher(!crusher)} title={"Tank debuff: 2108 (infused)"} />
-                                    <GenericInput type={"checkbox"} name={"Alkosh"} checked={alkosh} id={"alkosh"} onChange={() => setAlkosh(!alkosh)} title={"Support set: 6000"} />
-                                    <GenericInput type={"checkbox"} name={"Crimson"} checked={crimson} id={"crimson"} onChange={() => setCrimson(!crimson)} title={"Tank set: 3541"} />
-                                    <GenericInput type={"checkbox"} name={"Tremorscale"} checked={tremor} id={"tremor"} onChange={() => setTremor(!tremor)} title={"Tank set: 2400"} />
-                                </>
-                            </GenericDisplayField>
-                        </div>
-                        <div className={`${charactersArray.length > 1 ? "charUiColumn" : ""} uiColumn`}>
-                            <GenericDisplayField legendText={"Characters"} childrenClassName={`${charactersArray.length > 1 ? "charactersPanel" : ""}`}>
-                                <>
-                                    {charactersArray.length === 0 &&
-                                        <p className="noCharacters">No characters added!<br />Use the button above in order to add a character and calculate penetration.</p>
-                                    }
-                                    {charactersArray.map((char: CharacterPenType, key: number) => {
-                                        return <PenCalculatorCharacterObject char={char} supportPen={supportPen} requiredPen={requiredPen} key={key} deleteFunction={() => deleteChar(char.id)} />
-                                    })}
-                                </>
-                            </GenericDisplayField>
-                        </div>
-                    </div>
-
                 </div>
-                <FooterMenu />
+                <div className="columnWrapper">
+                    <div className="uiColumn">
+                        <GenericDisplayField legendText={"Support"}>
+                            <>
+                                <div className="calcItemRow">
+                                    <span className="secondaryText">Support provides: </span><span>{supportPen}</span>
+                                </div>
+                                <div className="calcItemRow">
+                                    <span className="secondaryText">Others need to reach: </span><span>{requiredPen - supportPen}</span>
+                                </div>
+                                <div className="separator moreSeparation"></div>
+                                <GenericInput type={"checkbox"} name={"Major Breach"} checked={majorBreach} id={"majorBreach"} onChange={() => setMajorBreach(!majorBreach)} title={"Tank debuff: 5948"} />
+                                <GenericInput type={"checkbox"} name={"Minor Breach"} checked={minorBreach} id={"minorBreach"} onChange={() => setMinorBreach(!minorBreach)} title={"Tank debuff: 2974"} />
+                                <GenericInput type={"checkbox"} name={"Crusher"} checked={crusher} id={"crusher"} onChange={() => setCrusher(!crusher)} title={"Tank debuff: 2108 (infused)"} />
+                                <GenericInput type={"checkbox"} name={"Alkosh"} checked={alkosh} id={"alkosh"} onChange={() => setAlkosh(!alkosh)} title={"Support set: 6000"} />
+                                <GenericInput type={"checkbox"} name={"Crimson"} checked={crimson} id={"crimson"} onChange={() => setCrimson(!crimson)} title={"Tank set: 3541"} />
+                                <GenericInput type={"checkbox"} name={"Tremorscale"} checked={tremor} id={"tremor"} onChange={() => setTremor(!tremor)} title={"Tank set: 2400"} />
+                            </>
+                        </GenericDisplayField>
+                    </div>
+                    <div className={`${charactersArray.length > 1 ? "charUiColumn" : ""} uiColumn`}>
+                        <GenericDisplayField legendText={"Characters"} childrenClassName={`${charactersArray.length > 1 ? "charactersPanel" : ""}`}>
+                            <>
+                                {charactersArray.length === 0 &&
+                                    <p className="noCharacters">No characters added!<br />Use the button above in order to add a character and calculate penetration.</p>
+                                }
+                                {charactersArray.map((char: CharacterPenType, key: number) => {
+                                    return <PenCalculatorCharacterObject char={char} supportPen={supportPen} requiredPen={requiredPen} key={key} deleteFunction={() => deleteChar(char.id)} />
+                                })}
+                            </>
+                        </GenericDisplayField>
+                    </div>
+                </div>
+
             </div>
-        </>
+            <FooterMenu />
+        </div>
     )
 }
 export default PenPage

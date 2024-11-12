@@ -16,7 +16,6 @@ import sorc from "../../builds/sorc";
 import './style.less'
 import GenericDisplayField from "../../components/GenericDisplayField";
 import BuildExplainSkills from "../../components/BuildComponents/BuildExplainSkills";
-import MetaTags from "../../components/MetaTags";
 
 const BuildPage = () => {
     const { buildNameParam } = useParams();
@@ -57,6 +56,8 @@ const BuildPage = () => {
             const allItems = JSON.parse(getFromLS("crossedObjects")!)
             setCrosseditemsArray(allItems[buildLocal.id])
         }
+
+        document.title = `Build: ${buildLocal.name}`
     }, [buildNameParam, navigate])
 
     useEffect(() => {
@@ -106,40 +107,37 @@ const BuildPage = () => {
     }
 
     return (
-        <>
-            <MetaTags title={`Build: ${build.name}`} description={build.generalInfo} image={build.buildIcon} name={build.name}/>
-            <div className="content">
-                <HeaderMenu />
-                <div className="buildDetails">
-                    <div className="uiColumn">
-                        <BuildGear gear={build.gear} toggleCrossFunction={toggleCrossedState} buildId={build.id} />
-                    </div>
-                    <div className="uiColumn">
-                        <BuildSkills skills={build.skills} />
-                        <BuildStats stats={build.stats} buffed={buffedStats} />
-                        <BuildCp cp={build.cp} toggleCrossFunction={toggleCrossedState} buildId={build.id} />
-                        <BuildMisc misc={build.misc} toggleCrossFunction={toggleCrossedState} buildId={build.id} />
-                    </div>
+        <div className="content">
+            <HeaderMenu />
+            <div className="buildDetails">
+                <div className="uiColumn">
+                    <BuildGear gear={build.gear} toggleCrossFunction={toggleCrossedState} buildId={build.id} />
                 </div>
-                <div className="otherStuff">
-                    <div className="controls">
-                        <div><input type="checkbox" name="buffed" id="buffed" onChange={() => setBuffedStats(!buffedStats)} checked={buffedStats} /><label htmlFor="buffed">Toggle Buffed</label></div>
-                        <div><input type="checkbox" name="itemsChecked" id="itemsChecked" onChange={() => toggleAllCrossed()} checked={crossBuildItems} /><label htmlFor="itemsChecked">Toggle Crossed-out items</label></div>
-                    </div>
-                    <div className="additionalDetails">
-                        <GenericDisplayField legendText={"General Info"}>
-                            <div className="detailsContent" dangerouslySetInnerHTML={{ __html: build.generalInfo }}></div>
-                        </GenericDisplayField>
-                        <BuildExplainSkills skills={build.skills} />
-                        <BuildDetails details={build.details} />
-                        <GenericDisplayField legendText={"Last updated"}>
-                            <div className="detailsContent">{build.lastUpdated}</div>
-                        </GenericDisplayField>
-                    </div>
+                <div className="uiColumn">
+                    <BuildSkills skills={build.skills} />
+                    <BuildStats stats={build.stats} buffed={buffedStats} />
+                    <BuildCp cp={build.cp} toggleCrossFunction={toggleCrossedState} buildId={build.id} />
+                    <BuildMisc misc={build.misc} toggleCrossFunction={toggleCrossedState} buildId={build.id} />
                 </div>
-                <FooterMenu />
             </div>
-        </>
+            <div className="otherStuff">
+                <div className="controls">
+                    <div><input type="checkbox" name="buffed" id="buffed" onChange={() => setBuffedStats(!buffedStats)} checked={buffedStats} /><label htmlFor="buffed">Toggle Buffed</label></div>
+                    <div><input type="checkbox" name="itemsChecked" id="itemsChecked" onChange={() => toggleAllCrossed()} checked={crossBuildItems} /><label htmlFor="itemsChecked">Toggle Crossed-out items</label></div>
+                </div>
+                <div className="additionalDetails">
+                    <GenericDisplayField legendText={"General Info"}>
+                        <div className="detailsContent" dangerouslySetInnerHTML={{ __html: build.generalInfo }}></div>
+                    </GenericDisplayField>
+                    <BuildExplainSkills skills={build.skills} />
+                    <BuildDetails details={build.details} />
+                    <GenericDisplayField legendText={"Last updated"}>
+                        <div className="detailsContent">{build.lastUpdated}</div>
+                    </GenericDisplayField>
+                </div>
+            </div>
+            <FooterMenu />
+        </div>
     )
 }
 export default BuildPage
