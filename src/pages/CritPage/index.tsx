@@ -10,7 +10,6 @@ import CritCalculatorCharacterObject from "../../components/CalculatorComponents
 import { useSearchParams } from "react-router-dom"
 import './style.less'
 import '../calculatorStyles.less'
-import MetaTags from "../../components/MetaTags";
 
 const CritPage = () => {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -25,6 +24,10 @@ const CritPage = () => {
     const copyButtonText = "Copy values (support only)"
     const [charactersArray, setCharactersArray] = useState(Array<CharacterCritType>())
     const baseCritDmg = 50
+
+    useEffect(() => {
+        document.title = `Top ESO Builds: Crit dmg calculator`
+    })
 
     useEffect(() => {
         let supportCritSum = 0
@@ -135,57 +138,54 @@ const CritPage = () => {
     }
 
     return (
-        <>
-            <MetaTags title={`Crit damage calculator`} description={"Calculate crit damage for yourself and your team with ease!"} name={"Crit damage calculator"} />
-            <div className="content">
-                <HeaderMenu />
-                <div className="main">
-                    <div className="titleBanner">
-                        <h2>Critical damage calculator</h2>
-                        <div className="controlItems">
-                            <button onClick={copyLinkButtonAction} ref={copyButtonRef}>{copyButtonText}</button>
-                            <div><label htmlFor="critCap">Set crit target</label><input type="number" name="critCap" id="critCap" value={requiredCrit} onChange={event => setRequiredCrit(boundsMinMax(Number(event.target.value), 0, 125))} min={0} max={125} /></div>
-                            <GenericModal buttonName="Add DD Character" className="addCharacterButton" createChar={createCharacter} />
-                        </div>
+        <div className="content">
+            <HeaderMenu />
+            <div className="main">
+                <div className="titleBanner">
+                    <h2>Critical damage calculator</h2>
+                    <div className="controlItems">
+                        <button onClick={copyLinkButtonAction} ref={copyButtonRef}>{copyButtonText}</button>
+                        <div><label htmlFor="critCap">Set crit target</label><input type="number" name="critCap" id="critCap" value={requiredCrit} onChange={event => setRequiredCrit(boundsMinMax(Number(event.target.value), 0, 125))} min={0} max={125} /></div>
+                        <GenericModal buttonName="Add DD Character" className="addCharacterButton" createChar={createCharacter} />
                     </div>
-
-                    <div className="columnWrapper">
-                        <div className="uiColumn">
-                            <GenericDisplayField legendText={"Support"}>
-                                <>
-                                    <div className="calcItemRow">
-                                        <span className="secondaryText">Support provides: </span><span>{supportCrit}%</span>
-                                    </div>
-                                    <div className="calcItemRow">
-                                        <span className="secondaryText">Others need to reach: </span><span>{requiredCrit - supportCrit - baseCritDmg}%</span>
-                                    </div>
-                                    <div className="separator moreSeparation"></div>
-                                    <GenericInput type={"checkbox"} name={"Major Force"} checked={majorForce} id={"majorForce"} onChange={() => setMajorForce(!majorForce)} title={"Increases your Crit Damage by 20% (Horn)"} />
-                                    <GenericInput type={"checkbox"} name={"Major Brittle"} checked={majorBrittle} id={"majorBrittle"} onChange={() => setMajorBrittle(!majorBrittle)} title={"Increases Crit Damage Taken by 20% (Nunatak, very rarely used)"} />
-                                    <GenericInput type={"checkbox"} name={"Minor Brittle"} checked={minorBrittle} id={"minorBrittle"} onChange={() => setMinorBrittle(!minorBrittle)} title={"Increases Crit Damage Taken by 10% (Tank debuff or warden DD)"} />
-                                    <GenericInput type={"checkbox"} name={"Lucent Echoes set"} checked={lucent} id={"lucent"} onChange={() => setLucent(!lucent)} title={"Increases your Crit Damage by 11% (Tank set)"} />
-                                    <GenericInput type={"number"} name={"Elemental Catalyst set"} value={ec} id={"ec"} onChange={(event) => setEc(boundsMinMax(Number(event.target.value), 0, 3))} min={0} max={3} title={"Whenever you deal Flame, Shock, or Frost Damage, you apply a stack of Flame, Shock, or Frost Weakness to the enemy for 3 seconds. Each stack of an Elemental Weakness increases their Critical Damage taken by 5%. An enemy can only have one stack of each Elemental Weakness at a time."} />
-                                </>
-                            </GenericDisplayField>
-                        </div>
-                        <div className={`${charactersArray.length > 1 ? "charUiColumn" : ""} uiColumn`}>
-                            <GenericDisplayField legendText={"Characters"} childrenClassName={`${charactersArray.length > 1 ? "charactersPanel" : ""}`}>
-                                <>
-                                    {charactersArray.length === 0 &&
-                                        <p className="noCharacters">No characters added!<br />Use the button above in order to add a character and calculate crit damage.</p>
-                                    }
-                                    {charactersArray.map((char: CharacterCritType, key: number) => {
-                                        return <CritCalculatorCharacterObject char={char} supportCrit={supportCrit} requiredCrit={requiredCrit} key={key} deleteFunction={() => deleteChar(char.id)} />
-                                    })}
-                                </>
-                            </GenericDisplayField>
-                        </div>
-                    </div>
-
                 </div>
-                <FooterMenu />
+
+                <div className="columnWrapper">
+                    <div className="uiColumn">
+                        <GenericDisplayField legendText={"Support"}>
+                            <>
+                                <div className="calcItemRow">
+                                    <span className="secondaryText">Support provides: </span><span>{supportCrit}%</span>
+                                </div>
+                                <div className="calcItemRow">
+                                    <span className="secondaryText">Others need to reach: </span><span>{requiredCrit - supportCrit - baseCritDmg}%</span>
+                                </div>
+                                <div className="separator moreSeparation"></div>
+                                <GenericInput type={"checkbox"} name={"Major Force"} checked={majorForce} id={"majorForce"} onChange={() => setMajorForce(!majorForce)} title={"Increases your Crit Damage by 20% (Horn)"} />
+                                <GenericInput type={"checkbox"} name={"Major Brittle"} checked={majorBrittle} id={"majorBrittle"} onChange={() => setMajorBrittle(!majorBrittle)} title={"Increases Crit Damage Taken by 20% (Nunatak, very rarely used)"} />
+                                <GenericInput type={"checkbox"} name={"Minor Brittle"} checked={minorBrittle} id={"minorBrittle"} onChange={() => setMinorBrittle(!minorBrittle)} title={"Increases Crit Damage Taken by 10% (Tank debuff or warden DD)"} />
+                                <GenericInput type={"checkbox"} name={"Lucent Echoes set"} checked={lucent} id={"lucent"} onChange={() => setLucent(!lucent)} title={"Increases your Crit Damage by 11% (Tank set)"} />
+                                <GenericInput type={"number"} name={"Elemental Catalyst set"} value={ec} id={"ec"} onChange={(event) => setEc(boundsMinMax(Number(event.target.value), 0, 3))} min={0} max={3} title={"Whenever you deal Flame, Shock, or Frost Damage, you apply a stack of Flame, Shock, or Frost Weakness to the enemy for 3 seconds. Each stack of an Elemental Weakness increases their Critical Damage taken by 5%. An enemy can only have one stack of each Elemental Weakness at a time."} />
+                            </>
+                        </GenericDisplayField>
+                    </div>
+                    <div className={`${charactersArray.length > 1 ? "charUiColumn" : ""} uiColumn`}>
+                        <GenericDisplayField legendText={"Characters"} childrenClassName={`${charactersArray.length > 1 ? "charactersPanel" : ""}`}>
+                            <>
+                                {charactersArray.length === 0 &&
+                                    <p className="noCharacters">No characters added!<br />Use the button above in order to add a character and calculate crit damage.</p>
+                                }
+                                {charactersArray.map((char: CharacterCritType, key: number) => {
+                                    return <CritCalculatorCharacterObject char={char} supportCrit={supportCrit} requiredCrit={requiredCrit} key={key} deleteFunction={() => deleteChar(char.id)} />
+                                })}
+                            </>
+                        </GenericDisplayField>
+                    </div>
+                </div>
+
             </div>
-        </>
+            <FooterMenu />
+        </div>
     )
 }
 export default CritPage
