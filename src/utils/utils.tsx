@@ -32,6 +32,9 @@ export const replaceSpecialStrings = (html: string) => {
     resultHtml = resultHtml.replace(/(Prophecy)/ig, "<span class='specialText'>$1</span>");
     resultHtml = resultHtml.replace(/(Evasion)/ig, "<span class='specialText'>$1</span>");
     resultHtml = resultHtml.replace(/(Vitality)/ig, "<span class='specialText'>$1</span>");
+    resultHtml = resultHtml.replace(/(Vulnerability)/ig, "<span class='specialText'>$1</span>");
+    resultHtml = resultHtml.replace(/(Brittle)/ig, "<span class='specialText'>$1</span>");
+    resultHtml = resultHtml.replace(/(Cowardice)/ig, "<span class='specialText'>$1</span>");
     resultHtml = resultHtml.replace(/(Maim)/ig, "<span class='specialText'>$1</span>");
     resultHtml = resultHtml.replace(/(Brutality)/ig, "<span class='specialText'>$1</span>");
     resultHtml = resultHtml.replace(/(Sorcery)/ig, "<span class='specialText'>$1</span>");
@@ -46,6 +49,10 @@ export const replaceSpecialStrings = (html: string) => {
     resultHtml = resultHtml.replace(/(Burning)/ig, "<span class='specialText'>$1</span>");
     resultHtml = resultHtml.replace(/(Concussion)/ig, "<span class='specialText'>$1</span>");
     resultHtml = resultHtml.replace(/(Chilled)/ig, "<span class='specialText'>$1</span>");
+
+    resultHtml = resultHtml.replace(/(Malady)/ig, "<span class='specialText'>$1</span>");
+    resultHtml = resultHtml.replace(/(Contagion)/ig, "<span class='specialText'>$1</span>");
+    resultHtml = resultHtml.replace(/(Darklight)/ig, "<span class='specialText'>$1</span>");
     return resultHtml
 }
 

@@ -1,8 +1,9 @@
 import React, { useState, useRef } from 'react';
-import { GenericSkill, SetType } from '../../types/common';
+import { GenericDisplayType, GenericSkill, SetType } from '../../types/common';
 import './style.less'
 import SkillPopover from './SkillPopover';
 import SetPopover from './SetPopover';
+import ItemPopover from './ItemPopover';
 
 interface CommonProps {
     children: React.ReactNode;
@@ -13,10 +14,17 @@ type DisplayTypeProps =
     | {
         displaySkill?: GenericSkill;
         displaySet?: never;
+        displayItem?: never;
     }
     | {
         displaySkill?: never;
         displaySet?: SetType;
+        displayItem?: never;
+    }
+    | {
+        displaySkill?: never;
+        displaySet?: never;
+        displayItem?: GenericDisplayType;
     };
 
 type Props = CommonProps & DisplayTypeProps
@@ -80,6 +88,7 @@ const GenericPopover = ((props: Props) => {
                 >
                     <SkillPopover skill={props.displaySkill} />
                     <SetPopover set={props.displaySet} />
+                    <ItemPopover item={props.displayItem} />
                 </div>
             )}
             {props.children}

@@ -20,25 +20,6 @@ export enum GlyphEnum{
     magrec = "Magicka Recovery"
 }
 
-export enum cpEnum{
-    deadlyAim="Deadly Aim",
-    mAA="Master-at-Arms",
-    fON="Force of Nature",
-    focused="Focused Mending",
-    arcane = "Arcane Supremacy",
-
-    pain="Pain's refugee",
-    survival="Survival Instincts",
-    sustained="Sustained by Suffering",
-    bastion="Bastion",
-    celerity="Celerity",
-
-    gifted="Gifted Rider",
-    rationer="Rationer",
-    treasure="Treasure Hunter",
-    steed="Steed's Blessing"
-}
-
 export enum GenericSetBonusEnum{
     magRec="Adds 129 Magicka Recovery",
     stamRec="Adds 129 Stamina Recovery",

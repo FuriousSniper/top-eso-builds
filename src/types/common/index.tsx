@@ -1,4 +1,4 @@
-import { cpEnum, GlyphEnum, TraitEnum } from '../../enums/index.tsx';
+import { GlyphEnum, TraitEnum } from '../../enums/index.tsx';
 
 export type GenericDisplayType = {
     name: string,
@@ -80,9 +80,9 @@ export type BuildType = {
     }
     gear: Array<ConcreteSetItemType>,
     cp: {
-        redCp: Array<cpEnum>,
-        blueCp: Array<cpEnum>,
-        greenCp: Array<cpEnum>
+        redCp: Array<GenericDisplayType>,
+        blueCp: Array<GenericDisplayType>,
+        greenCp: Array<GenericDisplayType>
     }
     stats: {
         attributes: StatsType
