@@ -1,12 +1,13 @@
-import { cpEnum } from "../../../enums"
+import { GenericDisplayType } from "../../../types/common"
 import GenericDisplayField from "../../GenericDisplayField"
+import SingleMiscItem from "../SingleMiscItem"
 import './style.less'
 
 interface IBuildCpProps {
     cp?: {
-        redCp: Array<cpEnum>,
-        blueCp: Array<cpEnum>,
-        greenCp: Array<cpEnum>
+        redCp: Array<GenericDisplayType>,
+        blueCp: Array<GenericDisplayType>,
+        greenCp: Array<GenericDisplayType>
     }
     toggleCrossFunction: (id: string)=>void,
     buildId: string,
@@ -24,15 +25,10 @@ const BuildCp = (props: IBuildCpProps) => {
                 </div>
                 <div className="cpRow">
                     {
-                        props.cp?.blueCp.map((star: cpEnum, index: number) => {
+                        props.cp?.blueCp.map((star: GenericDisplayType, index: number) => {
                             if (props.cp) {
                                 return (
-                                    <div className="cpItem" key={index} id={"cpBlue"+props.buildId+index} onClick={()=>props.toggleCrossFunction("cpBlue"+props.buildId+index)}>
-                                        <img
-                                            src="/icons/buildPage/cpStarBlue.png"
-                                            alt=""
-                                        /><span>{star}</span>
-                                    </div>
+                                    <SingleMiscItem misc={star} toggleCrossFunction={props.toggleCrossFunction} id={"cpBlue" + props.buildId+index} key={index}/>
                                 )
                             }
                         })
@@ -48,15 +44,10 @@ const BuildCp = (props: IBuildCpProps) => {
                 </div>
                 <div className="cpRow">
                     {
-                        props.cp?.redCp.map((star: cpEnum, index: number) => {
+                        props.cp?.redCp.map((star: GenericDisplayType, index: number) => {
                             if (props.cp) {
                                 return (
-                                    <div className="cpItem" key={index} id={"cpRed"+props.buildId+index} onClick={()=>props.toggleCrossFunction("cpRed"+props.buildId+index)}>
-                                        <img
-                                            src="/icons/buildPage/cpStarRed.png"
-                                            alt=""
-                                        /><span>{star}</span>
-                                    </div>
+                                    <SingleMiscItem misc={star} toggleCrossFunction={props.toggleCrossFunction} id={"cpRed" + props.buildId+index} key={index}/>
                                 )
                             }
                         })
@@ -72,15 +63,10 @@ const BuildCp = (props: IBuildCpProps) => {
                 </div>
                 <div className="cpRow">
                     {
-                        props.cp?.greenCp.map((star: cpEnum, index: number) => {
+                        props.cp?.greenCp.map((star: GenericDisplayType, index: number) => {
                             if (props.cp) {
                                 return (
-                                    <div className="cpItem" key={index} id={"cpGreen"+props.buildId+index} onClick={()=>props.toggleCrossFunction("cpGreen"+props.buildId+index)}>
-                                        <img
-                                            src="/icons/buildPage/cpStarGreen.png"
-                                            alt=""
-                                        /><span>{star}</span>
-                                    </div>
+                                    <SingleMiscItem misc={star} toggleCrossFunction={props.toggleCrossFunction} id={"cpGreen" + props.buildId+index} key={index}/>
                                 )
                             }
                         })

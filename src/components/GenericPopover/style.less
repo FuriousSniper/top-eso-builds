@@ -35,3 +35,19 @@
     --bg-angle: 360deg;
   }
 }
+
+.skillSeparator {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    transparent,
+    @gray-border-color 30%,
+    @gray-border-color 70%,
+    transparent
+  );
+  width: 100%;
+  grid-column: 11 / 13;
+}

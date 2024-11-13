@@ -1,5 +1,5 @@
-import { cpEnum, GlyphEnum, TraitEnum } from "../enums";
-import { food, misc, munduses, race } from "../objects/misc";
+import { GlyphEnum, TraitEnum } from "../enums";
+import { cpBlue, cpGreen, cpRed, food, misc, munduses, race } from "../objects/misc";
 import sets from "../objects/sets";
 import arcanistSkills from "../objects/skills/arcanist";
 import destroSkills from "../objects/skills/destroStaff";
@@ -130,9 +130,9 @@ const arcanist1: BuildType = {
 
     ],
     cp: {
-        redCp: [cpEnum.bastion, cpEnum.pain, cpEnum.survival, cpEnum.sustained],
-        blueCp: [cpEnum.deadlyAim, cpEnum.fON, cpEnum.focused, cpEnum.mAA],
-        greenCp: [cpEnum.steed, cpEnum.treasure, cpEnum.rationer, cpEnum.gifted]
+        redCp: [cpRed[0], cpRed[1], cpRed[2], cpRed[3]],
+        blueCp: [cpBlue[0], cpBlue[1], cpBlue[2], cpBlue[3]],
+        greenCp: [cpGreen[0], cpGreen[1], cpGreen[2], cpGreen[3]]
     },
     stats: {
         attributes: {
