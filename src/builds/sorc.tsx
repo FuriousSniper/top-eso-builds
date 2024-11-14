@@ -9,6 +9,7 @@ import { BuildType } from "../types/common";
 const sorc: BuildType = {
     name: "Sorc BG/Cyro",
     id: "soloSorc1",
+    buildIcon: "/icons/classes/sorc.png",
     skills: {
         normalFront: [
             { skill: sorcSkills[3], explanationHtml: "<p>Stamina spammable. Also allows user to combine it with Shocking soul for one-time burst.</p>" },
