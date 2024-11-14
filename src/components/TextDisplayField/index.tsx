@@ -8,7 +8,7 @@ interface TextDisplayFieldProps{
 
 const TextDisplayField = (props: TextDisplayFieldProps)=>{
     return(
-        <div className={`textSection ${props.parentClassName ? props.parentClassName : ""}`}>
+        <div className={`textDisplayField ${props.parentClassName ? props.parentClassName : ""}`}>
             {props.children}
         </div>
     )

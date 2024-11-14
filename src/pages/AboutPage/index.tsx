@@ -13,17 +13,17 @@ const AboutPage = () => {
         <div className="content">
             <HeaderMenu />
             <div className="main">
-                <div className="textSection">
+                <div className="customTextSection">
                     Welcome to yet another page dedicated to ESO builds. I tried to take a new approach in showcasing a build, partially inspired by addon Superstar.
                     It allows user to see entire build on a singular, well designed page. Take a look yourself!
                 </div>
-                <div className="textSection">
+                <div className="customTextSection">
                     The build page also allows you to mark completed items so it makes it easier to create a build in game! Click on an item and mark it as complete. Click it again to remove the mark. Toggle visibility of marks to see all build components.
                 </div>
-                <div className="textSection">
+                <div className="customTextSection">
                     Majority of classes don&apos;t have builds posted here. That&apos;s because i want to only post stuff that has been tested and reviewed by me or other trusted people.
                 </div>
-                <div className="textSection promoWrapper">
+                <div className="customTextSection promoWrapper">
                     <span>There are also some other pages you may want to visit:</span>
                     <div className="promoItem">
                         <div className="logoWrapper"><Link to={"https://esoguessr.netlify.app/"} target="_blank"><img className="promoLogo" src="/promo/esoguessr_text_logo_white.png" /></Link></div>
