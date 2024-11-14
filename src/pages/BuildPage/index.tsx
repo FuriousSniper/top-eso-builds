@@ -16,6 +16,7 @@ import sorc from "../../builds/sorc";
 import './style.less'
 import GenericDisplayField from "../../components/GenericDisplayField";
 import BuildExplainSkills from "../../components/BuildComponents/BuildExplainSkills";
+import TextDisplayField from "../../components/TextDisplayField";
 
 const BuildPage = () => {
     const { buildNameParam } = useParams();
@@ -109,15 +110,24 @@ const BuildPage = () => {
     return (
         <div className="content">
             <HeaderMenu />
-            <div className="buildDetails">
-                <div className="uiColumn">
-                    <BuildGear gear={build.gear} toggleCrossFunction={toggleCrossedState} buildId={build.id} />
-                </div>
-                <div className="uiColumn">
-                    <BuildSkills skills={build.skills} />
-                    <BuildStats stats={build.stats} buffed={buffedStats} />
-                    <BuildCp cp={build.cp} toggleCrossFunction={toggleCrossedState} buildId={build.id} />
-                    <BuildMisc misc={build.misc} toggleCrossFunction={toggleCrossedState} buildId={build.id} />
+            <div className="detailsWrapper">
+                <TextDisplayField parentClassName="titleClass">
+                    <>
+                        <img src={build.buildIcon} alt="" className="textIcon"/>&nbsp;
+                        <span>{build.name}</span>
+                    </>
+                    
+                </TextDisplayField>
+                <div className="buildDetails">
+                    <div className="uiColumn">
+                        <BuildGear gear={build.gear} toggleCrossFunction={toggleCrossedState} buildId={build.id} />
+                    </div>
+                    <div className="uiColumn">
+                        <BuildSkills skills={build.skills} />
+                        <BuildStats stats={build.stats} buffed={buffedStats} />
+                        <BuildCp cp={build.cp} toggleCrossFunction={toggleCrossedState} buildId={build.id} />
+                        <BuildMisc misc={build.misc} toggleCrossFunction={toggleCrossedState} buildId={build.id} />
+                    </div>
                 </div>
             </div>
             <div className="otherStuff">
