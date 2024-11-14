@@ -7,6 +7,7 @@ export const misc: GenericDisplayType[] =[
         icon: "/icons/skills/vampire/vampire.png",
     }
 ]
+
 export const munduses: GenericDisplayType[] = [
     {
         name: "Serpent",
@@ -29,6 +30,7 @@ export const munduses: GenericDisplayType[] = [
         icon: "/icons/misc/mundus/mage.png",
     },
 ]
+
 export const food: GenericDisplayType[] = [
     {
         name: "Orzorga's Smoked Bear Haunch",
@@ -41,6 +43,7 @@ export const food: GenericDisplayType[] = [
         icon: "/icons/misc/food/bew.png",
     },
 ]
+
 export const race: GenericDisplayType[] = [
     {
         name: "Orc",
@@ -81,10 +84,11 @@ export const cpBlue:GenericDisplayType[] = [
         icon: "/icons/buildPage/cpStarBlue.png",
     },
 ]
+
 export const cpRed:GenericDisplayType[] = [
     {
         name: "Pain's refugee",
-        description: "<p>educes your damage taken by 1% per negative effect active on you, up to a maximum of 20%</p>",
+        description: "<p>Reduces your damage taken by 1% per negative effect active on you, up to a maximum of 20%.</p>",
         icon: "/icons/buildPage/cpStarRed.png",
     },
     {
@@ -108,6 +112,7 @@ export const cpRed:GenericDisplayType[] = [
         icon: "/icons/buildPage/cpStarRed.png",
     },
 ]
+
 export const cpGreen:GenericDisplayType[] = [
     {
         name: "Gifted Rider",
