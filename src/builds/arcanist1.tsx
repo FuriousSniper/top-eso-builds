@@ -103,14 +103,14 @@ const arcanist1: BuildType = {
             set: sets[1],
             slot: "Main-hand weapon",
             trait: TraitEnum.nirn,
-            enchant: GlyphEnum.multi,
+            enchant: GlyphEnum.disease,
             weapon: "Mace"
         },
         {
             set: sets[1],
             slot: "Off-hand weapon",
             trait: TraitEnum.charged,
-            enchant: GlyphEnum.multi,
+            enchant: GlyphEnum.poison,
             weapon: "Mace"
         },
         {
