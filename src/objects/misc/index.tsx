@@ -1,6 +1,6 @@
 import { GenericDisplayType } from "../../types/common";
 
-export const misc: GenericDisplayType[] =[
+export const misc: GenericDisplayType[] = [
     {
         name: "Vampire Stage 3",
         description: "<p>Undeath II: (While you are at Vampire Stage 3 or higher)</p><p>Reduces your damage taken by up to 15% based on your missing Health.</p>",
@@ -57,7 +57,7 @@ export const race: GenericDisplayType[] = [
     }
 ]
 
-export const cpBlue:GenericDisplayType[] = [
+export const cpBlue: GenericDisplayType[] = [
     {
         name: "Deadly Aim",
         description: "<p>Increases your damage done with single target attacks by 3% per stage.</p>",
@@ -85,7 +85,7 @@ export const cpBlue:GenericDisplayType[] = [
     },
 ]
 
-export const cpRed:GenericDisplayType[] = [
+export const cpRed: GenericDisplayType[] = [
     {
         name: "Pain's refugee",
         description: "<p>Reduces your damage taken by 1% per negative effect active on you, up to a maximum of 20%.</p>",
@@ -113,7 +113,7 @@ export const cpRed:GenericDisplayType[] = [
     },
 ]
 
-export const cpGreen:GenericDisplayType[] = [
+export const cpGreen: GenericDisplayType[] = [
     {
         name: "Gifted Rider",
         description: "<p>Increases your Mount Speed by 2% per stage.</p>",
@@ -136,4 +136,69 @@ export const cpGreen:GenericDisplayType[] = [
     },
 ]
 
-export const classArray = ["Nightblade", "Arcanist" , "Dragonknight" , "Necromancer" , "Sorcerer" , "Templar" , "Warden"]
+export const classArray = ["Nightblade", "Arcanist", "Dragonknight", "Necromancer", "Sorcerer", "Templar", "Warden"]
+export const armorGlyphs: GenericDisplayType[] = [
+    {
+        name: "Multi-Effect Enchantment",
+        icon: "/icons/misc/enchants/multi.png",
+        description: "<p>Adds 434 Maximum Magicka.<br/>Adds 477 Maximum Health.<br/>Adds 434 Maximum Stamina.</p>"
+    },
+]
+
+export const jewelryGlyphs: GenericDisplayType[] = [
+        
+    {
+        name: "Reduce Prismatic Cost Enchantment",
+        icon: "/icons/misc/enchants/allcost.png",
+        description: "<p>Reduce Health, Magicka and Stamina cost of abilities by 133.</p>"
+    },
+    
+    {
+        name: "Magicka Recovery",
+        icon: "/icons/misc/enchants/mrec.png",
+        description: "<p>Adds 169 Magicka Recovery</p>"
+    },
+    {
+        name: "Stamina Recovery",
+        icon: "/icons/misc/enchants/srec.png",
+        description: "<p>Adds 169 Stamina Recovery</p>"
+    },
+    {
+        name: "Magical Harm",
+        icon: "/icons/misc/enchants/mharm.png",
+        description: "<p>Adds 174 Spell Damage and Weapon Damage and 10 Magicka Recovery</p>"
+    },
+    {
+        name: "Physical Harm",
+        icon: "/icons/misc/enchants/pharm.png",
+        description: "<p>Adds 174 Weapon Damage and Spell Damage and 10 Stamina Recovery</p>"
+    },
+]
+
+export const weaponGlyphs: GenericDisplayType[] = [
+    {
+        name: "Poison Enchantment",
+        icon: "/icons/misc/enchants/poison.png",
+        description: "<p>Deals 2534 Poison Damage.</p>"
+    },
+    {
+        name: "Befoul Enchantment",
+        icon: "/icons/misc/enchants/foulness.png",
+        description: "<p>Deals 2534 Disease Damage.</p>"
+    },
+    {
+        name: "Shock Enchant",
+        icon: "/icons/misc/enchants/shock.png",
+        description: "<p>Deals 2534 Shock Damage.</p>"
+    },
+    {
+        name: "Weapon Damage Enchantment",
+        icon: "/icons/misc/enchants/wd.png",
+        description: "<p>Increase your Weapon and Spell Damage by 348 for 5 seconds</p>"
+    },
+    {
+        name: "Weakening Enchant",
+        icon: "/icons/misc/enchants/weakening.png",
+        description: "<p>Reduce the target's Weapon and Spell Damage by 348 for 5 seconds</p>"
+    },
+]

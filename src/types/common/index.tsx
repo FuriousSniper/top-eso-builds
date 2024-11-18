@@ -1,4 +1,4 @@
-import { GlyphEnum, TraitEnum } from '../../enums/index.tsx';
+import { TraitEnum } from '../../enums/index.tsx';
 
 export type GenericDisplayType = {
     name: string,
@@ -41,7 +41,7 @@ export type ConcreteSetItemType = {
     weapon?: "Sword" | "Mace" | "Axe" | "Greatsword" | "Maul" | "Battle Axe" | "Inferno Staff" | "Lightning Staff" | "Ice Staff" | "Restoration Staff" | "Shield" | "Bow" | null,
     slot: "Head" | "Chest" | "Shoulders" | "Hands" | "Waist" | "Legs" | "Feet" | "Necklace" | "Ring" | "Main-hand weapon" | "Off-hand weapon",
     trait: TraitEnum | null,
-    enchant: GlyphEnum | null,
+    enchant: GenericDisplayType | null,
 }
 
 export type SetType = {

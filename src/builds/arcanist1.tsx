@@ -1,5 +1,5 @@
-import { GlyphEnum, TraitEnum } from "../enums";
-import { cpBlue, cpGreen, cpRed, food, misc, munduses, race } from "../objects/misc";
+import { TraitEnum } from "../enums";
+import { armorGlyphs, cpBlue, cpGreen, cpRed, food, jewelryGlyphs, misc, munduses, race, weaponGlyphs } from "../objects/misc";
 import sets from "../objects/sets";
 import arcanistSkills from "../objects/skills/arcanist";
 import destroSkills from "../objects/skills/destroStaff";
@@ -36,88 +36,88 @@ const arcanist1: BuildType = {
             set: sets[0],
             slot: "Head",
             trait: TraitEnum.impen,
-            enchant: GlyphEnum.multi,
+            enchant: armorGlyphs[0],
             weight: "Medium"
         },
         {
             set: sets[0],
             slot: "Shoulders",
             trait: TraitEnum.impen,
-            enchant: GlyphEnum.multi,
+            enchant: armorGlyphs[0],
             weight: "Medium"
         },
         {
             set: sets[2],
             slot: "Chest",
             trait: TraitEnum.reinforced,
-            enchant: GlyphEnum.multi,
+            enchant: armorGlyphs[0],
             weight: "Heavy"
         },
         {
             set: sets[1],
             slot: "Hands",
             trait: TraitEnum.impen,
-            enchant: GlyphEnum.multi,
+            enchant: armorGlyphs[0],
             weight: "Medium"
         },
         {
             set: sets[4],
             slot: "Waist",
             trait: TraitEnum.impen,
-            enchant: GlyphEnum.multi,
+            enchant: armorGlyphs[0],
             weight: "Light"
         },
         {
             set: sets[1],
             slot: "Legs",
             trait: TraitEnum.impen,
-            enchant: GlyphEnum.multi,
+            enchant: armorGlyphs[0],
             weight: "Medium"
         },
         {
             set: sets[1],
             slot: "Feet",
             trait: TraitEnum.impen,
-            enchant: GlyphEnum.multi,
+            enchant: armorGlyphs[0],
             weight: "Medium"
         },
         {
             set: sets[3],
             slot: "Necklace",
             trait: TraitEnum.infused,
-            enchant: GlyphEnum.multi,
+            enchant: jewelryGlyphs[0],
         },
         {
             set: sets[2],
             slot: "Ring",
             trait: TraitEnum.infused,
-            enchant: GlyphEnum.multi,
+            enchant: jewelryGlyphs[3],
         },
         {
             set: sets[2],
             slot: "Ring",
             trait: TraitEnum.infused,
-            enchant: GlyphEnum.multi,
+            enchant: jewelryGlyphs[3],
         },
         {
             set: sets[1],
             slot: "Main-hand weapon",
             trait: TraitEnum.nirn,
-            enchant: GlyphEnum.disease,
+            enchant: weaponGlyphs[0],
             weapon: "Mace"
         },
         {
             set: sets[1],
             slot: "Off-hand weapon",
             trait: TraitEnum.charged,
-            enchant: GlyphEnum.poison,
+            enchant: weaponGlyphs[1],
             weapon: "Mace"
         },
         {
             set: sets[2],
             slot: "Off-hand weapon",
             trait: TraitEnum.defending,
-            enchant: GlyphEnum.wd,
+            enchant: weaponGlyphs[4],
             weapon: "Ice Staff"
         },
         {
