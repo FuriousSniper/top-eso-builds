@@ -37,6 +37,7 @@ export type CostType = {
 
 export type ConcreteSetItemType = {
     set: SetType | null,
+    id: string,
     weight?: "Heavy" | "Medium" | "Light" | null,
     weapon?: "Sword" | "Mace" | "Axe" | "Greatsword" | "Maul" | "Battle Axe" | "Inferno Staff" | "Lightning Staff" | "Ice Staff" | "Restoration Staff" | "Shield" | "Bow" | null,
     slot: "Head" | "Chest" | "Shoulders" | "Hands" | "Waist" | "Legs" | "Feet" | "Necklace" | "Ring" | "Main-hand weapon" | "Off-hand weapon",

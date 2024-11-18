@@ -37,95 +37,109 @@ const arcanist1: BuildType = {
             slot: "Head",
             trait: TraitEnum.impen,
             enchant: armorGlyphs[0],
-            weight: "Medium"
+            weight: "Medium",
+            id:"0"
         },
         {
             set: sets[0],
             slot: "Shoulders",
             trait: TraitEnum.impen,
             enchant: armorGlyphs[0],
-            weight: "Medium"
+            weight: "Medium",
+            id:"1"
         },
         {
             set: sets[2],
             slot: "Chest",
             trait: TraitEnum.reinforced,
             enchant: armorGlyphs[0],
-            weight: "Heavy"
+            weight: "Heavy",
+            id:"2"
         },
         {
             set: sets[1],
             slot: "Hands",
             trait: TraitEnum.impen,
             enchant: armorGlyphs[0],
-            weight: "Medium"
+            weight: "Medium",
+            id:"3"
         },
         {
             set: sets[4],
             slot: "Waist",
             trait: TraitEnum.impen,
             enchant: armorGlyphs[0],
-            weight: "Light"
+            weight: "Light",
+            id:"4"
         },
         {
             set: sets[1],
             slot: "Legs",
             trait: TraitEnum.impen,
             enchant: armorGlyphs[0],
-            weight: "Medium"
+            weight: "Medium",
+            id:"5"
         },
         {
             set: sets[1],
             slot: "Feet",
             trait: TraitEnum.impen,
             enchant: armorGlyphs[0],
-            weight: "Medium"
+            weight: "Medium",
+            id:"6"
         },
         {
             set: sets[3],
             slot: "Necklace",
             trait: TraitEnum.infused,
             enchant: jewelryGlyphs[0],
+            id:"7"
         },
         {
             set: sets[2],
             slot: "Ring",
             trait: TraitEnum.infused,
             enchant: jewelryGlyphs[3],
+            id:"8"
         },
         {
             set: sets[2],
             slot: "Ring",
             trait: TraitEnum.infused,
             enchant: jewelryGlyphs[3],
+            id:"9"
         },
         {
             set: sets[1],
             slot: "Main-hand weapon",
             trait: TraitEnum.nirn,
             enchant: weaponGlyphs[0],
-            weapon: "Mace"
+            weapon: "Mace",
+            id:"10"
         },
         {
             set: sets[1],
             slot: "Off-hand weapon",
             trait: TraitEnum.charged,
             enchant: weaponGlyphs[1],
-            weapon: "Mace"
+            weapon: "Mace",
+            id:"11"
         },
         {
             set: sets[2],
             slot: "Off-hand weapon",
             trait: TraitEnum.defending,
             enchant: weaponGlyphs[4],
-            weapon: "Ice Staff"
+            weapon: "Ice Staff",
+            id:"12"
         },
         {
             set: null,
             slot: "Off-hand weapon",
             trait: null,
             enchant: null,
-            weapon: null
+            weapon: null,
+            id:"13"
         },
 
     ],

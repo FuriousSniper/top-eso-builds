@@ -1,53 +1,55 @@
 import { ConcreteSetItemType } from "../../../types/common"
 import GenericDisplayField from "../../GenericDisplayField"
-import SingleGearItem from "../SingleGearItem"
-import SingleMiscItem from "../SingleMiscItem"
+import DetailedGearItem from "./DetailedGearItem"
+import * as _ from "lodash";
 import './style.less'
 
-interface IBuildGearProps {
+interface BuildGearProps {
     gear: Array<ConcreteSetItemType>,
     toggleCrossFunction: (id: string) => void,
     buildId: string,
+    groupGear: boolean
 }
-const BuildGear = (props: IBuildGearProps) => {
+const BuildGear = (props: BuildGearProps) => {
+
+    const groupGearFunction = () => {
+        const groupedItems = _.groupBy(props.gear, (gearItem: ConcreteSetItemType) => {
+            return gearItem.set?.name
+        })
+        const indItems = _.forEach(groupedItems, (key) => {
+            key.map((item: ConcreteSetItemType) => {
+                return item
+            })
+        })
+        return _.flatMap(indItems)
+    }
+    
+    const renderItem = (item: ConcreteSetItemType, key: number)=>{
+        return (
+            <>
+                <DetailedGearItem item={item} toggleCrossFunction={props.toggleCrossFunction} buildId={props.buildId} _key={item.set?.id+"-"+item.id} key={key}/>
+                {key + 1 < props.gear?.length &&
+                    <div className="separator"></div>
+                }
+            </>
+        )
+    }
+
     return (
         <GenericDisplayField legendText="Gear" legendIcon="/icons/buildPage/gear.png">
             <div className="gearWrapper">
-                {
+                {props.groupGear === false &&
                     props.gear?.map((item: ConcreteSetItemType, key: number) => {
-                        return (
-                            <>
-                                <div className={`item`} key={key}>
-                                    <div className={`gearSlot ${item.weight ? "item" + item.weight : ""}`} title={`${item.weight ? item.weight + " " : ""}${item.weapon ? item.weapon + " " : ""}${item.slot}`}>
-                                        <span>{item.slot}</span>
-                                    </div>
-                                    <div className="details">
-                                        <div className="setName">
-                                            {
-                                                item.set &&
-                                                <SingleGearItem item={item} key={key} toggleCrossFunction={props.toggleCrossFunction} id={"gear" + props.buildId + key} />
-                                            }
-                                            {
-                                                !item.set &&
-                                                <div>N/A</div>
-                                            }
-                                        </div>
-                                        <div className="misc">
-                                            <div className="trait" id={"trait" + props.buildId + key} onClick={() => props.toggleCrossFunction("trait" + props.buildId + key)}>{item.trait ? item.trait : "N/A"}</div>
-                                            <SingleMiscItem misc={item.enchant} toggleCrossFunction={props.toggleCrossFunction} id={"enchant" + props.buildId + key} parentClassName={"enchant"} tinyIcon />
-                                        </div>
-                                    </div>
-                                </div>
-                                {key + 1 < props.gear?.length &&
-                                    <div className="separator"></div>
-                                }
-                            </>
-                        )
+                        return renderItem(item,key)
                     })
+                }
+                {props.groupGear === true &&
+                    <>{groupGearFunction().map((item: ConcreteSetItemType, key: number) => {
+                        return renderItem(item,key)
+                    })}</>
                 }
             </div>
         </GenericDisplayField>
-
     )
 }
 export default BuildGear

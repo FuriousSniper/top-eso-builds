@@ -1,5 +1,5 @@
-import { ConcreteSetItemType } from '../../../types/common'
-import GenericPopover from '../../GenericPopover'
+import { ConcreteSetItemType } from '../../../../types/common'
+import GenericPopover from '../../../GenericPopover'
 import './style.less'
 interface ISingleGearItem {
     item?: ConcreteSetItemType,
