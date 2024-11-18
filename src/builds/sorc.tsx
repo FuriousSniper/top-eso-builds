@@ -1,5 +1,5 @@
-import { GlyphEnum, TraitEnum } from "../enums";
-import { cpBlue, cpGreen, cpRed, food, misc, munduses, race } from "../objects/misc";
+import { TraitEnum } from "../enums";
+import { armorGlyphs, cpBlue, cpGreen, cpRed, food, jewelryGlyphs, misc, munduses, race, weaponGlyphs } from "../objects/misc";
 import sets from "../objects/sets";
 import magesGuildSkills from "../objects/skills/magesGuild";
 import scribingSkills from "../objects/skills/scribingSkills";
@@ -33,74 +33,74 @@ const sorc: BuildType = {
             set: sets[5],
             slot: "Head",
             trait: TraitEnum.impen,
-            enchant: GlyphEnum.multi,
+            enchant: armorGlyphs[0],
             weight: "Medium"
         },
         {
             set: sets[5],
             slot: "Shoulders",
             trait: TraitEnum.impen,
-            enchant: GlyphEnum.multi,
+            enchant: armorGlyphs[0],
             weight: "Medium"
         },
         {
             set: sets[4],
             slot: "Chest",
             trait: TraitEnum.reinforced,
-            enchant: GlyphEnum.multi,
+            enchant: armorGlyphs[0],
             weight: "Heavy"
         },
         {
             set: sets[6],
             slot: "Hands",
             trait: TraitEnum.impen,
-            enchant: GlyphEnum.multi,
+            enchant: armorGlyphs[0],
             weight: "Light"
         },
         {
             set: sets[2],
             slot: "Waist",
             trait: TraitEnum.impen,
-            enchant: GlyphEnum.multi,
+            enchant: armorGlyphs[0],
             weight: "Medium"
         },
         {
             set: sets[2],
             slot: "Legs",
             trait: TraitEnum.impen,
-            enchant: GlyphEnum.multi,
+            enchant: armorGlyphs[0],
             weight: "Medium"
         },
         {
             set: sets[2],
             slot: "Feet",
             trait: TraitEnum.impen,
-            enchant: GlyphEnum.multi,
+            enchant: armorGlyphs[0],
             weight: "Medium"
         },
         {
             set: sets[6],
             slot: "Necklace",
             trait: TraitEnum.arcane,
-            enchant: GlyphEnum.multi,
+            enchant: jewelryGlyphs[3],
         },
         {
             set: sets[6],
             slot: "Ring",
             trait: TraitEnum.arcane,
-            enchant: GlyphEnum.multi,
+            enchant: jewelryGlyphs[3],
         },
         {
             set: sets[7],
             slot: "Ring",
             trait: TraitEnum.arcane,
-            enchant: GlyphEnum.magrec,
+            enchant: jewelryGlyphs[1],
         },
         {
             set: sets[6],
             slot: "Main-hand weapon",
             trait: TraitEnum.sharp,
-            enchant: GlyphEnum.shock,
+            enchant: weaponGlyphs[2],
             weapon: "Lightning Staff"
         },
         {
@@ -114,7 +114,7 @@ const sorc: BuildType = {
             set: sets[2],
             slot: "Off-hand weapon",
             trait: TraitEnum.defending,
-            enchant: GlyphEnum.wd,
+            enchant: weaponGlyphs[3],
             weapon: "Ice Staff"
         },
         {

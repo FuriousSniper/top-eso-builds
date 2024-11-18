@@ -1,8 +1,29 @@
+@import "/src/styles/variables.less";
+@import "/src/styles/index.less";
+
 .miscItem {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   gap: 10px;
+  vertical-align: baseline;
+
+  .miscImg{
+    width: @icon-text-size;
+    height: @icon-text-size;
+  }
+
+  .tinyMiscImg{
+    width: 18px;
+    height: 18px;
+  }
+
+  .miscName{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
 }
 
 .miscItem img {

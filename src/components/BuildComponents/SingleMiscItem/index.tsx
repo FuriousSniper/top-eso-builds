@@ -5,7 +5,10 @@ import './style.less'
 interface SingleMiscItemProps {
     misc?: GenericDisplayType | null | undefined,
     toggleCrossFunction: (id: string) => void,
-    id: string
+    id: string,
+    parentClassName?: string,
+    tinyIcon?: boolean,
+    renderIcon?: boolean, //be default it is rendering icon, pass false not to render
 }
 
 const SingleMiscItem = (props: SingleMiscItemProps) => {
@@ -20,13 +23,16 @@ const SingleMiscItem = (props: SingleMiscItemProps) => {
             }
             {
                 props.misc &&
-                <div onClick={miscClickFunction} id={props.id}>
+                <div onClick={miscClickFunction} id={props.id} className={props.parentClassName}>
                     <GenericPopover displayItem={props.misc} className='miscItem clickable'>
-                        <img
-                            src={props.misc.icon}
-                            alt=""
-                            className='miscImg'
-                        /><span>{props.misc.name}</span>
+                        {props.renderIcon === true || props.renderIcon===undefined &&
+                            <img
+                                src={props.misc.icon}
+                                alt=""
+                                className={props.tinyIcon === true ? "tinyMiscImg" : "miscImg"}
+                            />
+                        }
+                        <span className='miscName'>{props.misc.name}</span>
                     </GenericPopover>
                 </div>
             }
