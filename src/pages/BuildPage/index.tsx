@@ -1,28 +1,29 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { BuildType } from "../../types/common";
-import arcanist1 from "../../builds/arcanist1";
 import HeaderMenu from "../../components/HeaderMenu";
 import BuildSkills from "../../components/BuildComponents/BuildSkills";
 import BuildGear from "../../components/BuildComponents/BuildGear";
 import BuildStats from "../../components/BuildComponents/BuildStats";
 import BuildCp from "../../components/BuildComponents/BuildCp";
 import BuildMisc from "../../components/BuildComponents/BuildMisc";
-import * as _ from "lodash";
 import { checkBuildExistence, checkCrossedExistence, getFromLS, initBuildCrossedArray, initCrossedItems, updateBuildCrossedArray } from "../../utils/utils";
 import BuildDetails from "../../components/BuildComponents/BuildDetails";
 import FooterMenu from "../../components/FooterMenu";
-import sorc from "../../builds/sorc";
-import './style.less'
 import GenericDisplayField from "../../components/GenericDisplayField";
 import BuildExplainSkills from "../../components/BuildComponents/BuildExplainSkills";
 import TextDisplayField from "../../components/TextDisplayField";
+import arcanist1 from "../../builds/arcanist1";
+import sorc from "../../builds/sorc";
+import * as _ from "lodash";
+import './style.less'
 
 const BuildPage = () => {
     const { buildNameParam } = useParams();
     const [build, setBuild] = useState({} as BuildType)
     const [buffedStats, setBuffedStats] = useState(true)
     const [crossBuildItems, setCrossBuildItems] = useState(true)
+    const [groupGear, setGroupGear] = useState(false)
     const [crossedItemsArray, setCrosseditemsArray] = useState(Array<string>())
     const navigate = useNavigate();
 
@@ -63,7 +64,7 @@ const BuildPage = () => {
 
     useEffect(() => {
         changeCrossedItemsStatus(crossBuildItems, crossedItemsArray)
-    }, [crossBuildItems, crossedItemsArray])
+    }, [crossBuildItems, crossedItemsArray,groupGear])
 
     const toggleCrossedState = (id: string) => {
         if (!crossBuildItems) {
@@ -113,14 +114,14 @@ const BuildPage = () => {
             <div className="detailsWrapper">
                 <TextDisplayField parentClassName="titleClass">
                     <>
-                        <img src={build.buildIcon} alt="" className="textIcon"/>&nbsp;
+                        <img src={build.buildIcon} alt="" className="textIcon" />&nbsp;
                         <span>{build.name}</span>
                     </>
-                    
+
                 </TextDisplayField>
                 <div className="buildDetails">
                     <div className="uiColumn">
-                        <BuildGear gear={build.gear} toggleCrossFunction={toggleCrossedState} buildId={build.id} />
+                        <BuildGear gear={build.gear} groupGear={groupGear} toggleCrossFunction={toggleCrossedState} buildId={build.id} />
                     </div>
                     <div className="uiColumn">
                         <BuildSkills skills={build.skills} />
@@ -132,6 +133,7 @@ const BuildPage = () => {
             </div>
             <div className="otherStuff">
                 <div className="controls">
+                    <div><input type="checkbox" name="groupGear" id="groupGear" onChange={() => setGroupGear(!groupGear)} checked={groupGear} /><label htmlFor="groupGear">Group gear by set name</label></div>
                     <div><input type="checkbox" name="buffed" id="buffed" onChange={() => setBuffedStats(!buffedStats)} checked={buffedStats} /><label htmlFor="buffed">Toggle Buffed</label></div>
                     <div><input type="checkbox" name="itemsChecked" id="itemsChecked" onChange={() => toggleAllCrossed()} checked={crossBuildItems} /><label htmlFor="itemsChecked">Toggle Crossed-out items</label></div>
                 </div>
