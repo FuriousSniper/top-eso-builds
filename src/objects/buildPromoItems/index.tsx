@@ -14,6 +14,13 @@ const BuildPromoItems: BuildPromoItem[] = [
         promoImage: "/promo/sorc_promo.webp",
         promoImageText: "Hitting 4 skills in 1 GCD. Big boomers.",
         link: "/build/burstSorc"
+    },
+    {
+        name: "Warden",
+        icon: "/icons/classes/warden.png",
+        promoImage: "/promo/warden_promo.webp",
+        promoImageText: "Crits, AOE, tankiness. The power of ice. Merry Christmass I guess?",
+        link: "/build/warden"
     }
 ]
 

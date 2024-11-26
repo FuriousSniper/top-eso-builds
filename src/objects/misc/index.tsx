@@ -29,6 +29,11 @@ export const munduses: GenericDisplayType[] = [
         description: "<p>Increases Maximum Magicka by 2023</p>",
         icon: "/icons/misc/mundus/mage.png",
     },
+    {
+        name: "Shadow",
+        description: "<p>Increases Critical Damage and Healing by 11%</p>",
+        icon: "/icons/misc/mundus/shadow.png",
+    },
 ]
 
 export const food: GenericDisplayType[] = [
@@ -81,6 +86,11 @@ export const cpBlue: GenericDisplayType[] = [
     {
         name: "Arcane Supremacy",
         description: "<p>Increases Max Magicka by 26 per stage.</p>",
+        icon: "/icons/buildPage/cpStarBlue.png",
+    },
+    {
+        name: "Fighting Finesse",
+        description: "<p>Increases your Critical Damage and Critical Healing done by 4% per stage.</p>",
         icon: "/icons/buildPage/cpStarBlue.png",
     },
 ]
@@ -142,6 +152,16 @@ export const armorGlyphs: GenericDisplayType[] = [
         name: "Multi-Effect Enchantment",
         icon: "/icons/misc/enchants/multi.png",
         description: "<p>Adds 434 Maximum Magicka.<br/>Adds 477 Maximum Health.<br/>Adds 434 Maximum Stamina.</p>"
+    },
+    {
+        name: "Maximum Magicka Enchantment",
+        icon: "/icons/misc/enchants/maxmag.png",
+        description: "<p>Adds 868 Maximum Magicka.</p>"
+    },
+    {
+        name: "Maximum Stamina Enchantment",
+        icon: "/icons/misc/enchants/maxstam.png",
+        description: "<p>Adds 868 Maximum Stamina.</p>"
     },
 ]
 
