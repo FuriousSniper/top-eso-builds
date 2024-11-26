@@ -43,5 +43,32 @@ const scribingSkills: Array<GenericSkill> = [
         description: '<p class="skillDescription">Launch a concentrated blast of soul magic at a target.</p><p class="skillDescription">Deals 4011 Magic Damage to an enemy. Beneficial Signature and Affix scripts only apply to you.</p><p class="skillDescription">Enchant your closest pet for 5 seconds to heal a nearby ally for 314 Health each time it deals damage, up to once a second. If you do not have a pet, you deal 709 Shock Damage to enemies within 8 meters of your target.</p><p class="skillDescription">Afflicts the enemy with Major Breach for 10 seconds, reducing Physical and Spell Resistance by 5948.</p>',
         icon: "/icons/skills/soul-magic/wieldsoul.png",
     },
+    {
+        name: "Fiery contingency",
+        id: 2140,
+        castTime: 0,
+        target: "Area",
+        radius: 8,
+        duration: 22,
+        cost: {
+            resourceName: "Magicka",
+            amount: 2948,
+        },
+        description: '<p class="skillDescription">Imbue yourself with the magical runes of Ulfsild for 22 seconds. These runes trigger when you cast an ability with a cost, causing a burst of magic around you.</p><p class="skillDescription">Deals 5812 Flame Damage to enemies. Beneficial Signature and Affix scripts only apply to you.</p><p class="skillDescription">Create an 8 meter area for 2 seconds under your target once every 8 seconds that snares enemies by 70%, and charms them for 3 seconds when it expires. If no enemies are charmed, you restore 1435 Magicka and Stamina.</p><p class="skillDescription">Grants Minor Intellect and Minor Endurance for 22 seconds, increasing Magicka and Stamina Recovery by 15%.</p>',
+        icon: "/icons/skills/mages/cont.png",
+    },
+    {
+        name: "Healing soul",
+        id: 2141,
+        castTime: 0,
+        target: "Area",
+        radius: 28,
+        cost: {
+            resourceName: "Magicka",
+            amount: 4498,
+        },
+        description: '<p class="skillDescription">Launch a concentrated blast of soul magic at a target.</p><p class="skillDescription">Heals you or an ally for 10599 Health. Beneficial Signature and Affix scripts apply to you or an ally.</p><p class="skillDescription">Restores 600 Magicka and 600 Stamina.</p><p class="skillDescription">Grants Major Vitality for 10 seconds, increasing healing received and damage shield strength by 12%.</p>',
+        icon: "/icons/skills/soul-magic/wieldsoul.png",
+    },
 ]
 export default scribingSkills

@@ -141,7 +141,7 @@ const sorc: BuildType = {
 
     ],
     cp: {
-        redCp: [cpRed[0], cpRed[1], cpRed[2], cpRed[4]],
+        redCp: [cpRed[0], cpRed[1], cpRed[2], cpRed[3]],
         blueCp: [cpBlue[0], cpBlue[1], cpBlue[2], cpBlue[4]],
         greenCp: [cpGreen[0], cpGreen[1], cpGreen[2], cpGreen[3]]
     },

@@ -135,7 +135,68 @@ const sets: SetType[] = [
                 description: "Gain a persistent stack of Escalating Fete every 2 seconds you are in combat, up to 30 stacks max. Each stack of Escalating Fete increases your Maximum Stamina, Health, and Magicka by 88. You lose a stack of Escalating Fete every 4 seconds you are out of combat."
             }
         ]
-    }
+    },
+    {
+        id: 8,
+        name: "Order's Wrath",
+        origin: "Crafted",
+        bonuses: [
+            {
+                index: 2,
+                description: "Adds 657 Critical Chance"
+            },
+            {
+                index: 3,
+                description: "Adds 129 Weapon and Spell Damage"
+            },
+            {
+                index: 4,
+                description: "Adds 657 Critical Chance"
+            },
+            {
+                index: 5,
+                description: "Adds 943 Critical Chance, Increases your Critical Damage and Critical Healing by 8%."
+            }
+        ]
+    },
+    {
+        id: 9,
+        name: "Rallying Cry",
+        origin: "PVP",
+        bonuses: [
+            {
+                index: 2,
+                description: "Adds 657 Critical Chance"
+            },
+            {
+                index: 3,
+                description: "Adds 1096 Maximum Magicka"
+            },
+            {
+                index: 4,
+                description: "Adds 657 Critical Chance"
+            },
+            {
+                index: 5,
+                description: "While Battle Spirit is active, when your healing critically strikes you and up to 11 other group members within 12 meters to gain 300 Weapon and Spell Damage, and 1650 Critical Resistance for 20 seconds. Each group member affected reduces the Weapon and Spell Damage by 15 and Critical Resistance by 83. This effect can occur once every 15 seconds."
+            }
+        ]
+    },
+    {
+        id: 10,
+        name: "Balorgh",
+        origin: "Monster Set",
+        bonuses: [
+            {
+                index: 1,
+                description: "Adds 129 Weapon and Spell Damage"
+            },
+            {
+                index: 2,
+                description: "When you use an Ultimate ability, you gain Weapon and Spell Damage equal to the amount of total Ultimate consumed, and Physical and Spell Penetration equal to 23 times the amount for 12 seconds."
+            }
+        ]
+    },
 ]
 
 export default sets

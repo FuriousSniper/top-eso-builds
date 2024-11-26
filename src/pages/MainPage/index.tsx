@@ -24,7 +24,7 @@ const MainPage = () => {
         slidesToShow: 1,
         slidesToScroll: 1
     };
-    
+
     return (
         <div className="content">
             <HeaderMenu />
@@ -36,6 +36,7 @@ const MainPage = () => {
                 </Slider>
             </div>
             <div className="main">
+                <BuildsRow />
                 <div className="textWrapper">
                     <p className="textSection">
                         Welcome to another page dedicated to ESO builds. I tried to take a new approach in showcasing a build, partially inspired by addon Superstar.
@@ -45,10 +46,9 @@ const MainPage = () => {
                         Visit <Link to={"/about"}>About</Link> page to learn more about features and other stuff.
                     </p>
                 </div>
-                <BuildsRow />
                 <div className="textWrapper">
                     <p className="textSection">
-                        Introducing <Link to={"/tools/penCalc"}>penetration</Link> and <Link to={"/tools/critCalc"}>crit damage</Link> calculators!<br/>Calculate how much crit damage and pen you need in order to meet required cap yourself using new and easy to understand calculators.
+                        Introducing <Link to={"/tools/penCalc"}>penetration</Link> and <Link to={"/tools/critCalc"}>crit damage</Link> calculators!<br />Calculate how much crit damage and pen you need in order to meet required cap yourself using new and easy to understand calculators.
                     </p>
                     <p className="textSection">
                         Calculators allow users to select different buffs/debuffs provided by supports and choose individual classes in order to configure each one&apos;s options of reaching desired cap.

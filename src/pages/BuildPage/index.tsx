@@ -17,6 +17,7 @@ import arcanist1 from "../../builds/arcanist1";
 import sorc from "../../builds/sorc";
 import * as _ from "lodash";
 import './style.less'
+import warden from "../../builds/warden";
 
 const BuildPage = () => {
     const { buildNameParam } = useParams();
@@ -26,7 +27,7 @@ const BuildPage = () => {
     const [groupGear, setGroupGear] = useState(false)
     const [crossedItemsArray, setCrosseditemsArray] = useState(Array<string>())
     const navigate = useNavigate();
-
+    
     useEffect(() => {
         //TERRIBLE but can be fixed with server and API only. 
         let buildLocal;
@@ -37,6 +38,10 @@ const BuildPage = () => {
         else if (buildNameParam === "burstSorc") {
             setBuild(sorc)
             buildLocal = sorc
+        }
+        else if (buildNameParam === "warden") {
+            setBuild(warden)
+            buildLocal = warden
         }
         else {
             navigate("/")
