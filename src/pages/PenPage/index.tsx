@@ -5,7 +5,7 @@ import HeaderMenu from "../../components/HeaderMenu"
 import GenericModal from "../../components/Modals/GenericModal";
 import { CharacterPenType } from "../../types/common"
 import PenCalculatorCharacterObject from "../../components/CalculatorComponents/PenCalculatorCharacterObject"
-import { boundsMinMax, copyLink, getRandomArbitrary, parseBoolToString } from "../../utils/utils"
+import { boundsMinMax, copyLink, encodeToUrl, getPenCharsFromUrl, getRandomArbitrary, parseBoolToString } from "../../utils/utils"
 import GenericInput from "../../components/CalculatorComponents/GenericInput"
 import { useSearchParams } from "react-router-dom"
 import './style.less'
@@ -21,9 +21,9 @@ const PenPage = () => {
     const [crimson, setCrimson] = useState((searchParams.get("crimson") ? parseBoolToString(searchParams.get("crimson")) : false))
     const [alkosh, setAlkosh] = useState((searchParams.get("alkosh") ? parseBoolToString(searchParams.get("alkosh")) : false))
     const [tremor, setTremor] = useState((searchParams.get("tremor") ? parseBoolToString(searchParams.get("tremor")) : false))
-    const [charactersArray, setCharactersArray] = useState(Array<CharacterPenType>())
+    const [charactersArray, setCharactersArray] = useState(searchParams.get("chars") ? getPenCharsFromUrl(searchParams.get("chars")) : Array<CharacterPenType>())
     const copyButtonRef = useRef<HTMLButtonElement>(null)
-    const copyButtonText = "Copy values (support only)"
+    const copyButtonText = "Copy values"
 
     useEffect(() => {
         document.title = `Top ESO Builds: Pen calculator`
@@ -31,42 +31,41 @@ const PenPage = () => {
 
     useEffect(() => {
         let supportPenSum = 0
-        const newQueryParameters: URLSearchParams = new URLSearchParams();
-        newQueryParameters.set("target", String(requiredPen))
+        searchParams.set("target", String(requiredPen))
 
-        newQueryParameters.set("majorBreach", String(majorBreach))
+        searchParams.set("majorBreach", String(majorBreach))
         if (majorBreach) {
             supportPenSum += 5948;
         }
 
-        newQueryParameters.set("minorBreach", String(minorBreach))
+        searchParams.set("minorBreach", String(minorBreach))
         if (minorBreach) {
             supportPenSum += 2974;
         }
 
-        newQueryParameters.set("crusher", String(crusher))
+        searchParams.set("crusher", String(crusher))
         if (crusher) {
             supportPenSum += 2108;
         }
 
-        newQueryParameters.set("alkosh", String(alkosh))
+        searchParams.set("alkosh", String(alkosh))
         if (alkosh) {
             supportPenSum += 6000;
         }
 
-        newQueryParameters.set("crimson", String(crimson))
+        searchParams.set("crimson", String(crimson))
         if (crimson) {
             supportPenSum += 3541;
         }
 
-        newQueryParameters.set("tremor", String(tremor))
+        searchParams.set("tremor", String(tremor))
         if (tremor) {
             supportPenSum += 2400;
         }
 
         setSupportPen(supportPenSum)
         updateSupportPenForChars(supportPenSum)
-        setSearchParams(newQueryParameters)
+        setSearchParams(searchParams)
     }, [requiredPen, crimson, alkosh, majorBreach, minorBreach, crusher, tremor])
 
     useEffect(() => {
@@ -74,6 +73,22 @@ const PenPage = () => {
             alert("crimson, alkosh, tremor. are you sure about that?")
         }
     }, [crimson, alkosh, tremor])
+ 
+    useEffect(()=>{
+        searchParams.set("chars", encodeToUrl(charactersArray))
+        setSearchParams(searchParams)
+    },[charactersArray])
+
+    const updateChar = (char: CharacterPenType)=>{
+        const copy = [...charactersArray]
+        const index=copy.findIndex((arg: CharacterPenType)=>{
+            return arg.id===char.id
+        })
+        copy[index]=char
+
+        searchParams.set("chars", encodeToUrl(copy))
+        setSearchParams(searchParams)
+    }
 
     const createCharacter = (className: string, name: string) => {
         const charObject: CharacterPenType = {
@@ -93,7 +108,6 @@ const PenPage = () => {
             loverMundus: false,
             otherSetLines: 0,
             otherSources: 0,
-            penSelf: 0,
             penSupport: supportPen
         }
 
@@ -182,7 +196,7 @@ const PenPage = () => {
                                     <p className="noCharacters">No characters added!<br />Use the button above in order to add a character and calculate penetration.</p>
                                 }
                                 {charactersArray.map((char: CharacterPenType, key: number) => {
-                                    return <PenCalculatorCharacterObject char={char} supportPen={supportPen} requiredPen={requiredPen} key={key} deleteFunction={() => deleteChar(char.id)} />
+                                    return <PenCalculatorCharacterObject char={char} supportPen={supportPen} requiredPen={requiredPen} key={key} deleteFunction={() => deleteChar(char.id)} updateFunction={updateChar}/>
                                 })}
                             </>
                         </GenericDisplayField>

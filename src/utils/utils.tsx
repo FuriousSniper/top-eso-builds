@@ -1,4 +1,5 @@
 import * as _ from "lodash";
+import { CharacterCritType, CharacterPenType } from "../types/common";
 
 export const replaceSpecialStrings = (html: string) => {
     let resultHtml = html
@@ -141,4 +142,45 @@ export const copyLink = () => {
 
 export const getRandomArbitrary = (min: number, max: number) => {
     return Math.floor(Math.random() * (max - min) + min);
+}
+
+export const encodeToUrl = (obj: CharacterCritType[] | CharacterPenType[]) => {
+    return encodeURI(JSON.stringify(obj))
+}
+
+export const decodeFromUrl = (html: string | null | undefined) => {
+    if (!html) {
+        return false
+    }
+
+    const decoded = decodeURI(html)
+    try {
+        return JSON.parse(decoded)
+    }
+    catch {
+        return false
+    }
+}
+
+export const isPenChar = (obj: CharacterPenType | CharacterCritType): obj is CharacterPenType => {
+    return (obj as CharacterPenType).penSupport !== undefined;
+}
+
+export const getPenCharsFromUrl = (charString: string | null)=>{
+    if(!charString){
+        return Array<CharacterPenType>()
+    }
+
+    const decoded = decodeFromUrl(charString)
+    if(decoded===false){
+        Array<CharacterPenType>()
+    }
+
+    const objArray = Array<CharacterPenType>()
+    for(let i=0;i<decoded.length;i++){
+        if(isPenChar(decoded[i])){
+            objArray.push(decoded[i])
+        }
+    }
+    return objArray
 }

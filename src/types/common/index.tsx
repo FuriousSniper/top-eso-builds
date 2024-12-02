@@ -132,7 +132,6 @@ export type BuildPromoItem = {
 export type CharacterPenType = {
     class: string,
     id: string,
-    penSelf: number,
     penSupport: number,
     name: string,
     necroPassive: boolean,
