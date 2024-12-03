@@ -166,6 +166,10 @@ export const isPenChar = (obj: CharacterPenType | CharacterCritType): obj is Cha
     return (obj as CharacterPenType).penSupport !== undefined;
 }
 
+export const isCritChar = (obj: CharacterPenType | CharacterCritType): obj is CharacterCritType => {
+    return (obj as CharacterCritType).critSupport !== undefined;
+}
+
 export const getPenCharsFromUrl = (charString: string | null)=>{
     if(!charString){
         return Array<CharacterPenType>()
@@ -173,12 +177,31 @@ export const getPenCharsFromUrl = (charString: string | null)=>{
 
     const decoded = decodeFromUrl(charString)
     if(decoded===false){
-        Array<CharacterPenType>()
+        return Array<CharacterPenType>()
     }
 
     const objArray = Array<CharacterPenType>()
     for(let i=0;i<decoded.length;i++){
         if(isPenChar(decoded[i])){
+            objArray.push(decoded[i])
+        }
+    }
+    return objArray
+}
+
+export const getCritCharsFromUrl = (charString: string | null)=>{
+    if(!charString){
+        return Array<CharacterCritType>()
+    }
+
+    const decoded = decodeFromUrl(charString)
+    if(decoded===false){
+        return Array<CharacterCritType>()
+    }
+
+    const objArray = Array<CharacterCritType>()
+    for(let i=0;i<decoded.length;i++){
+        if(isCritChar(decoded[i])){
             objArray.push(decoded[i])
         }
     }

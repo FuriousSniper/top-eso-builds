@@ -86,8 +86,7 @@ const PenPage = () => {
         })
         copy[index]=char
 
-        searchParams.set("chars", encodeToUrl(copy))
-        setSearchParams(searchParams)
+        setCharactersArray(copy)
     }
 
     const createCharacter = (className: string, name: string) => {
