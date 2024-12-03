@@ -4,7 +4,7 @@ import GenericDisplayField from "../../components/GenericDisplayField"
 import HeaderMenu from "../../components/HeaderMenu"
 import GenericModal from "../../components/Modals/GenericModal";
 import { CharacterCritType } from "../../types/common"
-import { boundsMinMax, copyLink, getRandomArbitrary, parseBoolToString } from "../../utils/utils"
+import { boundsMinMax, copyLink, encodeToUrl, getCritCharsFromUrl, getRandomArbitrary, parseBoolToString } from "../../utils/utils"
 import GenericInput from "../../components/CalculatorComponents/GenericInput"
 import CritCalculatorCharacterObject from "../../components/CalculatorComponents/CritCalculatorCharacterObject"
 import { useSearchParams } from "react-router-dom"
@@ -21,8 +21,8 @@ const CritPage = () => {
     const [lucent, setLucent] = useState(searchParams.get("lucent") ? parseBoolToString(searchParams.get("lucent")) : true)
     const [ec, setEc] = useState(Number(searchParams.get("ec")) ? boundsMinMax(Number(searchParams.get("ec")), 0, 3) : 0)
     const copyButtonRef = useRef<HTMLButtonElement>(null)
-    const copyButtonText = "Copy values (support only)"
-    const [charactersArray, setCharactersArray] = useState(Array<CharacterCritType>())
+    const copyButtonText = "Copy values"
+    const [charactersArray, setCharactersArray] = useState(searchParams.get("chars") ? getCritCharsFromUrl(searchParams.get("chars")) :Array<CharacterCritType>())
     const baseCritDmg = 50
 
     useEffect(() => {
@@ -30,37 +30,51 @@ const CritPage = () => {
     })
 
     useEffect(() => {
-        let supportCritSum = 0
-        const newQueryParameters: URLSearchParams = new URLSearchParams();
-        newQueryParameters.set("target", String(requiredCrit))
+        searchParams.set("chars", encodeToUrl(charactersArray))
+        setSearchParams(searchParams)
+    }, [charactersArray])
 
-        newQueryParameters.set("majorForce", String(majorForce))
+    const updateChar = (char: CharacterCritType) => {
+        const copy = [...charactersArray]
+        const index = copy.findIndex((arg: CharacterCritType) => {
+            return arg.id === char.id
+        })
+        copy[index] = char
+
+        setCharactersArray(copy)
+    }
+
+    useEffect(() => {
+        let supportCritSum = 0
+        searchParams.set("target", String(requiredCrit))
+
+        searchParams.set("majorForce", String(majorForce))
         if (majorForce) {
             supportCritSum += 20;
         }
 
-        newQueryParameters.set("majorBrittle", String(majorBrittle))
+        searchParams.set("majorBrittle", String(majorBrittle))
         if (majorBrittle) {
             supportCritSum += 20;
         }
 
-        newQueryParameters.set("minorBrittle", String(minorBrittle))
+        searchParams.set("minorBrittle", String(minorBrittle))
         if (minorBrittle) {
             supportCritSum += 10;
         }
 
-        newQueryParameters.set("lucent", String(lucent))
+        searchParams.set("lucent", String(lucent))
         if (lucent) {
             supportCritSum += 11;
         }
 
-        newQueryParameters.set("ec", String(ec))
+        searchParams.set("ec", String(ec))
         supportCritSum += ec * 5
 
         setSupportCrit(supportCritSum)
         updateSupportCritForChars(supportCritSum)
 
-        setSearchParams(newQueryParameters)
+        setSearchParams(searchParams)
     }, [ec, lucent, majorBrittle, majorForce, minorBrittle, requiredCrit])
 
     const createCharacter = (className: string, name: string) => {
@@ -176,7 +190,7 @@ const CritPage = () => {
                                     <p className="noCharacters">No characters added!<br />Use the button above in order to add a character and calculate crit damage.</p>
                                 }
                                 {charactersArray.map((char: CharacterCritType, key: number) => {
-                                    return <CritCalculatorCharacterObject char={char} supportCrit={supportCrit} requiredCrit={requiredCrit} key={key} deleteFunction={() => deleteChar(char.id)} />
+                                    return <CritCalculatorCharacterObject char={char} supportCrit={supportCrit} requiredCrit={requiredCrit} key={key} deleteFunction={() => deleteChar(char.id)} updateFunction={updateChar}/>
                                 })}
                             </>
                         </GenericDisplayField>
