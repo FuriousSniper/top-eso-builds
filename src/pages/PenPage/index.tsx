@@ -1,13 +1,14 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import FooterMenu from "../../components/FooterMenu"
 import GenericDisplayField from "../../components/GenericDisplayField"
 import HeaderMenu from "../../components/HeaderMenu"
 import GenericModal from "../../components/Modals/GenericModal";
 import { CharacterPenType } from "../../types/common"
 import PenCalculatorCharacterObject from "../../components/CalculatorComponents/PenCalculatorCharacterObject"
-import { boundsMinMax, copyLink, encodeToUrl, getPenCharsFromUrl, getRandomArbitrary, parseBoolToString } from "../../utils/utils"
+import { boundsMinMax, encodeToUrl, getPenCharsFromUrl, getRandomArbitrary, parseBoolToString } from "../../utils/utils"
 import GenericInput from "../../components/CalculatorComponents/GenericInput"
 import { useSearchParams } from "react-router-dom"
+import CopyButton from "../../components/CopyButton";
 import './style.less'
 import '../calculatorStyles.less'
 
@@ -22,8 +23,6 @@ const PenPage = () => {
     const [alkosh, setAlkosh] = useState((searchParams.get("alkosh") ? parseBoolToString(searchParams.get("alkosh")) : false))
     const [tremor, setTremor] = useState((searchParams.get("tremor") ? parseBoolToString(searchParams.get("tremor")) : false))
     const [charactersArray, setCharactersArray] = useState(searchParams.get("chars") ? getPenCharsFromUrl(searchParams.get("chars")) : Array<CharacterPenType>())
-    const copyButtonRef = useRef<HTMLButtonElement>(null)
-    const copyButtonText = "Copy values"
 
     useEffect(() => {
         document.title = `Top ESO Builds: Pen calculator`
@@ -73,18 +72,18 @@ const PenPage = () => {
             alert("crimson, alkosh, tremor. are you sure about that?")
         }
     }, [crimson, alkosh, tremor])
- 
-    useEffect(()=>{
+
+    useEffect(() => {
         searchParams.set("chars", encodeToUrl(charactersArray))
         setSearchParams(searchParams)
-    },[charactersArray])
+    }, [charactersArray])
 
-    const updateChar = (char: CharacterPenType)=>{
+    const updateChar = (char: CharacterPenType) => {
         const copy = [...charactersArray]
-        const index=copy.findIndex((arg: CharacterPenType)=>{
-            return arg.id===char.id
+        const index = copy.findIndex((arg: CharacterPenType) => {
+            return arg.id === char.id
         })
-        copy[index]=char
+        copy[index] = char
 
         setCharactersArray(copy)
     }
@@ -142,20 +141,6 @@ const PenPage = () => {
         setCharactersArray(copyChars)
     }
 
-    const copyLinkButtonAction = () => {
-        copyLink()
-
-        if (!copyButtonRef.current) {
-            return
-        }
-        copyButtonRef.current!.innerText = "Link copied!"
-        copyButtonRef.current!.disabled = true
-        setTimeout(() => {
-            copyButtonRef.current!.innerText = copyButtonText
-            copyButtonRef.current!.disabled = false
-        }, 2000)
-    }
-
     return (
         <div className="content">
             <HeaderMenu />
@@ -163,7 +148,7 @@ const PenPage = () => {
                 <div className="titleBanner">
                     <h2>Penetration calculator</h2>
                     <div className="controlItems">
-                        <button onClick={copyLinkButtonAction} ref={copyButtonRef}>{copyButtonText}</button>
+                        <CopyButton />
                         <div><label htmlFor="penCap">Set pen target</label><input type="number" name="penCap" id="penCap" value={requiredPen} onChange={event => setRequiredPen(boundsMinMax(Number(event.target.value), 0, 102000))} min={0} max={102000} /></div>
                         <GenericModal buttonName="Add DD Character" className="addCharacterButton" createChar={createCharacter} />
                     </div>
@@ -195,13 +180,12 @@ const PenPage = () => {
                                     <p className="noCharacters">No characters added!<br />Use the button above in order to add a character and calculate penetration.</p>
                                 }
                                 {charactersArray.map((char: CharacterPenType, key: number) => {
-                                    return <PenCalculatorCharacterObject char={char} supportPen={supportPen} requiredPen={requiredPen} key={key} deleteFunction={() => deleteChar(char.id)} updateFunction={updateChar}/>
+                                    return <PenCalculatorCharacterObject char={char} supportPen={supportPen} requiredPen={requiredPen} key={key} deleteFunction={() => deleteChar(char.id)} updateFunction={updateChar} />
                                 })}
                             </>
                         </GenericDisplayField>
                     </div>
                 </div>
-
             </div>
             <FooterMenu />
         </div>

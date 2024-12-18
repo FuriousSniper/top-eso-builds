@@ -184,11 +184,11 @@ const warden: BuildType = {
         race: race[0],
         mundus: munduses[4]
     },
-    generalInfo: "<p>This particular magwarden has high burst potential and works well even in outnumbered situations due to having a lot of AOE skils. Cross healing provides additional group utility.</p>",
+    generalInfo: "<p>This particular magwarden has high burst potential and works well even in outnumbered situations due to having a lot of AOE skills and great single target pressure. Cross healing provides additional group utility.</p>",
     details: [
         {
             title: "Primary principle",
-            htmlText: "The build is designed to have LESS than 30k hp. Thanks to that, we can utilise the passive piercing cold, which increases our damage done by 8%. This build has a bit more heavy items than usual, because without much resists it feels a bit paper. Glyphs should be a personal choice. User should only fit enough multi-effect glyphs not to exceed 30k hp with buffs up (minor toughness)."
+            htmlText: "<p>The build is designed to have LESS than 30k hp. Thanks to that, we can utilise the passive piercing cold, which increases our damage done by 8%. This build has a bit more heavy items than usual, because without much resists it feels a bit paper. Glyphs should be a personal choice. User should only fit enough multi-effect glyphs not to exceed 30k hp with buffs up (minor toughness).<p>"
         },
         
         {
@@ -201,7 +201,7 @@ const warden: BuildType = {
         },
         {
             title: "Race",
-            htmlText: "Orc, Imperial are solid and well-rounded choces."
+            htmlText: "<p>Orc, Imperial are solid and well-rounded choces.</p>"
         }
     ],
     lastUpdated: "U44"
