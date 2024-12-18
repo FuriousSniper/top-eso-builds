@@ -38,7 +38,7 @@ const AddCharacterModal = (props: AddCharacterModalProps) => {
             <div className="modal">
                 <div className='modalTitle'>Add character</div>
                 <div className="modalRow">
-                    <label htmlFor="charName">Character name</label><input type="text" value={charName} onChange={(event) => setCharName(event.target.value)} name='charName' id="charName" maxLength={30}/>
+                    <label htmlFor="charName">Character name (optional)</label><input type="text" value={charName} onChange={(event) => setCharName(event.target.value)} name='charName' id="charName" maxLength={30}/>
                 </div>
                 <div className="modalRow">
                     <label htmlFor="className">Class</label>

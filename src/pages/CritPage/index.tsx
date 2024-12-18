@@ -1,13 +1,14 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import FooterMenu from "../../components/FooterMenu"
 import GenericDisplayField from "../../components/GenericDisplayField"
 import HeaderMenu from "../../components/HeaderMenu"
 import GenericModal from "../../components/Modals/GenericModal";
 import { CharacterCritType } from "../../types/common"
-import { boundsMinMax, copyLink, encodeToUrl, getCritCharsFromUrl, getRandomArbitrary, parseBoolToString } from "../../utils/utils"
+import { boundsMinMax,  encodeToUrl, getCritCharsFromUrl, getRandomArbitrary, parseBoolToString } from "../../utils/utils"
 import GenericInput from "../../components/CalculatorComponents/GenericInput"
 import CritCalculatorCharacterObject from "../../components/CalculatorComponents/CritCalculatorCharacterObject"
 import { useSearchParams } from "react-router-dom"
+import CopyButton from "../../components/CopyButton";
 import './style.less'
 import '../calculatorStyles.less'
 
@@ -20,8 +21,6 @@ const CritPage = () => {
     const [minorBrittle, setMinorBrittle] = useState(searchParams.get("minorBrittle") ? parseBoolToString(searchParams.get("minorBrittle")) : true)
     const [lucent, setLucent] = useState(searchParams.get("lucent") ? parseBoolToString(searchParams.get("lucent")) : true)
     const [ec, setEc] = useState(Number(searchParams.get("ec")) ? boundsMinMax(Number(searchParams.get("ec")), 0, 3) : 0)
-    const copyButtonRef = useRef<HTMLButtonElement>(null)
-    const copyButtonText = "Copy values"
     const [charactersArray, setCharactersArray] = useState(searchParams.get("chars") ? getCritCharsFromUrl(searchParams.get("chars")) :Array<CharacterCritType>())
     const baseCritDmg = 50
 
@@ -137,20 +136,6 @@ const CritPage = () => {
         setCharactersArray(copyChars)
     }
 
-    const copyLinkButtonAction = () => {
-        copyLink()
-
-        if (!copyButtonRef.current) {
-            return
-        }
-        copyButtonRef.current!.innerText = "Link copied!"
-        copyButtonRef.current!.disabled = true
-        setTimeout(() => {
-            copyButtonRef.current!.innerText = copyButtonText
-            copyButtonRef.current!.disabled = false
-        }, 2000)
-    }
-
     return (
         <div className="content">
             <HeaderMenu />
@@ -158,12 +143,11 @@ const CritPage = () => {
                 <div className="titleBanner">
                     <h2>Critical damage calculator</h2>
                     <div className="controlItems">
-                        <button onClick={copyLinkButtonAction} ref={copyButtonRef}>{copyButtonText}</button>
+                        <CopyButton />
                         <div><label htmlFor="critCap">Set crit target</label><input type="number" name="critCap" id="critCap" value={requiredCrit} onChange={event => setRequiredCrit(boundsMinMax(Number(event.target.value), 0, 125))} min={0} max={125} /></div>
                         <GenericModal buttonName="Add DD Character" className="addCharacterButton" createChar={createCharacter} />
                     </div>
                 </div>
-
                 <div className="columnWrapper">
                     <div className="uiColumn">
                         <GenericDisplayField legendText={"Support"}>
@@ -196,7 +180,6 @@ const CritPage = () => {
                         </GenericDisplayField>
                     </div>
                 </div>
-
             </div>
             <FooterMenu />
         </div>
