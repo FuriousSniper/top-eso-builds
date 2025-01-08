@@ -18,6 +18,7 @@ import sorc from "../../builds/sorc";
 import * as _ from "lodash";
 import './style.less'
 import warden from "../../builds/warden";
+import nb1 from "../../builds/nb1";
 
 const BuildPage = () => {
     const { buildNameParam } = useParams();
@@ -27,7 +28,7 @@ const BuildPage = () => {
     const [groupGear, setGroupGear] = useState(false)
     const [crossedItemsArray, setCrosseditemsArray] = useState(Array<string>())
     const navigate = useNavigate();
-    
+
     useEffect(() => {
         //TERRIBLE but can be fixed with server and API only. 
         let buildLocal;
@@ -42,6 +43,10 @@ const BuildPage = () => {
         else if (buildNameParam === "warden") {
             setBuild(warden)
             buildLocal = warden
+        }
+        else if (buildNameParam === "nightblade") {
+            setBuild(nb1)
+            buildLocal = nb1
         }
         else {
             navigate("/")
@@ -69,7 +74,7 @@ const BuildPage = () => {
 
     useEffect(() => {
         changeCrossedItemsStatus(crossBuildItems, crossedItemsArray)
-    }, [crossBuildItems, crossedItemsArray,groupGear])
+    }, [crossBuildItems, crossedItemsArray, groupGear])
 
     const toggleCrossedState = (id: string) => {
         if (!crossBuildItems) {
@@ -149,7 +154,9 @@ const BuildPage = () => {
                     <BuildExplainSkills skills={build.skills} />
                     <BuildDetails details={build.details} />
                     <GenericDisplayField legendText={"Last updated"}>
-                        <div className="detailsContent">{build.lastUpdated}</div>
+                        <div className="detailsContent">
+                            <p>{build.lastUpdated}</p>
+                        </div>
                     </GenericDisplayField>
                 </div>
             </div>

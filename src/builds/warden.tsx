@@ -44,7 +44,7 @@ const warden: BuildType = {
             slot: "Shoulders",
             trait: TraitEnum.impen,
             enchant: armorGlyphs[1],
-            weight: "Heavy",
+            weight: "Medium",
             id:"1"
         },
         {
@@ -59,7 +59,7 @@ const warden: BuildType = {
             set: sets[8],
             slot: "Hands",
             trait: TraitEnum.impen,
-            enchant: armorGlyphs[0],
+            enchant: armorGlyphs[1],
             weight: "Medium",
             id:"3"
         },
@@ -74,9 +74,9 @@ const warden: BuildType = {
         {
             set: sets[8],
             slot: "Legs",
-            trait: TraitEnum.reinforced,
+            trait: TraitEnum.impen,
             enchant: armorGlyphs[1],
-            weight: "Heavy",
+            weight: "Medium",
             id:"5"
         },
         {
@@ -84,7 +84,7 @@ const warden: BuildType = {
             slot: "Feet",
             trait: TraitEnum.impen,
             enchant: armorGlyphs[1],
-            weight: "Heavy",
+            weight: "Medium",
             id:"6"
         },
         {
@@ -155,25 +155,25 @@ const warden: BuildType = {
         },
         regens: {
             normal: {
-                hp: 90,
-                mag: 1063,
-                stam: 1045
+                hp: 64,
+                mag: 1099,
+                stam: 1115
             },
             buffed: {
-                hp: 90,
-                mag: 1469,
-                stam: 1437
+                hp: 83,
+                mag: 1505,
+                stam: 1507
             }
         },
         maxStats: {
             normal: {
-                hp: 26858,
-                mag: 25977,
+                hp: 25445,
+                mag: 25848,
                 stam: 14977
             },
             buffed: {
-                hp: 29543,
-                mag: 25977,
+                hp: 27801,
+                mag: 25848,
                 stam: 14977
             }
         }
@@ -188,7 +188,7 @@ const warden: BuildType = {
     details: [
         {
             title: "Primary principle",
-            htmlText: "<p>The build is designed to have LESS than 30k hp. Thanks to that, we can utilise the passive piercing cold, which increases our damage done by 8%. This build has a bit more heavy items than usual, because without much resists it feels a bit paper. Glyphs should be a personal choice. User should only fit enough multi-effect glyphs not to exceed 30k hp with buffs up (minor toughness).<p>"
+            htmlText: "<p>The build is designed to have LESS than 30k hp. Thanks to that, we can utilise the passive piercing cold, which increases our damage done by 8%. This build used to have more heavy pieces, but after testing, medium armor provides enough tankiness and damage to take it over heavy armor. Glyphs should be a personal choice. User should only fit enough multi-effect glyphs not to exceed 30k hp with buffs up (minor toughness). Version presented here has less than optimal HP, because in group play this warden can swap Rallying Cry to Powerful assault, which has additional 1206 hp bonus. If you don't use that set, try to get to around 29500 hp using attributes.<p>"
         },
         
         {

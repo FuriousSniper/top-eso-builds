@@ -19,8 +19,16 @@ const BuildPromoItems: BuildPromoItem[] = [
         name: "Warden",
         icon: "/icons/classes/warden.png",
         promoImage: "/promo/warden_promo.webp",
-        promoImageText: "Crits, AOE, tankiness. The power of ice. Merry Christmass I guess?",
+        promoImageText: "Crits, AOE, tankiness. The power of ice. Chill, bozo.",
         link: "/build/warden"
+    }
+    ,
+    {
+        name: "Nightblade",
+        icon: "/icons/classes/nb.png",
+        promoImage: "/promo/nb_promo.webp",
+        promoImageText: "Big burst, big crits, big moblity. Big.",
+        link: "/build/nightblade"
     }
 ]
 
