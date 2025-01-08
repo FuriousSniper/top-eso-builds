@@ -197,6 +197,29 @@ const sets: SetType[] = [
             }
         ]
     },
+    {
+        id: 11,
+        name: "Perfected Slivers of the Null Arca",
+        origin: "Trial",
+        bonuses: [
+            {
+                index: 2,
+                description:"Adds 657 Critical Chance"
+            }, 
+            {
+                index: 3,
+                description:"Gain Minor Slayer at all times, increasing your damage done to Dungeon, Trial, and Arena Monsters by 5%."
+            },
+            {
+                index: 4,
+                description:"Adds 657 Critical Chance"
+            },
+            {
+                index: 5,
+                description:"Adds 129 Weapon and Spell Damage, Dealing Critical Damage gives you a stack of Sliver for 10 seconds, up to once every 0.5 seconds. Upon gaining your third stack, they merge into a crystal that launches at the last enemy you damaged, dealing 1799 Physical Damage. This effect scales off the higher of your Weapon or Spell Damage, and you cannot gain Sliver for 5 seconds after the crystal is launched."
+            },
+        ]
+    }
 ]
 
 export default sets

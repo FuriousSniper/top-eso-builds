@@ -18,6 +18,7 @@ import sorc from "../../builds/sorc";
 import * as _ from "lodash";
 import './style.less'
 import warden from "../../builds/warden";
+import nb1 from "../../builds/nb1";
 
 const BuildPage = () => {
     const { buildNameParam } = useParams();
@@ -42,6 +43,10 @@ const BuildPage = () => {
         else if (buildNameParam === "warden") {
             setBuild(warden)
             buildLocal = warden
+        }
+        else if (buildNameParam === "nightblade") {
+            setBuild(nb1)
+            buildLocal = nb1
         }
         else {
             navigate("/")
