@@ -138,20 +138,3 @@ const nbSkills: Array<GenericSkill> = [
     },
 ]
 export default nbSkills
-
-/*
-{
-        name: "",
-        icon: "/icons/skills/nb/.png",
-        id: 35460,
-        castTime: 0,
-        target: "Area",
-        radius: 8,
-        duration: 8,
-        cost:{
-            resourceName: "",
-            amount:,
-        },
-        description: '<p class="skillDescription"></p><p class="skillDescription newEffect"><span class="newEffectBanner">NEW EFFECT</span></p>',
-    },
-*/
