@@ -141,7 +141,7 @@ const CritPage = () => {
             <HeaderMenu />
             <div className="main">
                 <div className="titleBanner">
-                    <h2>Critical damage calculator</h2>
+                    <h2>Critical damage calculator (U46)</h2>
                     <div className="controlItems">
                         <CopyButton />
                         <div><label htmlFor="critCap">Set crit target</label><input type="number" name="critCap" id="critCap" value={requiredCrit} onChange={event => setRequiredCrit(boundsMinMax(Number(event.target.value), 0, 125))} min={0} max={125} /></div>
@@ -156,7 +156,7 @@ const CritPage = () => {
                                     <span className="secondaryText">Support provides: </span><span>{supportCrit}%</span>
                                 </div>
                                 <div className="calcItemRow">
-                                    <span className="secondaryText">Others need to reach: </span><span>{requiredCrit - supportCrit - baseCritDmg}%</span>
+                                    <span className="secondaryText">Undercrit: </span><span>{requiredCrit - supportCrit - baseCritDmg}%</span>
                                 </div>
                                 <div className="separator moreSeparation"></div>
                                 <GenericInput type={"checkbox"} name={"Major Force"} checked={majorForce} id={"majorForce"} onChange={() => setMajorForce(!majorForce)} title={"Increases your Crit Damage by 20% (Horn)"} />

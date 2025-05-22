@@ -41,22 +41,14 @@ const CritCalculatorCharacterObject = (props: CritCalculatorCharacterObjectProps
 
     useEffect(() => {
         let selfCritSum = charObject.critBase
+        
+        selfCritSum += charObject.wardenPassive * 5
 
-        if (charObject.class === "Warden") {
-            selfCritSum += charObject.wardenPassive * 4
-        }
+        selfCritSum += charObject.nbPassive ? 10 : 0
 
-        if (charObject.class === "Nightblade") {
-            selfCritSum += charObject.nbPassive ? 10 : 0
-        }
+        selfCritSum += charObject.templarPassive ? 10 : 0
 
-        if (charObject.class === "Templar") {
-            selfCritSum += charObject.templarPassive ? 10 : 0
-        }
-
-        if (charObject.class === "Arcanist") {
-            selfCritSum += charObject.arcanistPassive ? 12 : 0
-        }
+        selfCritSum += charObject.arcanistPassive ? 12 : 0
 
         selfCritSum += charObject.mediumArmor * 2
 
@@ -85,7 +77,11 @@ const CritCalculatorCharacterObject = (props: CritCalculatorCharacterObjectProps
         <GenericDisplayField legendText={charObject.name} legendIcon={determineIcon(charObject.class)} parentClassName="charAutoMinHeight">
             <>
                 <div className="charRow">
-                    <span className="explanationLabel" title="Value displays how much over or under crit target this character is. Crit provided by support and self is taken into account">{props.requiredCrit - props.supportCrit - currentCrit > 0 ? "Under" : "Over"} cap</span>
+                    <span className="explanationLabel" title="Sum of support and selfish sources">Current Crit</span>
+                    <span>{props.supportCrit + currentCrit}%</span>
+                </div>
+                <div className="charRow">
+                    <span className="explanationLabel" title="Value displays how much over or under crit target this character is. Crit provided by support and self is taken into account">{props.requiredCrit - props.supportCrit - currentCrit > 0 ? "Under" : "Over"}crit</span>
                     <span>{Math.abs(props.requiredCrit - props.supportCrit - currentCrit)}%</span>
                 </div>
                 <div className="charRow">
@@ -98,18 +94,10 @@ const CritCalculatorCharacterObject = (props: CritCalculatorCharacterObjectProps
                 </div>
                 <Collapsible open={true}>
                     <>
-                        {charObject.class === "Warden" &&
-                            <GenericInput type={"number"} name={"Warden Passive"} value={charObject.wardenPassive} id={`wardenPassive-${charObject.id}`} onChange={(event) => handleUpdate(event)} min={0} max={6} title={"Increases your Critical Damage by 4% for each Animal Companion ability slotted."} />
-                        }
-                        {charObject.class === "Templar" &&
-                            <GenericInput type={"checkbox"} name={"Templar Passive"} checked={charObject.templarPassive} id={`templarPassive-${charObject.id}`} onChange={(event) => handleUpdate(event)} title={"Increases your Critical Damage by 10%."} />
-                        }
-                        {charObject.class === "Nightblade" &&
-                            <GenericInput type={"checkbox"} name={"Nightblade Passive"} checked={charObject.nbPassive} id={`nbPassive-${charObject.id}`} onChange={(event) => handleUpdate(event)} title={"Increases your Critical Damage by 10%."} />
-                        }
-                        {charObject.class === "Arcanist" &&
-                            <GenericInput type={"checkbox"} name={"Arcanist Passive"} checked={charObject.arcanistPassive} id={`arcanistPassive-${charObject.id}`} onChange={(event) => handleUpdate(event)} title={"Warp fate when you generate or consume Crux, increasing your Critical Damage and Critical Healing by 12% for 7 seconds."} />
-                        }
+                        <GenericInput type={"number"} name={"Warden Passive"} value={charObject.wardenPassive} id={`wardenPassive-${charObject.id}`} onChange={(event) => handleUpdate(event)} min={0} max={6} title={"Increases your Critical Damage by 5% for each Animal Companion ability slotted."} />
+                        <GenericInput type={"checkbox"} name={"Templar Passive"} checked={charObject.templarPassive} id={`templarPassive-${charObject.id}`} onChange={(event) => handleUpdate(event)} title={"Increases your Critical Damage by 10%."} />
+                        <GenericInput type={"checkbox"} name={"Nightblade Passive"} checked={charObject.nbPassive} id={`nbPassive-${charObject.id}`} onChange={(event) => handleUpdate(event)} title={"Increases your Critical Damage by 10%."} />
+                        <GenericInput type={"checkbox"} name={"Arcanist Passive"} checked={charObject.arcanistPassive} id={`arcanistPassive-${charObject.id}`} onChange={(event) => handleUpdate(event)} title={"Warp fate when you generate or consume Crux, increasing your Critical Damage and Critical Healing by 12% for 7 seconds."} />
                         <GenericInput type={"number"} name={"Medium Armor"} value={charObject.mediumArmor} id={`mediumArmor-${charObject.id}`} onChange={(event) => handleUpdate(event)} min={0} max={7} title={"Increases your Critical Damage and Healing done rating by 2% for every piece of Medium Armor equipped."} />
                         <GenericInput type={"checkbox"} name={"Minor Force buff"} checked={charObject.minorForce} id={`minorForce-${charObject.id}`} onChange={(event) => handleUpdate(event)} title={"Increases your Crit Damage by 10%."} />
                         <GenericInput type={"number"} name={"Weapon Axe"} value={charObject.weaponAxe} id={`weaponAxe-${charObject.id}`} onChange={(event) => handleUpdate(event)} min={0} max={2} title={"Each axe increases your Critical Damage done by 6%. Set 2 if using 2h axe."} />
