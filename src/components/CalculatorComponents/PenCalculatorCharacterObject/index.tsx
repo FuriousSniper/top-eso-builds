@@ -42,18 +42,9 @@ const PenCalculatorCharacterObject = (props: PenCalculatorCharacterObjectProps) 
 
     useEffect(() => {
         let selfPenSum = 0
+        selfPenSum += charObject.arcanistPassive * 1240
 
-        if (charObject.class === "Arcanist") {
-            selfPenSum += charObject.arcanistPassive * 991
-        }
-
-        if (charObject.class === "Necromancer") {
-            selfPenSum += charObject.necroPassive ? 1500 : 0
-        }
-
-        if (charObject.class === "Nightblade") {
-            selfPenSum += charObject.nbPassive ? 2974 : 0
-        }
+        selfPenSum += charObject.necroPassive ? 3271 : 0
 
         selfPenSum += charObject.velothi ? 1650 : 0
 
@@ -82,24 +73,21 @@ const PenCalculatorCharacterObject = (props: PenCalculatorCharacterObjectProps) 
         <GenericDisplayField legendText={charObject.name} legendIcon={determineIcon(charObject.class)} parentClassName="charAutoMinHeight">
             <>
                 <div className="charRow">
-                    <span className="explanationLabel" title="Value displays how much over or under pen target this character is. Pen provided by support and self is taken into account">{props.requiredPen - props.supportPen - currentPen > 0 ? "Under" : "Over"} cap</span>
+                    <span className="explanationLabel" title="Sum of support and selfish sources">Current pen</span>
+                    <span>{ props.supportPen+currentPen}</span>
+                </div>
+                <div className="charRow">
+                    <span className="explanationLabel" title="Value displays how much over or under pen target this character is. Pen provided by support and self is taken into account">{props.requiredPen - props.supportPen - currentPen > 0 ? "Under" : "Over"}penetration</span>
                     <span>{Math.abs(props.requiredPen - props.supportPen - currentPen)}</span>
                 </div>
                 <div className="charRow">
-                    <span className="explanationLabel" title="Pen provided by selfish sources below">Own pen</span>
+                    <span className="explanationLabel" title="Pen provided by selfish sources below">Selfish pen</span>
                     <span>{currentPen}</span>
                 </div>
                 <Collapsible open={true}>
                     <>
-                        {charObject.class === "Arcanist" &&
-                            <GenericInput type={"number"} name={"Arcanist Passive"} value={charObject.arcanistPassive} id={`arcanistPassive-${charObject.id}`} onChange={(event) => handleUpdate(event)} min={0} max={6} title={"Increase your Physical and Spell Penetration by 991 per Herald of the Tome ability slotted (e.g. beam, flail, eye)."} />
-                        }
-                        {charObject.class === "Necromancer" &&
-                            <GenericInput type={"checkbox"} name={"Necromancer Passive"} checked={charObject.necroPassive} id={`necroPassive-${charObject.id}`} onChange={(event) => handleUpdate(event)} title={"While a Grave Lord ability is active, your Spell and Physical Penetration are increased by 1500."} />
-                        }
-                        {charObject.class === "Nightblade" &&
-                            <GenericInput type={"checkbox"} name={"Nightblade Passive"} checked={charObject.nbPassive} id={`nbPassive-${charObject.id}`} onChange={(event) => handleUpdate(event)} title={"Increases your Physical and Spell Penetration against enemies you are flanking by 2974."} />
-                        }
+                        <GenericInput type={"number"} name={"Arcanist Passive"} value={charObject.arcanistPassive} id={`arcanistPassive-${charObject.id}`} onChange={(event) => handleUpdate(event)} min={0} max={6} title={"Increase your Physical and Spell Penetration by 1240 per Herald of the Tome ability slotted (e.g. beam, flail, eye)."} />
+                        <GenericInput type={"checkbox"} name={"Necromancer Passive"} checked={charObject.necroPassive} id={`necroPassive-${charObject.id}`} onChange={(event) => handleUpdate(event)} title={"While a Grave Lord ability is active, your Spell and Physical Penetration are increased by 3271."} />
                         <GenericInput type={"checkbox"} name={"Velothi Mythic"} checked={charObject.velothi} id={`velothi-${charObject.id}`} onChange={(event) => handleUpdate(event)} title={"Adds 1650 Offensive Penetration, 15% dmg done, Minor Force"} />
                         <GenericInput type={"number"} name={"Light Armor"} value={charObject.lightArmor} id={`lightArmor-${charObject.id}`} onChange={(event) => handleUpdate(event)} min={0} max={7} title={"Increases your Physical and Spell Penetration by 939 for each piece of Light Armor worn."} />
                         <GenericInput type={"number"} name={"Weapon Mace/Maul"} value={charObject.weaponMace} id={`weaponMace-${charObject.id}`} onChange={(event) => handleUpdate(event)} min={0} max={2} title={"Amount of Mace weapons. Set 0 if you have none, set 2 when using 2h weapon."} />

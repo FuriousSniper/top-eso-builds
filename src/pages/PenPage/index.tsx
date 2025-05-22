@@ -22,6 +22,8 @@ const PenPage = () => {
     const [crimson, setCrimson] = useState((searchParams.get("crimson") ? parseBoolToString(searchParams.get("crimson")) : false))
     const [alkosh, setAlkosh] = useState((searchParams.get("alkosh") ? parseBoolToString(searchParams.get("alkosh")) : false))
     const [tremor, setTremor] = useState((searchParams.get("tremor") ? parseBoolToString(searchParams.get("tremor")) : false))
+    const [runic, setRunic] = useState((searchParams.get("runic") ? parseBoolToString(searchParams.get("runic")) : false))
+    const [crystal, setCrystal] = useState((searchParams.get("crystal") ? parseBoolToString(searchParams.get("crystal")) : false))
     const [charactersArray, setCharactersArray] = useState(searchParams.get("chars") ? getPenCharsFromUrl(searchParams.get("chars")) : Array<CharacterPenType>())
 
     useEffect(() => {
@@ -62,14 +64,24 @@ const PenPage = () => {
             supportPenSum += 2400;
         }
 
+        searchParams.set("runic", String(runic))
+        if (runic) {
+            supportPenSum += 2200;
+        }
+
+        searchParams.set("crystal", String(crystal))
+        if (crystal) {
+            supportPenSum += 1000;
+        }
+
         setSupportPen(supportPenSum)
         updateSupportPenForChars(supportPenSum)
         setSearchParams(searchParams)
-    }, [requiredPen, crimson, alkosh, majorBreach, minorBreach, crusher, tremor])
+    }, [requiredPen, crimson, alkosh, majorBreach, minorBreach, crusher, tremor,runic, crystal])
 
     useEffect(() => {
         if (crimson && alkosh && tremor) {
-            alert("crimson, alkosh, tremor. are you sure about that?")
+            alert("crimson, alkosh, tremor. are you sure about that? bruh")
         }
     }, [crimson, alkosh, tremor])
 
@@ -146,7 +158,7 @@ const PenPage = () => {
             <HeaderMenu />
             <div className="main">
                 <div className="titleBanner">
-                    <h2>Penetration calculator</h2>
+                    <h2>Penetration calculator (U46)</h2>
                     <div className="controlItems">
                         <CopyButton />
                         <div><label htmlFor="penCap">Set pen target</label><input type="number" name="penCap" id="penCap" value={requiredPen} onChange={event => setRequiredPen(boundsMinMax(Number(event.target.value), 0, 102000))} min={0} max={102000} /></div>
@@ -161,7 +173,7 @@ const PenPage = () => {
                                     <span className="secondaryText">Support provides: </span><span>{supportPen}</span>
                                 </div>
                                 <div className="calcItemRow">
-                                    <span className="secondaryText">Others need to reach: </span><span>{requiredPen - supportPen}</span>
+                                    <span className="secondaryText">Underpenetration: </span><span>{requiredPen - supportPen}</span>
                                 </div>
                                 <div className="separator moreSeparation"></div>
                                 <GenericInput type={"checkbox"} name={"Major Breach"} checked={majorBreach} id={"majorBreach"} onChange={() => setMajorBreach(!majorBreach)} title={"Tank debuff: 5948"} />
@@ -170,6 +182,8 @@ const PenPage = () => {
                                 <GenericInput type={"checkbox"} name={"Alkosh"} checked={alkosh} id={"alkosh"} onChange={() => setAlkosh(!alkosh)} title={"Support set: 6000"} />
                                 <GenericInput type={"checkbox"} name={"Crimson"} checked={crimson} id={"crimson"} onChange={() => setCrimson(!crimson)} title={"Tank set: 3541"} />
                                 <GenericInput type={"checkbox"} name={"Tremorscale"} checked={tremor} id={"tremor"} onChange={() => setTremor(!tremor)} title={"Tank set: 2400"} />
+                                <GenericInput type={"checkbox"} name={"Runic sunder"} checked={runic} id={"runic"} onChange={() => setRunic(!runic)} title={"Arcanist tank debuff: 2200"} />
+                                <GenericInput type={"checkbox"} name={"Crystal weapon"} checked={crystal} id={"crystal"} onChange={() => setCrystal(!crystal)} title={"Sorcerer debuff: 1000"} />
                             </>
                         </GenericDisplayField>
                     </div>
