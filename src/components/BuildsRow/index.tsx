@@ -10,7 +10,7 @@ const BuildsRow = () => {
                     <>
                         <Link to={build.link} className="buildLink" key={key}><img src={build.icon} className='buildIcon' /><span>{build.name}</span></Link>
                         {key < BuildPromoItems.length - 1 &&
-                            <div className='verticalSeparator'></div>
+                            <div className='verticalSeparator' key={`sep_${key}`}></div>
                         }
                     </>
 

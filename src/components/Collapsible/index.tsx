@@ -22,6 +22,7 @@ const Collapsible = (props: CollapsibleProps) => {
             setHeight(0);
         }
     }, [isOpen]);
+    
     const handleFilterOpening = () => {
         setIsOpen(!isOpen);
     };

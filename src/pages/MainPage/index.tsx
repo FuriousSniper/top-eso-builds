@@ -48,10 +48,13 @@ const MainPage = () => {
                 </div>
                 <div className="textWrapper">
                     <p className="textSection">
-                        Introducing <Link to={"/tools/penCalc"}>penetration</Link> and <Link to={"/tools/critCalc"}>crit damage</Link> calculators!<br />Calculate how much crit damage and pen you need in order to meet required cap yourself using new and easy to understand calculators.
+                        Introducing <Link to={"/tools/subclassing"}>Subclassing</Link>!<br />
                     </p>
                     <p className="textSection">
-                        Calculators allow users to select different buffs/debuffs provided by supports and choose individual classes in order to configure each one&apos;s options of reaching desired cap.
+                        <img src="/promo/promo_build.webp" alt="" />
+                    </p>
+                    <p className="textSection">
+                        Using a brand new, easy-to-use editor you can now select different combinations of skills to help you theory craft your dream build!<br/>Use the filters in sidebar to find skills, which apply different buffs and debuffs.<br/>P.S. Sharing, saving, and other features will be added soon
                     </p>
                 </div>
             </div>

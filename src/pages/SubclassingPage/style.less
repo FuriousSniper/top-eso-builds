@@ -1,0 +1,52 @@
+@import "/src/styles/index.less";
+@import "/src/styles/variables.less";
+
+.skillLinesWrapper {
+  flex-direction: column;
+  flex: auto;
+  justify-content: center;
+  gap: 15px;
+  display: flex;
+}
+
+.subclassingSkillBarsWrapper{
+  display:grid;
+  width: min-content;
+  grid-template-columns: repeat(6, 64px);
+  grid-template-rows: repeat(2, 64px);
+  grid-column-gap: 5px;
+  grid-row-gap: 5px; 
+  align-items: center;
+  background-color: @dark-background;
+  margin: 20px 0;
+}
+
+.stickyBars{
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  flex-direction: row !important;
+  column-gap: 3rem;
+}
+
+.menuWrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.invalid_skill{
+  opacity: 0.3;
+}
+
+.barControlButton{
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  cursor: pointer;
+
+  &:hover{
+    background-color: @dark-background-2;
+  }
+}

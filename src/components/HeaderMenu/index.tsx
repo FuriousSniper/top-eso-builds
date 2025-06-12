@@ -35,6 +35,7 @@ const HeaderMenu = () => {
                         <div className='dropdownContent'>
                             <Link to={`/tools/penCalc`} className="headerLink textLink"><span>Penetration calculator</span></Link>
                             <Link to={`/tools/critCalc`} className="headerLink textLink"><span>Crit dmg calculator</span></Link>
+                            <Link to={`/tools/subclassing`} className="headerLink textLink"><span>Subclassing simulator</span></Link>
                         </div>
                     </div>
                     <Link to={"/about"} className="headerLink textLink linkElement"><span>About</span></Link>
