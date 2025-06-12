@@ -171,3 +171,11 @@ export type CharacterCritType = {
     shadowMundus: boolean,
     otherSources: number,
 }
+
+export type SubclassingSkillType = {
+    name: string,
+    icon: string,
+    id: number,
+    effects: string[]
+}
+

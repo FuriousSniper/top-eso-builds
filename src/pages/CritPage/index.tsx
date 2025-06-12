@@ -19,7 +19,7 @@ const CritPage = () => {
     const [majorForce, setMajorForce] = useState(searchParams.get("majorForce") ? parseBoolToString(searchParams.get("majorForce")) : true)
     const [majorBrittle, setMajorBrittle] = useState(searchParams.get("majorBrittle") ? parseBoolToString(searchParams.get("majorBrittle")) : false)
     const [minorBrittle, setMinorBrittle] = useState(searchParams.get("minorBrittle") ? parseBoolToString(searchParams.get("minorBrittle")) : true)
-    const [lucent, setLucent] = useState(searchParams.get("lucent") ? parseBoolToString(searchParams.get("lucent")) : true)
+    const [lucent, setLucent] = useState(searchParams.get("lucent") ? parseBoolToString(searchParams.get("lucent")) : false)
     const [ec, setEc] = useState(Number(searchParams.get("ec")) ? boundsMinMax(Number(searchParams.get("ec")), 0, 3) : 0)
     const [charactersArray, setCharactersArray] = useState(searchParams.get("chars") ? getCritCharsFromUrl(searchParams.get("chars")) :Array<CharacterCritType>())
     const baseCritDmg = 50
