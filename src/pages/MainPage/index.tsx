@@ -1,4 +1,3 @@
-import { useEffect } from "react"
 import FooterMenu from "../../components/FooterMenu"
 import HeaderMenu from "../../components/HeaderMenu"
 import Slider from "react-slick";
@@ -10,12 +9,11 @@ import BuildPromoItems from "../../objects/buildPromoItems";
 import { BuildPromoItem } from "../../types/common";
 import SliderImageLink from "../../components/SliderImageLink";
 import BuildsRow from "../../components/BuildsRow";
+import useTitle from "../../hooks/useTitle";
 
 const MainPage = () => {
-    useEffect(() => {
-        document.title = `Top ESO Builds`
-    }, [])
-
+    useTitle(`Top ESO Builds`)
+    
     const settings = {
         dots: true,
         infinite: true,

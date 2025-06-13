@@ -1,6 +1,6 @@
 import { SubclassingSkillType } from "../../types/common";
 
-export const subclassingSkills: Record<string,Record<string,Array<SubclassingSkillType>>> = {
+export const subclassingSkills: Record<string, Record<string, Array<SubclassingSkillType>>> = {
   "Arcanist": {
     "Curative Runeforms": [
       {
@@ -141,7 +141,7 @@ export const subclassingSkills: Record<string,Record<string,Array<SubclassingSki
         "id": 183,
         "effects": ["Major Brutality", "Major Sorcery"]
       },
-      
+
       {
         "name": "Recuperative Treatise",
         "icon": "ability_arcanist_005_b.webp",
@@ -292,7 +292,7 @@ export const subclassingSkills: Record<string,Record<string,Array<SubclassingSki
         "id": 135,
         "effects": []
       },
-      
+
       {
         "name": "Molten Whip",
         "icon": "ability_dragonknight_001_b.webp",
@@ -485,7 +485,7 @@ export const subclassingSkills: Record<string,Record<string,Array<SubclassingSki
         "name": "Summoner's Armor",
         "icon": "ability_necromancer_008_b.webp",
         "id": 321,
-        "effects": ["Major Resolve","Minor Resolve"]
+        "effects": ["Major Resolve", "Minor Resolve"]
       },
       {
         "name": "Deaden Pain",
@@ -565,14 +565,14 @@ export const subclassingSkills: Record<string,Record<string,Array<SubclassingSki
         "name": "Detonating Siphon",
         "icon": "ability_necromancer_005_b.webp",
         "id": 99,
-        "effects": ["Major Savagery","Major Prophecy"]
+        "effects": ["Major Savagery", "Major Prophecy"]
       },
-      
+
       {
         "name": "Mystic Siphon",
         "icon": "ability_necromancer_005_a.webp",
         "id": 212,
-        "effects": ["Major Savagery","Major Prophecy"]
+        "effects": ["Major Savagery", "Major Prophecy"]
       },
       {
         "name": "Ricochet Skull",
@@ -1660,12 +1660,6 @@ export const subclassingSkills: Record<string,Record<string,Array<SubclassingSki
         "icon": "ability_1handed_006_a.webp",
         "id": 406,
         "effects": []
-      },
-      {
-        "name": "Shield Throw",
-        "icon": "grimoire_1handed.webp",
-        "id": 1008,
-        "effects": ["Major Brutality","Major Sorcery","Major Cowardice","Minor Enervation","Major Evasion","Major Maim","Major Resolve","Major Savagery","Major Prophecy","Major Vitality"]
       }
     ],
     "Bow": [
@@ -1740,13 +1734,7 @@ export const subclassingSkills: Record<string,Record<string,Array<SubclassingSki
         "icon": "ability_bow_006_b.webp",
         "id": 417,
         "effects": []
-      },
-      {
-        "name": "Vault",
-        "icon": "grimoire_bow.webp",
-        "id": 1003,
-        "effects": ["Minor Berserk","Major Sorcery","Major Evasion","Minor Expedition","Minor Force","Minor Intellect","Minor Endurance","Minor Lifesteal","Minor Maim","Major Savagery","Major Prophecy","Minor Vulnerability"]
-      },
+      }
     ],
     "Restoration Staff": [
       {
@@ -1820,13 +1808,7 @@ export const subclassingSkills: Record<string,Record<string,Array<SubclassingSki
         "icon": "ability_restorationstaff_006_b.webp",
         "id": 376,
         "effects": ["Major Force"]
-      },
-      {
-        "name": "Mender's Bond",
-        "icon": "grimoire_staffresto.webp",
-        "id": 1009,
-        "effects": ["Minor Breach","Minor Brittle","Minor Courage","Empower","Minor Evasion","Minor Force","Minor Heroism","Minor Intellect","Minor Endurance","Minor Maim","Minor Protection","Minor Vitality","Minor Vulnerability"]
-      },
+      }
     ],
     "Dual Wield": [
       {
@@ -1900,12 +1882,6 @@ export const subclassingSkills: Record<string,Record<string,Array<SubclassingSki
         "icon": "ability_dualwield_006_b.webp",
         "id": 416,
         "effects": []
-      },
-      {
-        "name": "Traveling Knife",
-        "icon": "grimoire_dualwield.webp",
-        "id": 1005,
-        "effects": ["Minor Berserk","Major Brutality","Major Sorcery","Minor Expedition","Minor Force","Minor Lifesteal","Minor Maim","Major Savagery","Major Prophecy","Minor Uncertainty","Minor Vulnerability"]
       }
     ],
     "Two Handed": [
@@ -1980,12 +1956,6 @@ export const subclassingSkills: Record<string,Record<string,Array<SubclassingSki
         "icon": "ability_2handed_006_a.webp",
         "id": 379,
         "effects": []
-      },
-      {
-        "name": "Smash",
-        "icon": "grimoire_2handed.webp",
-        "id": 1001,
-        "effects": ["Minor Berserk","Minor Breach","Major Brutality","Major Sorcery","Minor Expedition","Minor Force","Minor Maim","Minor Mangle","Major Savagery","Major Prophecy","Minor Vitality"]
       }
     ],
     "Destruction Staff": [
@@ -2060,12 +2030,6 @@ export const subclassingSkills: Record<string,Record<string,Array<SubclassingSki
         "icon": "ability_destructionstaff_012_a.webp",
         "id": 365,
         "effects": []
-      },
-      {
-        "name": "Elemental Explosion",
-        "icon": "grimoire_staffdestro.webp",
-        "id": 1004,
-        "effects": ["Minor Brittle","Major Brutality","Major Sorcery","Minor Cowardice","Minor Defile","Minor Enervation","Minor Lifesteal","Minor Magickasteal","Major Savagery","Major Prophecy"]
       }
     ]
   },
@@ -2087,13 +2051,13 @@ export const subclassingSkills: Record<string,Record<string,Array<SubclassingSki
         "name": "Inner Light",
         "icon": "ability_mageguild_002_b.webp",
         "id": 181,
-        "effects": ["Major Savagery","Major Prophecy"]
+        "effects": ["Major Savagery", "Major Prophecy"]
       },
       {
         "name": "Radiant Magelight",
         "icon": "ability_mageguild_002_a.webp",
         "id": 240,
-        "effects": ["Major Savagery","Major Prophecy"]
+        "effects": ["Major Savagery", "Major Prophecy"]
       },
       {
         "name": "Scalding Rune",
@@ -2130,12 +2094,6 @@ export const subclassingSkills: Record<string,Record<string,Array<SubclassingSki
         "icon": "ability_mageguild_005_a.webp",
         "id": 399,
         "effects": []
-      },
-      {
-        "name": "Ulfsild's Contingency",
-        "icon": "grimoire_magesguild.webp",
-        "id": 1007,
-        "effects": ["Minor Breach","Major Brutality","Major Sorcery","Minor Enervation","Minor Force","Minor Intellect","Minor Endurance","Minor Magickasteal","Minor Protection","Minor Resolve","Minor Resolve","Major Savagery","Major Prophecy","Minor Vulnerability"]
       }
     ],
     "Fighters Guild": [
@@ -2161,7 +2119,7 @@ export const subclassingSkills: Record<string,Record<string,Array<SubclassingSki
         "name": "Evil Hunter",
         "icon": "ability_fightersguild_002_a.webp",
         "id": 123,
-        "effects": ["Major Savagery","Major Prophecy"]
+        "effects": ["Major Savagery", "Major Prophecy"]
       },
       {
         "name": "Turn Evil",
@@ -2198,12 +2156,6 @@ export const subclassingSkills: Record<string,Record<string,Array<SubclassingSki
         "icon": "ability_fightersguild_005_a.webp",
         "id": 367,
         "effects": []
-      },
-      {
-        "name": "Torchbearer",
-        "icon": "grimoire_fightersguild.webp",
-        "id": 1006,
-        "effects": ["Minor Breach","Major Brutality","Major Sorcery"," Minor Cowardice","Minor Evasion","Minor Heroism","Minor Mangle","Minor Resolve","Major Savagery","Major Prophecy","Minor Uncertainty","Minor Vitality"]
       }
     ],
     "Undaunted": [
@@ -2405,12 +2357,7 @@ export const subclassingSkills: Record<string,Record<string,Array<SubclassingSki
         "id": 408,
         "effects": []
       },
-      {
-        "name": "Trample",
-        "icon": "grimoire_assault.webp",
-        "id": 1002,
-        "effects": ["Major Brutality","Major Sorcery","Minor Cowardice","Minor Defile","Major Expedition","Major Heroism","Minor Mangle","Major Protection","Major Savagery","Major Prophecy","Minor Vulnerability"]
-      }
+      
     ],
     "Support": [
       {
@@ -2473,12 +2420,7 @@ export const subclassingSkills: Record<string,Record<string,Array<SubclassingSki
         "id": 394,
         "effects": []
       },
-      {
-        "name": "Banner Bearer",
-        "icon": "grimoire_support.webp",
-        "id": 1012,
-        "effects": ["Minor Berserk","Major Brutality","Major Sorcery","Minor Courage","Minor Heroism","Minor Intellect","Minor Endurance","Minor Protection","Minor Resolve","Major Savagery","Major Prophecy"]
-      }
+      
     ]
   },
   "World": {
@@ -2591,7 +2533,7 @@ export const subclassingSkills: Record<string,Record<string,Array<SubclassingSki
         "name": "Ferocious Roar",
         "icon": "ability_werewolf_003_b.webp",
         "id": 133,
-        "effects": ["Major Savagery","Major Prophecy"]
+        "effects": ["Major Savagery", "Major Prophecy"]
       },
       {
         "name": "Hircine's Fortitude",
@@ -2659,21 +2601,85 @@ export const subclassingSkills: Record<string,Record<string,Array<SubclassingSki
         "icon": "ability_otherclass_002_b.webp",
         "id": 402,
         "effects": []
-      },
+      }
+    ]
+  },
+  "Scribing": {
+    "Scribing": [
       {
         "name": "Wield Soul",
         "icon": "grimoire_soulmagic1.webp",
         "id": 1010,
-        "effects": ["Major Breach","Major Brutality","Major Sorcery","Major Cowardice","Major Defile","Empower","Major Intellect","Major Endurance","Major Maim","Major Resolve","Major Savagery","Major Prophecy","Major Vitality"]
+        "effects": ["Major Breach", "Major Brutality", "Major Sorcery", "Major Cowardice", "Major Defile", "Empower", "Major Intellect", "Major Endurance", "Major Maim", "Major Resolve", "Major Savagery", "Major Prophecy", "Major Vitality"]
       },
       {
         "name": "Soul Burst",
         "icon": "grimoire_soulmagic2.webp",
         "id": 1011,
-        "effects": ["Minor Breach","Major Brutality","Major Sorcery","Minor Courage","Minor Expedition","Minor Intellect","Minor Endurance","Minor Maim","Minor Resolve","Major Savagery","Major Prophecy","Minor Magickasteal"]
+        "effects": ["Minor Breach", "Major Brutality", "Major Sorcery", "Minor Courage", "Minor Expedition", "Minor Intellect", "Minor Endurance", "Minor Maim", "Minor Resolve", "Major Savagery", "Major Prophecy", "Minor Magickasteal"]
+      },
+      {
+        "name": "Banner Bearer",
+        "icon": "grimoire_support.webp",
+        "id": 1012,
+        "effects": ["Minor Berserk", "Major Brutality", "Major Sorcery", "Minor Courage", "Minor Heroism", "Minor Intellect", "Minor Endurance", "Minor Protection", "Minor Resolve", "Major Savagery", "Major Prophecy"]
+      },
+      {
+        "name": "Trample",
+        "icon": "grimoire_assault.webp",
+        "id": 1002,
+        "effects": ["Major Brutality", "Major Sorcery", "Minor Cowardice", "Minor Defile", "Major Expedition", "Major Heroism", "Minor Mangle", "Major Protection", "Major Savagery", "Major Prophecy", "Minor Vulnerability"]
+      },
+      {
+        "name": "Torchbearer",
+        "icon": "grimoire_fightersguild.webp",
+        "id": 1006,
+        "effects": ["Minor Breach", "Major Brutality", "Major Sorcery", " Minor Cowardice", "Minor Evasion", "Minor Heroism", "Minor Mangle", "Minor Resolve", "Major Savagery", "Major Prophecy", "Minor Uncertainty", "Minor Vitality"]
+      },
+      {
+        "name": "Ulfsild's Contingency",
+        "icon": "grimoire_magesguild.webp",
+        "id": 1007,
+        "effects": ["Minor Breach", "Major Brutality", "Major Sorcery", "Minor Enervation", "Minor Force", "Minor Intellect", "Minor Endurance", "Minor Magickasteal", "Minor Protection", "Minor Resolve", "Minor Resolve", "Major Savagery", "Major Prophecy", "Minor Vulnerability"]
+      },
+      {
+        "name": "Elemental Explosion",
+        "icon": "grimoire_staffdestro.webp",
+        "id": 1004,
+        "effects": ["Minor Brittle", "Major Brutality", "Major Sorcery", "Minor Cowardice", "Minor Defile", "Minor Enervation", "Minor Lifesteal", "Minor Magickasteal", "Major Savagery", "Major Prophecy"]
+      },
+      {
+        "name": "Smash",
+        "icon": "grimoire_2handed.webp",
+        "id": 1001,
+        "effects": ["Minor Berserk", "Minor Breach", "Major Brutality", "Major Sorcery", "Minor Expedition", "Minor Force", "Minor Maim", "Minor Mangle", "Major Savagery", "Major Prophecy", "Minor Vitality"]
+      },
+      {
+        "name": "Traveling Knife",
+        "icon": "grimoire_dualwield.webp",
+        "id": 1005,
+        "effects": ["Minor Berserk", "Major Brutality", "Major Sorcery", "Minor Expedition", "Minor Force", "Minor Lifesteal", "Minor Maim", "Major Savagery", "Major Prophecy", "Minor Uncertainty", "Minor Vulnerability"]
+      },
+      {
+        "name": "Mender's Bond",
+        "icon": "grimoire_staffresto.webp",
+        "id": 1009,
+        "effects": ["Minor Breach", "Minor Brittle", "Minor Courage", "Empower", "Minor Evasion", "Minor Force", "Minor Heroism", "Minor Intellect", "Minor Endurance", "Minor Maim", "Minor Protection", "Minor Vitality", "Minor Vulnerability"]
+      },
+      {
+        "name": "Vault",
+        "icon": "grimoire_bow.webp",
+        "id": 1003,
+        "effects": ["Minor Berserk", "Major Sorcery", "Major Evasion", "Minor Expedition", "Minor Force", "Minor Intellect", "Minor Endurance", "Minor Lifesteal", "Minor Maim", "Major Savagery", "Major Prophecy", "Minor Vulnerability"]
+      },
+      {
+        "name": "Shield Throw",
+        "icon": "grimoire_1handed.webp",
+        "id": 1008,
+        "effects": ["Major Brutality", "Major Sorcery", "Major Cowardice", "Minor Enervation", "Major Evasion", "Major Maim", "Major Resolve", "Major Savagery", "Major Prophecy", "Major Vitality"]
       }
     ]
-  }, 
+  },
   "Armor": {
     "Light Armor": [
       {

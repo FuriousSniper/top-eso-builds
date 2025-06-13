@@ -1,14 +1,12 @@
-import { useEffect } from "react"
 import FooterMenu from "../../components/FooterMenu"
 import HeaderMenu from "../../components/HeaderMenu"
 import './style.less'
 import { Link } from "react-router-dom";
+import useTitle from "../../hooks/useTitle";
 
 const AboutPage = () => {
-    useEffect(() => {
-        document.title = `About Top ESO Builds`
-    }, [])
-
+    useTitle(`About Top ESO Builds`)
+    
     return (
         <div className="content">
             <HeaderMenu />

@@ -11,9 +11,11 @@ import { useSearchParams } from "react-router-dom"
 import CopyButton from "../../components/CopyButton";
 import './style.less'
 import '../calculatorStyles.less'
+import useTitle from "../../hooks/useTitle";
 
 const CritPage = () => {
     const [searchParams, setSearchParams] = useSearchParams();
+    useTitle(`Top ESO Builds: Crit dmg calculator`)
     const [requiredCrit, setRequiredCrit] = useState(Number(searchParams.get("target")) ? boundsMinMax(Number(searchParams.get("target")), 0, 125) : 125)
     const [supportCrit, setSupportCrit] = useState(requiredCrit)
     const [majorForce, setMajorForce] = useState(searchParams.get("majorForce") ? parseBoolToString(searchParams.get("majorForce")) : true)
@@ -23,10 +25,6 @@ const CritPage = () => {
     const [ec, setEc] = useState(Number(searchParams.get("ec")) ? boundsMinMax(Number(searchParams.get("ec")), 0, 3) : 0)
     const [charactersArray, setCharactersArray] = useState(searchParams.get("chars") ? getCritCharsFromUrl(searchParams.get("chars")) :Array<CharacterCritType>())
     const baseCritDmg = 50
-
-    useEffect(() => {
-        document.title = `Top ESO Builds: Crit dmg calculator`
-    })
 
     useEffect(() => {
         searchParams.set("chars", encodeToUrl(charactersArray))

@@ -11,6 +11,7 @@ import { useSearchParams } from "react-router-dom"
 import CopyButton from "../../components/CopyButton";
 import './style.less'
 import '../calculatorStyles.less'
+import useTitle from "../../hooks/useTitle";
 
 const PenPage = () => {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -25,10 +26,7 @@ const PenPage = () => {
     const [runic, setRunic] = useState((searchParams.get("runic") ? parseBoolToString(searchParams.get("runic")) : false))
     const [crystal, setCrystal] = useState((searchParams.get("crystal") ? parseBoolToString(searchParams.get("crystal")) : false))
     const [charactersArray, setCharactersArray] = useState(searchParams.get("chars") ? getPenCharsFromUrl(searchParams.get("chars")) : Array<CharacterPenType>())
-
-    useEffect(() => {
-        document.title = `Top ESO Builds: Pen calculator`
-    })
+    useTitle(`Top ESO Builds: Pen calculator`)
 
     useEffect(() => {
         let supportPenSum = 0

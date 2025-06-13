@@ -8,11 +8,13 @@ import './style.less'
 import EmptySkillSquare from "../../components/EmptySkillSquare";
 import { monitorForElements } from '@atlaskit/pragmatic-drag-and-drop/element/adapter';
 import SubclassingSidebar from "../../components/SubclassingSidebar";
+import useTitle from "../../hooks/useTitle";
 
 const SubclassingPage = () => {
     const [groupedSkills] = useState<Record<string, Record<string, Array<SubclassingSkillType>>>>(subclassingSkills)
     const [skills, setSkills] = useState<Array<SubclassingSkillType | undefined>>(Array<SubclassingSkillType | undefined>(12))
     const [selectedDebuffList, setSelectedDebuffList] = useState<Array<string>>([])
+    useTitle(`Top ESO Builds: Subclassing`)
     
     useEffect(() => {
         initializeSkills()
@@ -127,6 +129,10 @@ const SubclassingPage = () => {
         setSkills([...bar2,...bar1])
     }
 
+    const resetDebuffs = () =>{
+        setSelectedDebuffList([])
+    }
+
     return (
         <div className="content">
             <HeaderMenu />
@@ -148,7 +154,7 @@ const SubclassingPage = () => {
                     </div>
                 </div>
                 <div className="menuWrapper">
-                    <SubclassingSidebar toggleFunction={toggleDebuff}/>
+                    <SubclassingSidebar toggleFunction={toggleDebuff} resetFunction={resetDebuffs}/>
                     <div className="skillLinesWrapper">
                         {Object.entries(groupedSkills).map((value: [string, Record<string, SubclassingSkillType[]>]) => {
                             return Object.keys(value[1]).map((skillLineName: string, key: number) => {

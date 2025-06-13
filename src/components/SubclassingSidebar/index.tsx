@@ -1,81 +1,16 @@
 import { useEffect, useRef, useState } from 'react'
 import './style.less'
+
 interface SubclassingSidebarProps {
     toggleFunction: (debuff: string) => void,
+    resetFunction: () => void,
 }
 
 const SubclassingSidebar = (props: SubclassingSidebarProps) => {
     const [isOpen, setIsOpen] = useState(true)
     const [width, setWidth] = useState(250)
     const ref = useRef<HTMLFormElement>(null)
-    const debuffs = [
-        "Empower",
-        "Major Aegis",
-        "Major Berserk",
-        "Major Breach",
-        "Major Brittle",
-        "Major Brutality",
-        "Major Courage",
-        "Major Cowardice",
-        "Major Defile",
-        "Major Endurance",
-        "Major Enervation",
-        "Major Evasion",
-        "Major Expedition",
-        "Major Force",
-        "Major Fortitude",
-        "Major Heroism",
-        "Major Intellect",
-        "Major Lifesteal",
-        "Major Magickasteal",
-        "Major Maim",
-        "Major Mangle",
-        "Major Mending",
-        "Major Prophecy",
-        "Major Protection",
-        "Major Resolve",
-        "Major Savagery",
-        "Major Slayer",
-        "Major Sorcery",
-        "Major Timidity",
-        "Major Toughness",
-        "Major Uncertainty",
-        "Major Vitality",
-        "Major Vulnerability",
-        "Minor Aegis",
-        "Minor Berserk",
-        "Minor Breach",
-        "Minor Brittle",
-        "Minor Brutality",
-        "Minor Courage",
-        "Minor Cowardice",
-        "Minor Defile",
-        "Minor Endurance",
-        "Minor Enervation",
-        "Minor Evasion",
-        "Minor Expedition",
-        "Minor Force",
-        "Minor Fortitude",
-        "Minor Gallop",
-        "Minor Heroism",
-        "Minor Intellect",
-        "Minor Lifesteal",
-        "Minor Magickasteal",
-        "Minor Maim",
-        "Minor Mangle",
-        "Minor Mending",
-        "Minor Prophecy",
-        "Minor Protection",
-        "Minor Resolve",
-        "Minor Savagery",
-        "Minor Slayer",
-        "Minor Sorcery",
-        "Minor Timidity",
-        "Minor Toughness",
-        "Minor Uncertainty",
-        "Minor Vitality",
-        "Minor Vulnerability",
-    ]
+    const debuffs = { 'Major': ['Aegis', 'Berserk', 'Breach', 'Brittle', 'Brutality', 'Courage', 'Cowardice', 'Defile', 'Endurance', 'Enervation', 'Evasion', 'Expedition', 'Force', 'Fortitude', 'Heroism', 'Intellect', 'Lifesteal', 'Magickasteal', 'Maim', 'Mangle', 'Mending', 'Prophecy', 'Protection', 'Resolve', 'Savagery', 'Slayer', 'Sorcery', 'Timidity', 'Toughness', 'Uncertainty', 'Vitality', 'Vulnerability'], 'Minor': ['Aegis', 'Berserk', 'Breach', 'Brittle', 'Brutality', 'Courage', 'Cowardice', 'Defile', 'Endurance', 'Enervation', 'Evasion', 'Expedition', 'Force', 'Fortitude', 'Gallop', 'Heroism', 'Intellect', 'Lifesteal', 'Magickasteal', 'Maim', 'Mangle', 'Mending', 'Prophecy', 'Protection', 'Resolve', 'Savagery', 'Slayer', 'Sorcery', 'Timidity', 'Toughness', 'Uncertainty', 'Vitality', 'Vulnerability'], 'Other': ['Empower'] }
 
     useEffect(() => {
         if (isOpen) {
@@ -94,20 +29,50 @@ const SubclassingSidebar = (props: SubclassingSidebarProps) => {
         setIsOpen(!isOpen)
     }
 
+    const resetDebuffs = () => {
+        props.resetFunction()
+        const checkboxes = ref.current?.querySelectorAll("input")
+        checkboxes?.forEach((checkbox: HTMLInputElement) => {
+            checkbox.checked = false
+        });
+    }
+
+    const determineEffect = (category: string, effect: string) => {
+        if (category === "Other") {
+            return effect
+        }
+
+        return `${category} ${effect}`
+    }
+
     return (
         <div className="filtersWrapper" style={{ width: width }}>
             <form className="sidebarFilters" ref={ref}>
                 {isOpen &&
                     <>
                         <h4 className="sidebarTitle">Effects</h4>
-                        {debuffs.map((effect: string, key: number) => {
-                            return (
-                                <label className="effect" key={key}>
-                                    <span>{effect}</span>
-                                    <input type="checkbox" name="effects" id={`effect_${key}`} onChange={() => props.toggleFunction(effect)} />
-                                </label>
-                            )
-                        })}
+                        <div className="resetDebuffsWrapper">
+                            <button onClick={resetDebuffs} type='button' className='resetDebuffsButton'>Reset</button>
+                        </div>
+                        {
+                            Object.entries(debuffs).map((value: [string, string[]], _key: number) => {
+                                return (
+                                    <>
+                                        <div className='category' key={_key}>{value[0]}</div>
+                                        {
+                                            value[1].map((effect: string, key: number) => {
+                                                return (
+                                                    <label className="effect" key={key}>
+                                                        <span>{effect}</span>
+                                                        <input type="checkbox" name="effects" id={`effect_${key}`} onChange={() => props.toggleFunction(determineEffect(value[0], effect))} />
+                                                    </label>
+                                                )
+                                            })
+                                        }
+                                    </>
+                                )
+                            })
+                        }
                     </>
                 }
             </form>
