@@ -29,19 +29,36 @@
       text-align: center;
     }
 
+    .resetDebuffsWrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      padding: 1px 5px;
+
+      .resetDebuffsButton {
+        width: min-content;
+      }
+    }
+
+    .category{
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      padding: 1px 5px;
+    }
     .effect {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       cursor: pointer;
-      padding: 1px 5px;
+      padding: 1px 5px 1px 50px;
       &:hover {
         background-color: @dark-background-2;
       }
     }
   }
 
-  .hideTooltipButton{
+  .hideTooltipButton {
     border: 1px solid @gray-border-color;
     background-color: @dark-background;
     text-align: center;
