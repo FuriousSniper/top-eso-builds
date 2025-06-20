@@ -63,29 +63,33 @@ export const getFromLS = (key: string): string | null => {
     return localStorage.getItem(key)
 }
 
-export const initCrossedItems = () => {
-    setToLS("crossedObjects", JSON.stringify({}))
+export const initLsObject = (lsObjectKey: string) => {
+    setToLS(lsObjectKey, JSON.stringify({}))
 }
 
-export const checkCrossedExistence = (): boolean => {
-    return !_.isNull(getFromLS("crossedObjects"))
+export const initSubclassing = (lsObjectKey: string) => {
+    setToLS(lsObjectKey, JSON.stringify([]))
 }
 
-export const checkBuildExistence = (key: string): boolean => {
-    const buildArray = JSON.parse(getFromLS("crossedObjects")!)
+export const checkLsObjectExistence = (lsObjectKey: string): boolean => {
+    return !_.isNull(getFromLS(lsObjectKey))
+}
+
+export const checkBuildExistence = (key: string, lsObjectKey: string): boolean => {
+    const buildArray = JSON.parse(getFromLS(lsObjectKey)!)
     return !_.isUndefined(buildArray[key])
 }
 
-export const updateBuildCrossedArray = (newArray: string[], key: string): void => {
-    const buildArray = JSON.parse(getFromLS("crossedObjects")!)
+export const updateBuildCrossedArray = (newArray: string[], key: string, lsObjectKey: string): void => {
+    const buildArray = JSON.parse(getFromLS(lsObjectKey)!)
     buildArray[key] = newArray
-    setToLS("crossedObjects", JSON.stringify(buildArray))
+    setToLS(lsObjectKey, JSON.stringify(buildArray))
 }
 
-export const initBuildCrossedArray = (key: string) => {
-    const buildArray = JSON.parse(getFromLS("crossedObjects")!)
+export const initBuildCrossedArray = (key: string, lsObjectKey: string) => {
+    const buildArray = JSON.parse(getFromLS(lsObjectKey)!)
     buildArray[key] = []
-    setToLS("crossedObjects", JSON.stringify(buildArray))
+    setToLS(lsObjectKey, JSON.stringify(buildArray))
 }
 
 export const boundsMinMax = (n: number, min: number, max: number): number => {
@@ -170,38 +174,38 @@ export const isCritChar = (obj: CharacterPenType | CharacterCritType): obj is Ch
     return (obj as CharacterCritType).critSupport !== undefined;
 }
 
-export const getPenCharsFromUrl = (charString: string | null)=>{
-    if(!charString){
+export const getPenCharsFromUrl = (charString: string | null) => {
+    if (!charString) {
         return Array<CharacterPenType>()
     }
 
     const decoded = decodeFromUrl(charString)
-    if(decoded===false){
+    if (decoded === false) {
         return Array<CharacterPenType>()
     }
 
     const objArray = Array<CharacterPenType>()
-    for(let i=0;i<decoded.length;i++){
-        if(isPenChar(decoded[i])){
+    for (let i = 0; i < decoded.length; i++) {
+        if (isPenChar(decoded[i])) {
             objArray.push(decoded[i])
         }
     }
     return objArray
 }
 
-export const getCritCharsFromUrl = (charString: string | null)=>{
-    if(!charString){
+export const getCritCharsFromUrl = (charString: string | null) => {
+    if (!charString) {
         return Array<CharacterCritType>()
     }
 
     const decoded = decodeFromUrl(charString)
-    if(decoded===false){
+    if (decoded === false) {
         return Array<CharacterCritType>()
     }
 
     const objArray = Array<CharacterCritType>()
-    for(let i=0;i<decoded.length;i++){
-        if(isCritChar(decoded[i])){
+    for (let i = 0; i < decoded.length; i++) {
+        if (isCritChar(decoded[i])) {
             objArray.push(decoded[i])
         }
     }

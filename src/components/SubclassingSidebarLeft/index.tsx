@@ -1,29 +1,16 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import './style.less'
+import classNames from 'classnames'
 
 interface SubclassingSidebarProps {
     toggleFunction: (debuff: string) => void,
     resetFunction: () => void,
 }
 
-const SubclassingSidebar = (props: SubclassingSidebarProps) => {
+const SubclassingSidebarLeft = (props: SubclassingSidebarProps) => {
     const [isOpen, setIsOpen] = useState(true)
-    const [width, setWidth] = useState(250)
     const ref = useRef<HTMLFormElement>(null)
     const debuffs = { 'Major': ['Aegis', 'Berserk', 'Breach', 'Brittle', 'Brutality', 'Courage', 'Cowardice', 'Defile', 'Endurance', 'Enervation', 'Evasion', 'Expedition', 'Force', 'Fortitude', 'Heroism', 'Intellect', 'Lifesteal', 'Magickasteal', 'Maim', 'Mangle', 'Mending', 'Prophecy', 'Protection', 'Resolve', 'Savagery', 'Slayer', 'Sorcery', 'Timidity', 'Toughness', 'Uncertainty', 'Vitality', 'Vulnerability'], 'Minor': ['Aegis', 'Berserk', 'Breach', 'Brittle', 'Brutality', 'Courage', 'Cowardice', 'Defile', 'Endurance', 'Enervation', 'Evasion', 'Expedition', 'Force', 'Fortitude', 'Gallop', 'Heroism', 'Intellect', 'Lifesteal', 'Magickasteal', 'Maim', 'Mangle', 'Mending', 'Prophecy', 'Protection', 'Resolve', 'Savagery', 'Slayer', 'Sorcery', 'Timidity', 'Toughness', 'Uncertainty', 'Vitality', 'Vulnerability'], 'Other': ['Empower'] }
-
-    useEffect(() => {
-        if (isOpen) {
-            const rect = ref.current?.getBoundingClientRect()
-
-            if (rect) {
-                setWidth(250);
-            }
-        }
-        else {
-            setWidth(0);
-        }
-    }, [isOpen]);
 
     const toggleTooltip = () => {
         setIsOpen(!isOpen)
@@ -46,7 +33,9 @@ const SubclassingSidebar = (props: SubclassingSidebarProps) => {
     }
 
     return (
-        <div className="filtersWrapper" style={{ width: width }}>
+        <div className={classNames(
+            "filtersWrapper", { ["leftOpened"]: isOpen }
+        )}>
             <form className="sidebarFilters" ref={ref}>
                 {isOpen &&
                     <>
@@ -89,4 +78,4 @@ const SubclassingSidebar = (props: SubclassingSidebarProps) => {
     )
 }
 
-export default SubclassingSidebar;
+export default SubclassingSidebarLeft;

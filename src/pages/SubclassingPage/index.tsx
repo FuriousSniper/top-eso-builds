@@ -7,18 +7,31 @@ import SkillLineGroup from "../../components/SkillLineGroup";
 import './style.less'
 import EmptySkillSquare from "../../components/EmptySkillSquare";
 import { monitorForElements } from '@atlaskit/pragmatic-drag-and-drop/element/adapter';
-import SubclassingSidebar from "../../components/SubclassingSidebar";
+import SubclassingSidebarLeft from "../../components/SubclassingSidebarLeft";
 import useTitle from "../../hooks/useTitle";
+import SubclassingSidebarRight from "../../components/SubclassingSidebarRight";
+import { checkLsObjectExistence, getFromLS, initSubclassing, setToLS } from "../../utils/utils";
+import toast, { Toaster } from "react-hot-toast";
 
 const SubclassingPage = () => {
     const [groupedSkills] = useState<Record<string, Record<string, Array<SubclassingSkillType>>>>(subclassingSkills)
     const [skills, setSkills] = useState<Array<SubclassingSkillType | undefined>>(Array<SubclassingSkillType | undefined>(12))
     const [selectedDebuffList, setSelectedDebuffList] = useState<Array<string>>([])
+    const [allBuilds, setAllBuilds] = useState<Array<Record<string, Array<SubclassingSkillType>>>>([])
     useTitle(`Top ESO Builds: Subclassing`)
-    
+    const lsObjectKey = "subclassingBuilds"
+
     useEffect(() => {
         initializeSkills()
+
+        if (!checkLsObjectExistence(lsObjectKey)) {
+            initSubclassing(lsObjectKey)
+        }
+
+        const allItems = JSON.parse(getFromLS(lsObjectKey)!)
+        setAllBuilds(allItems)
     }, [])
+
 
     useEffect(() => {
         monitorForElements({
@@ -59,7 +72,7 @@ const SubclassingPage = () => {
         });
     }, [skills])
 
-    const initializeSkills = () =>{
+    const initializeSkills = () => {
         const defaultValue = new Array<undefined>(12)
         for (let i = 0; i < defaultValue.length; i++) {
             defaultValue[i] = undefined
@@ -67,70 +80,117 @@ const SubclassingPage = () => {
         setSkills(defaultValue)
     }
 
-    const toggleDebuff = (debuff: string) =>{
+    const toggleDebuff = (debuff: string) => {
         const tmp = [...selectedDebuffList]
         const index = tmp.indexOf(debuff)
 
-        if(index!==-1){
-            tmp.splice(index,1)
+        if (index !== -1) {
+            tmp.splice(index, 1)
         }
-        else{
+        else {
             tmp.push(debuff)
         }
         setSelectedDebuffList(tmp)
     }
 
-    useEffect(()=>{
-        if(selectedDebuffList.length===0){
+    useEffect(() => {
+        if (selectedDebuffList.length === 0) {
             const selectedElements = document.getElementsByClassName("invalid_skill")
-            for(let i=0;i<selectedElements.length;i+2){
+            for (let i = 0; i < selectedElements.length; i + 2) {
                 //for some reason it only works for half elements. loop unrolling fixes the issue
                 selectedElements[i].classList.remove("invalid_skill")
-                selectedElements[i+1]?.classList.remove("invalid_skill")
+                selectedElements[i + 1]?.classList.remove("invalid_skill")
             }
             return
         }
 
         Object.entries(groupedSkills).forEach((value: [string, Record<string, SubclassingSkillType[]>]) => {
             Object.keys(value[1]).forEach((skillLineName: string) => {
-                value[1][skillLineName].forEach((skill: SubclassingSkillType)=>{
+                value[1][skillLineName].forEach((skill: SubclassingSkillType) => {
                     const skillEffects = skill.effects
                     let includes = false
-                    for(let i=0;i<skillEffects.length;i++){
-                        if(selectedDebuffList.includes(skillEffects[i])){
-                            includes=true
+                    for (let i = 0; i < skillEffects.length; i++) {
+                        if (selectedDebuffList.includes(skillEffects[i])) {
+                            includes = true
                             break
                         }
                     }
-                    
+
                     const skillHtml = document.getElementById(`ability_${skill.id}`)
                     const classPresent = skillHtml?.classList.contains("invalid_skill")
 
-                    if(includes){
-                        if(classPresent){
+                    if (includes) {
+                        if (classPresent) {
                             skillHtml?.classList.remove("invalid_skill")
                         }
                     }
-                    else{
+                    else {
                         skillHtml?.classList.add("invalid_skill")
                     }
                 })
             })
         })
-    },[groupedSkills, selectedDebuffList])
+    }, [groupedSkills, selectedDebuffList])
 
-    const removeSkills = () =>{
+    const removeSkills = () => {
         initializeSkills()
     }
 
-    const swapBars = () =>{
-        const bar1 = skills.slice(0,6)
-        const bar2 = skills.slice(6,12)
-        setSkills([...bar2,...bar1])
+    const swapBars = () => {
+        const bar1 = skills.slice(0, 6)
+        const bar2 = skills.slice(6, 12)
+        setSkills([...bar2, ...bar1])
     }
 
-    const resetDebuffs = () =>{
+    const resetDebuffs = () => {
         setSelectedDebuffList([])
+    }
+
+    const sanitizeName = (name: string): string => {
+        let tmp = name
+        tmp = tmp.replace("'", "")
+        tmp = tmp.replace('"', "")
+        tmp = tmp.replace('`', "")
+        return tmp
+    }
+
+    const saveBuild = (name: string) => {
+        const safeName = sanitizeName(name)
+        if (skills.length === 0 || skills === undefined || safeName === "") {
+            return
+        }
+
+        const obj: Record<string, Array<SubclassingSkillType>> = {
+            [safeName]: skills as Array<SubclassingSkillType>
+        }
+
+        const updatedBuilds = [...allBuilds, obj]
+        setToLS(lsObjectKey, JSON.stringify(updatedBuilds))
+        setAllBuilds(updatedBuilds)
+        toast.success("Build saved")
+    }
+
+    const loadBuild = (index: number) => {
+        const selectedBuild = Object.keys(allBuilds[index])
+        const newArray = []
+
+        for (const value of allBuilds[index][selectedBuild[0]]) {
+            if (value === null) {
+                newArray.push(undefined)
+            }
+            else {
+                newArray.push(value)
+            }
+        }
+        setSkills(newArray)
+        toast.success("Build loaded")
+    }
+
+    const deleteBuild = (index: number) => {
+        const updatedBuilds = [...allBuilds]
+        updatedBuilds.splice(index, 1)
+        setAllBuilds(updatedBuilds)
+        toast.success("Build deleted")
     }
 
     return (
@@ -154,7 +214,7 @@ const SubclassingPage = () => {
                     </div>
                 </div>
                 <div className="menuWrapper">
-                    <SubclassingSidebar toggleFunction={toggleDebuff} resetFunction={resetDebuffs}/>
+                    <SubclassingSidebarLeft toggleFunction={toggleDebuff} resetFunction={resetDebuffs} />
                     <div className="skillLinesWrapper">
                         {Object.entries(groupedSkills).map((value: [string, Record<string, SubclassingSkillType[]>]) => {
                             return Object.keys(value[1]).map((skillLineName: string, key: number) => {
@@ -162,8 +222,20 @@ const SubclassingPage = () => {
                             })
                         })}
                     </div>
+                    <SubclassingSidebarRight saveBuildFunction={saveBuild} subclassingBuilds={allBuilds} selectBuild={loadBuild} deleteBuild={deleteBuild} skills={skills} />
                 </div>
-
+                <Toaster
+                    toastOptions={{
+                        success: {
+                            icon: <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z" fill="rgb(23, 184, 23)" fillRule="evenodd" clipRule="evenodd"></path></svg>,
+                        },
+                        error: {
+                            icon: <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.7816 4.03157C12.0062 3.80702 12.0062 3.44295 11.7816 3.2184C11.5571 2.99385 11.193 2.99385 10.9685 3.2184L7.50005 6.68682L4.03164 3.2184C3.80708 2.99385 3.44301 2.99385 3.21846 3.2184C2.99391 3.44295 2.99391 3.80702 3.21846 4.03157L6.68688 7.49999L3.21846 10.9684C2.99391 11.193 2.99391 11.557 3.21846 11.7816C3.44301 12.0061 3.80708 12.0061 4.03164 11.7816L7.50005 8.31316L10.9685 11.7816C11.193 12.0061 11.5571 12.0061 11.7816 11.7816C12.0062 11.557 12.0062 11.193 11.7816 10.9684L8.31322 7.49999L11.7816 4.03157Z" fill="rgb(182, 32, 32)" fillRule="evenodd" clipRule="evenodd"></path></svg>,
+                        },
+                        className: "toast",
+                        duration: 3000
+                    }}
+                />
             </div>
             <FooterMenu />
         </div>

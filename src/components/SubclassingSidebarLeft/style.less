@@ -11,7 +11,12 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
-  transition: all 0.2s ease-in-out;
+  transition: margin-left 0.2s ease-in-out;
+  margin-left: -300px;
+
+  &.leftOpened {
+    margin-left: 0px;
+  }
 
   .sidebarFilters {
     display: flex;
@@ -20,6 +25,8 @@
     overflow-y: scroll;
     height: min-content;
     max-height: 603px;
+    height: 603px;
+    width: 300px;
     background-color: @dark-background;
     border-top: 1px solid @gray-border-color;
     border-bottom: 1px solid @gray-border-color;
@@ -52,6 +59,9 @@
       justify-content: space-between;
       cursor: pointer;
       padding: 1px 5px 1px 50px;
+      user-select: none;
+      color: @color-secondary;
+      
       &:hover {
         background-color: @dark-background-2;
       }
