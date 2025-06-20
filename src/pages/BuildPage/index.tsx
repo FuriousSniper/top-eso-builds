@@ -7,7 +7,7 @@ import BuildGear from "../../components/BuildComponents/BuildGear";
 import BuildStats from "../../components/BuildComponents/BuildStats";
 import BuildCp from "../../components/BuildComponents/BuildCp";
 import BuildMisc from "../../components/BuildComponents/BuildMisc";
-import { checkBuildExistence, checkCrossedExistence, getFromLS, initBuildCrossedArray, initCrossedItems, updateBuildCrossedArray } from "../../utils/utils";
+import { checkBuildExistence, checkLsObjectExistence, getFromLS, initBuildCrossedArray, initLsObject, updateBuildCrossedArray } from "../../utils/utils";
 import BuildDetails from "../../components/BuildComponents/BuildDetails";
 import FooterMenu from "../../components/FooterMenu";
 import GenericDisplayField from "../../components/GenericDisplayField";
@@ -28,6 +28,7 @@ const BuildPage = () => {
     const [groupGear, setGroupGear] = useState(false)
     const [crossedItemsArray, setCrosseditemsArray] = useState(Array<string>())
     const navigate = useNavigate();
+    const lsObjectKey = "crossedObjects"
 
     useEffect(() => {
         //TERRIBLE but can be fixed with server and API only. 
@@ -53,19 +54,19 @@ const BuildPage = () => {
         }
 
 
-        if (!checkCrossedExistence()) {
-            initCrossedItems()
+        if (!checkLsObjectExistence(lsObjectKey)) {
+            initLsObject(lsObjectKey)
         }
 
         if (_.isUndefined(buildLocal?.id)) {
             return
         }
 
-        if (!checkBuildExistence(buildLocal.id)) {
-            initBuildCrossedArray(buildLocal.id)
+        if (!checkBuildExistence(buildLocal.id, lsObjectKey)) {
+            initBuildCrossedArray(buildLocal.id, lsObjectKey)
         }
         else {
-            const allItems = JSON.parse(getFromLS("crossedObjects")!)
+            const allItems = JSON.parse(getFromLS(lsObjectKey)!)
             setCrosseditemsArray(allItems[buildLocal.id])
         }
 
@@ -87,13 +88,13 @@ const BuildPage = () => {
         if (crossedItemsArray.includes(id)) {
             copyArray.splice(crossedItemsArray.indexOf(id), 1)
             setCrosseditemsArray(copyArray)
-            updateBuildCrossedArray(copyArray, build.id)
+            updateBuildCrossedArray(copyArray, build.id, lsObjectKey)
             toggleItem?.classList.remove("itemCrossed")
         }
         else {
             copyArray.push(id)
             setCrosseditemsArray(copyArray)
-            updateBuildCrossedArray(copyArray, build.id)
+            updateBuildCrossedArray(copyArray, build.id, lsObjectKey)
             toggleItem?.classList.add("itemCrossed")
         }
     }

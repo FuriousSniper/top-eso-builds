@@ -2113,7 +2113,7 @@ export const subclassingSkills: Record<string, Record<string, Array<SubclassingS
         "name": "Camouflaged Hunter",
         "icon": "ability_fightersguild_002_b.webp",
         "id": 45,
-        "effects": ["Major Savagery", "Minor Berserk"]
+        "effects": ["Major Savagery","Major Prophecy", "Minor Berserk"]
       },
       {
         "name": "Evil Hunter",

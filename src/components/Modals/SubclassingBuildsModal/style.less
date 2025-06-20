@@ -1,0 +1,43 @@
+@import "/src/styles/variables.less";
+
+.modalBuildsWrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+  margin-bottom: 10px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  max-height: 50vh;
+  padding: 10px 0;
+
+  .modalGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 5px;
+    align-items: center;
+
+    .modalSkills {
+      display: grid;
+      width: min-content;
+      grid-template-columns: repeat(6, 16px);
+      grid-template-rows: repeat(2, 16px);
+      grid-column-gap: 5px;
+      grid-row-gap: 5px;
+      align-items: center;
+
+      .emptySkill {
+        width: 16px;
+        height: 16px;
+        display: block;
+        border: 1px solid @gray-border-color;
+      }
+    }
+
+    .subclassControls {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+    }
+  }
+}
