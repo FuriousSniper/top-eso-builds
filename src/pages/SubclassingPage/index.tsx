@@ -7,9 +7,9 @@ import SkillLineGroup from "../../components/SkillLineGroup";
 import './style.less'
 import EmptySkillSquare from "../../components/EmptySkillSquare";
 import { monitorForElements } from '@atlaskit/pragmatic-drag-and-drop/element/adapter';
-import SubclassingSidebarLeft from "../../components/SubclassingSidebarLeft";
+import SubclassingSidebarLeft from "../../components/Sidebar/SubclassingSidebarLeft";
 import useTitle from "../../hooks/useTitle";
-import SubclassingSidebarRight from "../../components/SubclassingSidebarRight";
+import SubclassingSidebarRight from "../../components/Sidebar/SubclassingSidebarRight";
 import { checkLsObjectExistence, getFromLS, initSubclassing, setToLS } from "../../utils/utils";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -157,6 +157,7 @@ const SubclassingPage = () => {
     const saveBuild = (name: string) => {
         const safeName = sanitizeName(name)
         if (skills.length === 0 || skills === undefined || safeName === "") {
+            toast.error("Name cannot be empty")
             return
         }
 

@@ -433,7 +433,7 @@ export const subclassingSkills: Record<string, Record<string, Array<SubclassingS
         "name": "Molten Armaments",
         "icon": "ability_dragonknight_015_b.webp",
         "id": 207,
-        "effects": ["Empower", "Major Brutality"]
+        "effects": ["Empower", "Major Brutality","Major Sorcery"]
       },
       {
         "name": "Obsidian Shard",
@@ -1479,7 +1479,7 @@ export const subclassingSkills: Record<string, Record<string, Array<SubclassingS
         "name": "Deep Fissure",
         "icon": "ability_warden_015_a.webp",
         "id": 91,
-        "effects": ["Minor Breach"]
+        "effects": ["Minor Breach", "Major Breach"]
       },
       {
         "name": "Fetcher Infection",

@@ -1,0 +1,32 @@
+@import "/src/styles/index.less";
+@import "/src/styles/variables.less";
+
+.category {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 3px 5px;
+}
+.effect {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 3px 5px 3px 50px;
+  user-select: none;
+  color: @color-secondary;
+
+  &:hover {
+    background-color: @dark-background-2;
+  }
+}
+.resetDebuffsWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 3px 5px;
+
+  .resetDebuffsButton {
+    width: min-content;
+  }
+}
