@@ -52,7 +52,13 @@ const MainPage = () => {
                         <img src="/promo/promo_build.webp" alt="" />
                     </p>
                     <p className="textSection">
-                        Using a brand new, easy-to-use editor you can now select different combinations of skills to help you theory craft your dream build!<br/>Use the filters in sidebar to find skills, which apply different buffs and debuffs.<br/>P.S. Sharing, saving, and other features will be added soon
+                        Using a brand new, easy-to-use editor you can now select different combinations of skills to help you theory craft your dream build!<br/>Use the filters in sidebar to find skills, which apply different buffs and debuffs.
+                    </p>
+                    <p className="textSection">
+                        <img src="/promo/modal.webp" alt="" />
+                    </p>
+                    <p className="textSection">
+                       Share your builds instantly by copying a link or an image. Save your builds for the future!
                     </p>
                 </div>
             </div>

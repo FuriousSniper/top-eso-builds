@@ -148,7 +148,7 @@ export const getRandomArbitrary = (min: number, max: number) => {
     return Math.floor(Math.random() * (max - min) + min);
 }
 
-export const encodeToUrl = (obj: CharacterCritType[] | CharacterPenType[]) => {
+export const encodeToUrl = (obj: CharacterCritType[] | CharacterPenType[] | string) => {
     return encodeURI(JSON.stringify(obj))
 }
 
@@ -210,4 +210,23 @@ export const getCritCharsFromUrl = (charString: string | null) => {
         }
     }
     return objArray
+}
+
+export const getSkillsFromUrl = (skillString: string | null) => {
+    const defaultSkills = new Array<number | undefined>(12)
+    for (let i = 0; i < defaultSkills.length; i++) {
+        defaultSkills[i] = undefined
+    }
+    if (!skillString) {
+        return defaultSkills
+    }
+
+    const splitted = skillString.split(",")
+    for (let i = 0; i < splitted.length; i++) {
+        if (splitted[i] !== "") {
+            defaultSkills[i] = Number(splitted[i])
+        }
+    }
+
+    return defaultSkills
 }
