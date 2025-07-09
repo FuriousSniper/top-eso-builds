@@ -4,51 +4,72 @@
 .skillLinesWrapper {
   flex-direction: column;
   flex: auto;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 15px;
   display: flex;
 }
 
-.subclassingSkillBarsWrapper{
-  display:grid;
+.subclassingSkillBarsWrapper {
+  display: grid;
   width: min-content;
   grid-template-columns: repeat(6, 64px);
   grid-template-rows: repeat(2, 64px);
   grid-column-gap: 5px;
-  grid-row-gap: 5px; 
+  grid-row-gap: 5px;
   align-items: center;
   background-color: @dark-background;
   margin: 20px 0;
   padding: 3px;
 }
 
-.stickyBars{
+.stickyWrapper {
+  margin: 6px 0;
   position: sticky;
   top: 0;
   z-index: 1;
-  flex-direction: row !important;
-  column-gap: 3rem;
-  margin: 6px 0;
+
+  .stickyBars {
+    flex-direction: row !important;
+    column-gap: 3rem;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .skillSearch {
+    width: 100%;
+    flex-direction: row;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 1px;
+
+    .clearSearchButton{
+      margin-left: 10px;
+    }
+  }
 }
 
-.menuWrapper{
+.menuWrapper {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   width: 100%;
 }
 
-.invalid_skill{
+.invalid_skill {
   opacity: 0.3;
 }
 
-.barControlButton{
+.barControlButton {
   width: 50px;
   height: 50px;
   border-radius: 8px;
   cursor: pointer;
 
-  &:hover{
+  &:hover {
     background-color: @dark-background-2;
   }
 }
