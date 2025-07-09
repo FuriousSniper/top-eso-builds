@@ -13,19 +13,24 @@ interface SubclassingSkillProps {
 const SubclassingSkill = (props: SubclassingSkillProps) => {
     const ref = useRef(null);
     const [dragging, setDragging] = useState<boolean>(false);
+    const skillRef=useRef<SubclassingSkillType | null>(props.skill)
 
     useEffect(() => {
         const el = ref.current;
-
+        
         return draggable({
             element: el!,
             onDragStart: () => setDragging(true),
-            getInitialData: () => ({ skill: props.skill, skillLineName: props.skillLineName, class: props.class }),
+            getInitialData: () => ({ skill: skillRef.current }),
             onDrop: () => {
                 setDragging(false)
             }
         });
     }, []);
+
+    useEffect(()=>{
+        skillRef.current=props.skill
+    },[props])
 
     return (
         <GenericPopover subclassingSkill={props.skill!} className={dragging ? "dragging" : ""}>
